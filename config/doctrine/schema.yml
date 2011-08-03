@@ -15,6 +15,30 @@ Tournament:
     edition_ext_id:     { type: integer }
     views:              { type: integer }
 
+#TournamentEdition:
+#  options:
+#    collate: utf8_unicode_ci
+#    charset: utf8
+#  actAs: { Timestampable: ~ }
+
+#TournamentPhase:
+#  options:
+#    collate: utf8_unicode_ci
+#    charset: utf8
+#  actAs: { Timestampable: ~ }
+
+#TournamentGroup:
+#  options:
+#    collate: utf8_unicode_ci
+#    charset: utf8
+#  actAs: { Timestampable: ~ }
+
+#TournamentStandings:
+#  options:
+#    collate: utf8_unicode_ci
+#    charset: utf8
+#  actAs: { Timestampable: ~ }
+
 Team:
   options:
     collate: utf8_unicode_ci

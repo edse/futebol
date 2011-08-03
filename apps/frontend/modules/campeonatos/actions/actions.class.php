@@ -57,7 +57,7 @@ class campeonatosActions extends sfActions
 
 
         if($tournament->getSlug()=="turco")
-          $contents = file_get_contents('http://globoesporte.globo.com/dynamo/semantica/plantao/campeonato/campeonato_turco.jsonp');
+          $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/turco/campeonatoturco2011/classificacao.json');
         else
           $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/'.$tournament->getSlug().'/'.$tournament->getEditionSlug().'/classificacao.json');
         $array2 = json_decode($contents, true);
@@ -75,9 +75,9 @@ class campeonatosActions extends sfActions
             $team->setInitials($value["sigla"]);
             
             #TEAM-LOGO
-            #$aux = @end(explode("/",$value["escudo"]));
-            #$img = @sfConfig::get('sf_upload_dir').'/assets/teams/'.$aux;
-            #@file_put_contents($img, file_get_contents($value["escudo"]));
+            $aux = @end(explode("/",$value["escudo"]));
+            $img = @sfConfig::get('sf_upload_dir').'/assets/teams/'.$aux;
+            @file_put_contents($img, file_get_contents($value["escudo"]));
 
             $team->save();
             //echo var_dump($a);
