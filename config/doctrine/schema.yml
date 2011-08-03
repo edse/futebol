@@ -1,0 +1,86 @@
+detect_relations: true
+
+Tournament:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, Sluggable: fields: [edition_name] canUpdate: true unique: true, }
+  columns:
+    tournament_ext_id:  { type: integer }
+    name:               { type: string(255), notnull: true }
+    description:        { type: string(255), notnull: true }
+    rules:              { type: text }
+    edition_name:       { type: string(255), notnull: true }
+    edition_slug:       { type: string(255), notnull: true }
+    edition_ext_id:     { type: integer }
+    views:              { type: integer }
+
+Team:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, Sluggable: fields: [name] canUpdate: true unique: true, }
+  columns:
+    team_ext_id:     { type: integer }
+    official_name:      { type: string(255), notnull: true }
+    name:               { type: string(255), notnull: true }
+    nickname:           { type: string(255), notnull: true }
+    logo:               { type: string(255), notnull: true }
+    initials:           { type: string(255), notnull: true }
+    description:        { type: string(255), notnull: true }
+    views:              { type: integer }
+
+Stadium:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, Sluggable: fields: [name] canUpdate: true unique: true, }
+  columns:
+    stadium_ext_id:     { type: integer }
+    official_name:      { type: string(255), notnull: true }
+    name:               { type: string(255), notnull: true }
+    nickname:           { type: string(255), notnull: true }
+    capacity:           { type: string(255), notnull: true }
+    address:            { type: string(255), notnull: true }
+    inauguration:       { type: string(255), notnull: true }
+    location:           { type: string(255), notnull: true }
+    geo_location:       { type: string(255), notnull: true }
+    views:              { type: integer }
+
+Game:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, }
+  columns:
+    tournament_id:            { type: integer }
+    game_ext_id:              { type: integer }
+    date_start:               { type: timestamp, notnull: true }
+    date:                     { type: string(255), notnull: true }
+    time:                     { type: string(255), notnull: true }
+    round:                    { type: string(255), notnull: true }
+    home_team_id:             { type: integer }
+    home_team_ext_id:         { type: integer }
+    home_team_logo:           { type: string(255), notnull: true }
+    home_team_name:           { type: string(255), notnull: true }
+    home_team_initials:       { type: string(255), notnull: true }
+    home_team_slug:           { type: string(255), notnull: true }
+    home_team_score:          { type: integer }
+    home_team_penalty_score:  { type: integer }
+    away_team_id:             { type: integer }
+    away_team_ext_id:         { type: integer }
+    away_team_logo:           { type: string(255), notnull: true }
+    away_team_name:           { type: string(255), notnull: true }
+    away_team_initials:       { type: string(255), notnull: true }
+    away_team_slug:           { type: string(255), notnull: true }
+    away_team_score:          { type: integer }
+    away_team_penalty_score:  { type: integer }
+    stadium_name:                  { type: string(255), notnull: true }
+    stadium_id:               { type: integer }
+    stadium_ext_id:           { type: integer }
+    url:                      { type: string(255), notnull: true }
+    views:                    { type: integer }
+  relations:
+    Tournament: { local: tournament_id, foreign: id, class: Tournament, foreignAlias: Games }
+    HomeTeam: { local: home_team_id, foreign: id, class: Team, foreignAlias: HomeGames }
+    AwayTeam: { local: away_team_id, foreign: id, class: Team, foreignAlias: AwayGames } 
