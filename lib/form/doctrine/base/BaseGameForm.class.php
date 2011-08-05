@@ -42,7 +42,6 @@ abstract class BaseGameForm extends BaseFormDoctrine
       'stadium_id'              => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Stadium'), 'add_empty' => true)),
       'stadium_ext_id'          => new sfWidgetFormInputText(),
       'url'                     => new sfWidgetFormInputText(),
-      'views'                   => new sfWidgetFormInputText(),
       'created_at'              => new sfWidgetFormDateTime(),
       'updated_at'              => new sfWidgetFormDateTime(),
     ));
@@ -75,7 +74,6 @@ abstract class BaseGameForm extends BaseFormDoctrine
       'stadium_id'              => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Stadium'), 'required' => false)),
       'stadium_ext_id'          => new sfValidatorInteger(array('required' => false)),
       'url'                     => new sfValidatorString(array('max_length' => 255)),
-      'views'                   => new sfValidatorInteger(array('required' => false)),
       'created_at'              => new sfValidatorDateTime(),
       'updated_at'              => new sfValidatorDateTime(),
     ));

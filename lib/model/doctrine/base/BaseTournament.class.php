@@ -8,31 +8,19 @@
  * @property integer $tournament_ext_id
  * @property string $name
  * @property string $description
- * @property text $rules
- * @property string $edition_name
- * @property string $edition_slug
- * @property integer $edition_ext_id
- * @property integer $views
+ * @property Doctrine_Collection $TournamentEditions
  * @property Doctrine_Collection $Games
  * 
- * @method integer             getTournamentExtId()   Returns the current record's "tournament_ext_id" value
- * @method string              getName()              Returns the current record's "name" value
- * @method string              getDescription()       Returns the current record's "description" value
- * @method text                getRules()             Returns the current record's "rules" value
- * @method string              getEditionName()       Returns the current record's "edition_name" value
- * @method string              getEditionSlug()       Returns the current record's "edition_slug" value
- * @method integer             getEditionExtId()      Returns the current record's "edition_ext_id" value
- * @method integer             getViews()             Returns the current record's "views" value
- * @method Doctrine_Collection getGames()             Returns the current record's "Games" collection
- * @method Tournament          setTournamentExtId()   Sets the current record's "tournament_ext_id" value
- * @method Tournament          setName()              Sets the current record's "name" value
- * @method Tournament          setDescription()       Sets the current record's "description" value
- * @method Tournament          setRules()             Sets the current record's "rules" value
- * @method Tournament          setEditionName()       Sets the current record's "edition_name" value
- * @method Tournament          setEditionSlug()       Sets the current record's "edition_slug" value
- * @method Tournament          setEditionExtId()      Sets the current record's "edition_ext_id" value
- * @method Tournament          setViews()             Sets the current record's "views" value
- * @method Tournament          setGames()             Sets the current record's "Games" collection
+ * @method integer             getTournamentExtId()    Returns the current record's "tournament_ext_id" value
+ * @method string              getName()               Returns the current record's "name" value
+ * @method string              getDescription()        Returns the current record's "description" value
+ * @method Doctrine_Collection getTournamentEditions() Returns the current record's "TournamentEditions" collection
+ * @method Doctrine_Collection getGames()              Returns the current record's "Games" collection
+ * @method Tournament          setTournamentExtId()    Sets the current record's "tournament_ext_id" value
+ * @method Tournament          setName()               Sets the current record's "name" value
+ * @method Tournament          setDescription()        Sets the current record's "description" value
+ * @method Tournament          setTournamentEditions() Sets the current record's "TournamentEditions" collection
+ * @method Tournament          setGames()              Sets the current record's "Games" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -57,25 +45,6 @@ abstract class BaseTournament extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('rules', 'text', null, array(
-             'type' => 'text',
-             ));
-        $this->hasColumn('edition_name', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
-             ));
-        $this->hasColumn('edition_slug', 'string', 255, array(
-             'type' => 'string',
-             'notnull' => true,
-             'length' => 255,
-             ));
-        $this->hasColumn('edition_ext_id', 'integer', null, array(
-             'type' => 'integer',
-             ));
-        $this->hasColumn('views', 'integer', null, array(
-             'type' => 'integer',
-             ));
 
         $this->option('collate', 'utf8_unicode_ci');
         $this->option('charset', 'utf8');
@@ -84,6 +53,10 @@ abstract class BaseTournament extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('TournamentEdition as TournamentEditions', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
         $this->hasMany('Game as Games', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));

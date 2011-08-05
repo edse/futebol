@@ -31,7 +31,6 @@
  * @property integer $stadium_id
  * @property integer $stadium_ext_id
  * @property string $url
- * @property integer $views
  * @property Tournament $Tournament
  * @property Team $HomeTeam
  * @property Team $AwayTeam
@@ -63,7 +62,6 @@
  * @method integer    getStadiumId()               Returns the current record's "stadium_id" value
  * @method integer    getStadiumExtId()            Returns the current record's "stadium_ext_id" value
  * @method string     getUrl()                     Returns the current record's "url" value
- * @method integer    getViews()                   Returns the current record's "views" value
  * @method Tournament getTournament()              Returns the current record's "Tournament" value
  * @method Team       getHomeTeam()                Returns the current record's "HomeTeam" value
  * @method Team       getAwayTeam()                Returns the current record's "AwayTeam" value
@@ -94,7 +92,6 @@
  * @method Game       setStadiumId()               Sets the current record's "stadium_id" value
  * @method Game       setStadiumExtId()            Sets the current record's "stadium_ext_id" value
  * @method Game       setUrl()                     Sets the current record's "url" value
- * @method Game       setViews()                   Sets the current record's "views" value
  * @method Game       setTournament()              Sets the current record's "Tournament" value
  * @method Game       setHomeTeam()                Sets the current record's "HomeTeam" value
  * @method Game       setAwayTeam()                Sets the current record's "AwayTeam" value
@@ -215,9 +212,6 @@ abstract class BaseGame extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 255,
-             ));
-        $this->hasColumn('views', 'integer', null, array(
-             'type' => 'integer',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');

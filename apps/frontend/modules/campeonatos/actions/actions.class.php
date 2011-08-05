@@ -36,30 +36,33 @@ class campeonatosActions extends sfActions
     //echo var_dump($array["campeonatos"]);
     foreach($array["campeonatos"] as $a){
       echo "<pre>";
-      if(!$tournament = Doctrine_Core::getTable('Tournament')->findOneByEditionSlug($a["edicao"]["slug"])){
+      if(!$tournament = Doctrine_Core::getTable('Tournament')->findOneBySlug($a["edicao"]["slug"])){
         echo "Adding Tournament: ".$a["nome"]."...\n";
         $tournament = new Tournament();
         $tournament->setName($a["nome"]);
         $tournament->setSlug($a["slug"]);
         if(isset($a["regulamento"]))
           $tournament->setRules($a["regulamento"]);
+        $tournament->save();
         //echo "nome: ".$a["nome"]."\n";
         //echo "slug: ".$a["slug"]."\n";
         foreach($a as $k=>$v){
           if(is_array($v)){
-            $tournament->setEditionName($v["nome"]);
-            $tournament->setEditionSlug($v["slug"]);
+            $tournamentEdition = new TournamentEdition();
+            $tournamentEdition->setTournamentId($tournament->getId());
+            $tournamentEdition->setName($v["nome"]);
+            $tournamentEdition->setSlug($v["slug"]);
+            $tournamentEdition->save();
             //echo "edicao-nome: ".$v["nome"]."\n";
             //echo "edicao-slug: ".$v["slug"]."\n";
           }
         }
-        $tournament->save();
 
 
         if($tournament->getSlug()=="turco")
           $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/turco/campeonatoturco2011/classificacao.json');
         else
-          $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/'.$tournament->getSlug().'/'.$tournament->getEditionSlug().'/classificacao.json');
+          $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/'.$tournament->getSlug().'/'.$tournamentEdition->getSlug().'/classificacao.json');
         $array2 = json_decode($contents, true);
 
         //TEAMS

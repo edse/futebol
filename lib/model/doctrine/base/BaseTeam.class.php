@@ -12,30 +12,33 @@
  * @property string $logo
  * @property string $initials
  * @property string $description
- * @property integer $views
+ * @property Doctrine_Collection $TournamentPhaseGroupTeams
+ * @property Doctrine_Collection $TournamentStandings
  * @property Doctrine_Collection $HomeGames
  * @property Doctrine_Collection $AwayGames
  * 
- * @method integer             getTeamExtId()     Returns the current record's "team_ext_id" value
- * @method string              getOfficialName()  Returns the current record's "official_name" value
- * @method string              getName()          Returns the current record's "name" value
- * @method string              getNickname()      Returns the current record's "nickname" value
- * @method string              getLogo()          Returns the current record's "logo" value
- * @method string              getInitials()      Returns the current record's "initials" value
- * @method string              getDescription()   Returns the current record's "description" value
- * @method integer             getViews()         Returns the current record's "views" value
- * @method Doctrine_Collection getHomeGames()     Returns the current record's "HomeGames" collection
- * @method Doctrine_Collection getAwayGames()     Returns the current record's "AwayGames" collection
- * @method Team                setTeamExtId()     Sets the current record's "team_ext_id" value
- * @method Team                setOfficialName()  Sets the current record's "official_name" value
- * @method Team                setName()          Sets the current record's "name" value
- * @method Team                setNickname()      Sets the current record's "nickname" value
- * @method Team                setLogo()          Sets the current record's "logo" value
- * @method Team                setInitials()      Sets the current record's "initials" value
- * @method Team                setDescription()   Sets the current record's "description" value
- * @method Team                setViews()         Sets the current record's "views" value
- * @method Team                setHomeGames()     Sets the current record's "HomeGames" collection
- * @method Team                setAwayGames()     Sets the current record's "AwayGames" collection
+ * @method integer             getTeamExtId()                 Returns the current record's "team_ext_id" value
+ * @method string              getOfficialName()              Returns the current record's "official_name" value
+ * @method string              getName()                      Returns the current record's "name" value
+ * @method string              getNickname()                  Returns the current record's "nickname" value
+ * @method string              getLogo()                      Returns the current record's "logo" value
+ * @method string              getInitials()                  Returns the current record's "initials" value
+ * @method string              getDescription()               Returns the current record's "description" value
+ * @method Doctrine_Collection getTournamentPhaseGroupTeams() Returns the current record's "TournamentPhaseGroupTeams" collection
+ * @method Doctrine_Collection getTournamentStandings()       Returns the current record's "TournamentStandings" collection
+ * @method Doctrine_Collection getHomeGames()                 Returns the current record's "HomeGames" collection
+ * @method Doctrine_Collection getAwayGames()                 Returns the current record's "AwayGames" collection
+ * @method Team                setTeamExtId()                 Sets the current record's "team_ext_id" value
+ * @method Team                setOfficialName()              Sets the current record's "official_name" value
+ * @method Team                setName()                      Sets the current record's "name" value
+ * @method Team                setNickname()                  Sets the current record's "nickname" value
+ * @method Team                setLogo()                      Sets the current record's "logo" value
+ * @method Team                setInitials()                  Sets the current record's "initials" value
+ * @method Team                setDescription()               Sets the current record's "description" value
+ * @method Team                setTournamentPhaseGroupTeams() Sets the current record's "TournamentPhaseGroupTeams" collection
+ * @method Team                setTournamentStandings()       Sets the current record's "TournamentStandings" collection
+ * @method Team                setHomeGames()                 Sets the current record's "HomeGames" collection
+ * @method Team                setAwayGames()                 Sets the current record's "AwayGames" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -80,9 +83,6 @@ abstract class BaseTeam extends sfDoctrineRecord
              'notnull' => true,
              'length' => 255,
              ));
-        $this->hasColumn('views', 'integer', null, array(
-             'type' => 'integer',
-             ));
 
         $this->option('collate', 'utf8_unicode_ci');
         $this->option('charset', 'utf8');
@@ -91,6 +91,14 @@ abstract class BaseTeam extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('TournamentPhaseGroupTeam as TournamentPhaseGroupTeams', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('TournamentStandings', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
         $this->hasMany('Game as HomeGames', array(
              'local' => 'id',
              'foreign' => 'home_team_id'));

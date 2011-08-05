@@ -4,40 +4,111 @@ Tournament:
   options:
     collate: utf8_unicode_ci
     charset: utf8
-  actAs: { Timestampable: ~, Sluggable: fields: [edition_name] canUpdate: true unique: true, }
+  actAs: { Timestampable: ~, Sluggable: fields: [name] canUpdate: true unique: true, }
   columns:
     tournament_ext_id:  { type: integer }
     name:               { type: string(255), notnull: true }
     description:        { type: string(255), notnull: true }
-    rules:              { type: text }
-    edition_name:       { type: string(255), notnull: true }
-    edition_slug:       { type: string(255), notnull: true }
-    edition_ext_id:     { type: integer }
-    views:              { type: integer }
 
-#TournamentEdition:
-#  options:
-#    collate: utf8_unicode_ci
-#    charset: utf8
-#  actAs: { Timestampable: ~ }
+TournamentEdition:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, Sluggable: fields: [name] canUpdate: true unique: true, }
+  columns:
+    tournament_edition_ext_id:  { type: integer }
+    tournament_id:              { type: integer }
+    name:                       { type: string(255), notnull: true }
+    description:                { type: string(255), notnull: true }
+    rules:                      { type: text }
+    location:                   { type: string(255), notnull: true }
+    date_start:                 { type: timestamp, notnull: true }
+    date_end:                   { type: timestamp, notnull: true }
+  relations:
+    Tournament: { local: tournament_id, foreign: id, foreignAlias: TournamentEditions }
 
-#TournamentPhase:
-#  options:
-#    collate: utf8_unicode_ci
-#    charset: utf8
-#  actAs: { Timestampable: ~ }
+TournamentPhase:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, Sluggable: fields: [name] canUpdate: true unique: true, }
+  columns:
+    tournament_phase_ext_id:  { type: integer }
+    name:                     { type: string(255), notnull: true }
+    description:              { type: string(255), notnull: true }
+    display_order:            { type: integer }
+    location:                 { type: string(255), notnull: true }
+    type:                     { type: string(255), notnull: true }
+    classification_type:      { type: string(255), notnull: true }
+    is_active:                { type: boolean, notnull: true, default: 0 }
+  indexes:
+    is_active_idx:
+      fields: [is_active]
 
-#TournamentGroup:
-#  options:
-#    collate: utf8_unicode_ci
-#    charset: utf8
-#  actAs: { Timestampable: ~ }
+TournamentPhaseStrip:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    tournament_phase_strip_ext_id:  { type: integer }
+    tournament_phase_id:            { type: integer }
+    name:                           { type: string(255), notnull: true }
+    description:                    { type: string(255), notnull: true }
+    display_order:                  { type: integer }
+  relations:
+    TournamentPhase: { local: tournament_phase_id, foreign: id, foreignAlias: TournamentPhaseStrips }
 
-#TournamentStandings:
-#  options:
-#    collate: utf8_unicode_ci
-#    charset: utf8
-#  actAs: { Timestampable: ~ }
+TournamentPhaseGroup:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    tournament_phase_group_ext_id:  { type: integer }
+    tournament_phase_id:            { type: integer }
+    name:                           { type: string(255), notnull: true }
+    description:                    { type: string(255), notnull: true }
+    round:                          { type: string(255), notnull: true }
+    display_order:                  { type: integer }
+  relations:
+    TournamentPhase: { local: tournament_phase_id, foreign: id, foreignAlias: TournamentPhaseStrips }
+
+TournamentPhaseGroupTeam:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    tournament_phase_group_team_ext_id:   { type: integer }
+    tournament_phase_group_id:            { type: integer }
+    team_id:                              { type: integer }
+    label:                                { type: string(255) }
+    display_order:                        { type: integer }
+    rank:                                 { type: integer }
+  relations:
+    TournamentPhaseGroup: { local: tournament_phase_group_id, foreign: id, foreignAlias: TournamentPhaseGroupTeams }
+    Team: { local: team_id, foreign: id, foreignAlias: TournamentPhaseGroupTeams }
+
+TournamentStandings:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    team_id:                    { type: integer }
+    tournament_phase_strip_id:  { type: integer }
+    rank:                       { type: float }
+    defeats:                    { type: integer }
+    draws:                      { type: integer }
+    wins:                       { type: integer }
+    points:                     { type: float }
+    score_for:                  { type: integer }
+    score_against:              { type: integer }
+    score_difference:           { type: integer }
+    games:                      { type: integer }
+    variation:                  { type: integer }
+    display_order:              { type: string(255) }
 
 Team:
   options:
@@ -52,7 +123,6 @@ Team:
     logo:               { type: string(255), notnull: true }
     initials:           { type: string(255), notnull: true }
     description:        { type: string(255), notnull: true }
-    views:              { type: integer }
 
 Stadium:
   options:
@@ -69,7 +139,6 @@ Stadium:
     inauguration:       { type: string(255), notnull: true }
     location:           { type: string(255), notnull: true }
     geo_location:       { type: string(255), notnull: true }
-    views:              { type: integer }
 
 Game:
   options:
@@ -99,11 +168,10 @@ Game:
     away_team_slug:           { type: string(255), notnull: true }
     away_team_score:          { type: integer }
     away_team_penalty_score:  { type: integer }
-    stadium_name:                  { type: string(255), notnull: true }
+    stadium_name:             { type: string(255), notnull: true }
     stadium_id:               { type: integer }
     stadium_ext_id:           { type: integer }
     url:                      { type: string(255), notnull: true }
-    views:                    { type: integer }
   relations:
     Tournament: { local: tournament_id, foreign: id, class: Tournament, foreignAlias: Games }
     HomeTeam: { local: home_team_id, foreign: id, class: Team, foreignAlias: HomeGames }

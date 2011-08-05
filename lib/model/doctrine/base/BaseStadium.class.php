@@ -14,7 +14,6 @@
  * @property string $inauguration
  * @property string $location
  * @property string $geo_location
- * @property integer $views
  * @property Doctrine_Collection $Game
  * 
  * @method integer             getStadiumExtId()   Returns the current record's "stadium_ext_id" value
@@ -26,7 +25,6 @@
  * @method string              getInauguration()   Returns the current record's "inauguration" value
  * @method string              getLocation()       Returns the current record's "location" value
  * @method string              getGeoLocation()    Returns the current record's "geo_location" value
- * @method integer             getViews()          Returns the current record's "views" value
  * @method Doctrine_Collection getGame()           Returns the current record's "Game" collection
  * @method Stadium             setStadiumExtId()   Sets the current record's "stadium_ext_id" value
  * @method Stadium             setOfficialName()   Sets the current record's "official_name" value
@@ -37,7 +35,6 @@
  * @method Stadium             setInauguration()   Sets the current record's "inauguration" value
  * @method Stadium             setLocation()       Sets the current record's "location" value
  * @method Stadium             setGeoLocation()    Sets the current record's "geo_location" value
- * @method Stadium             setViews()          Sets the current record's "views" value
  * @method Stadium             setGame()           Sets the current record's "Game" collection
  * 
  * @package    futebol
@@ -92,9 +89,6 @@ abstract class BaseStadium extends sfDoctrineRecord
              'type' => 'string',
              'notnull' => true,
              'length' => 255,
-             ));
-        $this->hasColumn('views', 'integer', null, array(
-             'type' => 'integer',
              ));
 
         $this->option('collate', 'utf8_unicode_ci');
