@@ -20,6 +20,15 @@ class campeonatosActions extends sfActions
     $this->forward('default', 'module');
   }
 
+  public function executeUpdate(sfWebRequest $request)
+  {
+    ini_set("memory_limit", "1700M");
+    ini_set("max_input_time", "3600");
+    ini_set("max_execution_time", "3600");
+    set_time_limit(0);
+    die("1");
+  }
+
   public function executeImport(sfWebRequest $request)
   {
     ini_set("memory_limit", "1700M");
@@ -119,10 +128,16 @@ class campeonatosActions extends sfActions
                   $h = explode(":", $v["hora"]);
                 if(!isset($h[1]))
                   $h = explode(":", "00:00");
+                if($d[1] < 10)
+                  $d[1] = "0".$d[1];
+                if($d[0] < 10)
+                  $d[0] = "0".$d[0];
+                //echo "\tdate: ".$v["data_original"]." ".$v["data_original"]."\n";
+                //echo "\tdate: ".$d[2]."-".$d[1]."-".$d[0]." ".$h[0].":".$h[1].":"."00"."\n";
                 $game = new Game();
                 $game->setGameExtId($v["jogo_id"]);
                 $game->setTournamentId($tournament->getId());
-                $game->setDateStart($d[2]."-".$d[1]."-".$d[0]." ".$h[0].":".$h[1]."00");
+                $game->setDateStart($d[2]."-".$d[1]."-".$d[0]." ".$h[0].":".$h[1].":"."00");
                 $game->setDate($v["data"]);
                 $game->setTime($v["hora"]);
                 $game->setRound($v["rodada"]);
