@@ -3,7 +3,7 @@
 <head> 
   <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>jQuery Mobile: Demos and Documentation</title> 
+  <title>Futebol Clube: Times, Jogos, Campeonatos, Notícias e Iteratividade em tempo real</title> 
   <link rel="stylesheet"  href="/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
   <link rel="stylesheet" href="/css/webapp.css" /> 
   <script src="/js/jquery-1.6.2.min.js"></script> 
@@ -16,116 +16,147 @@
   <div data-role="content"> 
     <div class="content-secondary">
       <div id="jqm-homeheader"> 
-        <h1 id="jqm-logo"><img src="docs/_assets/images/jquery-logo.png" alt="jQuery Mobile Framework" /></h1> 
-        <p>A Touch-Optimized Web Framework for Smartphones &amp; Tablets</p> 
+        <h1 id="jqm-logo"><img src="/images/logo.png" alt="Futebol Clube" /></h1> 
+        <p>Um resumo apurado de tudo que rola no mundo do Futebol em tempo real</p> 
         <p id="jqm-version">Beta Release</p> 
       </div> 
-  
-      <p class="intro"><strong>Welcome.</strong> Browse the jQuery Mobile components and learn how to make rich, accessible, touch-friendly websites and apps.</p> 
-      
-      <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f"> 
-        <li data-role="list-divider">Overview</li> 
-        <li><a href="docs/about/intro.html">Intro to jQuery Mobile</a></li> 
-        <li><a href="docs/about/features.html">Features</a></li> 
-        <li><a href="docs/about/accessibility.html">Accessibility</a></li> 
-        <li><a href="docs/about/platforms.html">Supported platforms</a></li> 
-      </ul> 
-      
-    <div class="ui-body ui-body-b"> 
- 
-      <div data-role="fieldcontain"> 
-           <label for="name-b">Text Input:</label> 
-           <input type="text" name="name" id="name-b" value=""  /> 
-      </div> 
- 
-      <div data-role="fieldcontain"> 
-        <label for="switch-b">Flip switch:</label> 
-        <select name="switch-b" id="switch-b" data-role="slider"> 
-          <option value="off">Off</option> 
-          <option value="on">On</option> 
-        </select> 
-      </div> 
- 
-      <div data-role="fieldcontain"> 
-        <label for="slider-b">Slider:</label> 
-        <input type="range" name="slider" id="slider-b" value="0" min="0" max="100"  /> 
-      </div> 
- 
- 
-      <div data-role="fieldcontain"> 
-      <fieldset data-role="controlgroup" data-type="horizontal"> 
-          <legend>Font styling:</legend> 
-          <input type="checkbox" name="checkbox-6b" id="checkbox-6b" class="custom" /> 
-        <label for="checkbox-6b">b</label> 
- 
-        <input type="checkbox" name="checkbox-7b" id="checkbox-7b" class="custom" /> 
-        <label for="checkbox-7b"><em>i</em></label> 
- 
-        <input type="checkbox" name="checkbox-8b" id="checkbox-8b" class="custom" /> 
-        <label for="checkbox-8b">u</label>    
-        </fieldset> 
-      </div> 
- 
-      <div data-role="fieldcontain"> 
-          <fieldset data-role="controlgroup"> 
-            <legend>Choose a pet:</legend> 
-                <input type="radio" name="radio-choice-1" id="radio-choice-1b" value="choice-1" /> 
-                <label for="radio-choice-1b">Cat</label> 
- 
-                <input type="radio" name="radio-choice-1" id="radio-choice-2b" value="choice-2"  /> 
-                <label for="radio-choice-2b">Dog</label> 
- 
-                <input type="radio" name="radio-choice-1" id="radio-choice-3b" value="choice-3"  /> 
-                <label for="radio-choice-3b">Hamster</label> 
- 
-                <input type="radio" name="radio-choice-1" id="radio-choice-4b" value="choice-4"  /> 
-                <label for="radio-choice-4b">Lizard</label> 
-          </fieldset> 
-      </div> 
- 
-      <div data-role="fieldcontain"> 
-        <label for="select-choice-b" class="select">Choose shipping method:</label> 
-        <select name="select-choice-b" id="select-choice-b"> 
-          <option value="standard">Standard: 7 day</option> 
-          <option value="rush">Rush: 3 days</option> 
-          <option value="express">Express: next day</option> 
-          <option value="overnight">Overnight</option> 
-        </select> 
-      </div> 
- 
-      
-      </div><!-- /body-b --> 
- 
 
+      <p class="intro"><strong>Futebol Clube</strong> permite acesso rápido e fácil a informações dos principais campeonatos de futebol do planeta.</p>
+
+      <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f" id="_login"> 
+        <li data-role="list-divider">Entrar usando...</li> 
+        <li><a href="#"><img src="/images/twitter.png" alt="Twitter" class="ui-li-icon">Twitter</a></li> 
+        <li><a href="#"><img src="/images/facebook.png" alt="Facebook" class="ui-li-icon">Facebook</a></li>
+        <li><a href="#"><img src="/images/google.png" alt="Google" class="ui-li-icon">Google</a></li> 
+        <li><a href="#"><img src="/images/yahoo.png" alt="Yahoo!" class="ui-li-icon">Yahoo!</a></li> 
+        <li><a href="#"><img src="/images/linkedin.png" alt="Linkedin" class="ui-li-icon">Linkedin</a></li> 
+        <li><a href="#"><img src="/images/hotmail.png" alt="OpenID" class="ui-li-icon">OpenID</a></li> 
+      </ul> 
+
+  <form> 
+    <ul data-role="listview" data-inset="true"> 
+      <li data-role="fieldcontain"> 
+        <label for="name">Nome:</label> 
+        <input type="text" name="name" id="name" value=""  /> 
+      </li> 
+      <li data-role="fieldcontain"> 
+        <label for="name">Email:</label> 
+        <input type="text" name="email" id="email" value=""  /> 
+      </li>
+      <li class="ui-body ui-body-b"> 
+        <fieldset class="ui-grid-a"> 
+            <div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div> 
+            <div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div> 
+          </fieldset> 
+      </li> 
       
+    </ul> 
+ 
+ 
+    
+    </form> 
+
     </div><!--/content-primary--> 
     
     <div class="content-primary"> 
       <nav> 
-        
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
-          <li data-role="list-divider">Components</li> 
-          <li><a href="docs/pages/index.html">Pages &amp; dialogs</a></li> 
-          <li><a href="docs/toolbars/index.html">Toolbars</a></li> 
-          <li><a href="docs/buttons/index.html">Buttons</a></li> 
-          <li><a href="docs/content/index.html">Content formatting</a></li> 
-          <li><a href="docs/forms/index.html">Form elements</a></li> 
-          <li><a href="docs/lists/index.html">List views</a></li> 
-          
-          <li data-role="list-divider">API</li> 
-          <li><a href="docs/api/globalconfig.html">Configuring defaults</a></li> 
-          <li><a href="docs/api/events.html">Events</a></li> 
-          <li><a href="docs/api/methods.html">Methods &amp; Utilities</a></li> 
-          <li><a href="docs/api/mediahelpers.html">Responsive Layout</a></li> 
-          <li><a href="docs/api/themes.html">Theme framework</a></li> 
-    
-        
-        </ul> 
+          <li data-role="list-divider">Acompanhe campeonatos tradicionais como...</li> 
+          <li>Campeonato Alemão</li>
+          <li>Campeonato Argentino</li>
+          <li>Campeonato Brasileiro Series A, B, C e D</li>
+          <li>Campeonato Espanhol</li>
+          <li>Campeonato Francês</li>
+          <li>Campeonato Inglês</li>
+          <li>Campeonato Italiano</li>
+          <li>Campeonato Japonês</li>
+          <li>Campeonato Português</li>
+          <li>Campeonato Russo</li>
+          <li>Campeonato Turco</li>
+
+          <li data-role="list-divider">Copas, Ligas, Mundiais, Eliminatorias...</li> 
+          <li>Copa Sul-Americana</li>
+          <li>Eliminatórias da Eurocopa</li>
+          <li>Liga Europa</li>
+          <li>Mundial Sub-20</li>
+          <li>Recopa Sul-Americana</li>
+          <li>Supercopa da Espanha</li>
+
+          <li data-role="list-divider">São mais de 1800 times de futebol incluindo os nacionais...</li> 
+          <li>América-MG</li>
+          <li>Atlético-GO</li>
+          <li>Atlético-MG</li>
+          <li>Atlético-PR</li>
+          <li>Avaí</li>
+          <li>Bahia</li>
+          <li>Botafogo</li>
+          <li>Ceará</li>
+          <li>Corinthians</li>
+          <li>Coritiba</li>
+          <li>Cruzeiro</li>
+          <li>Figueirense</li>
+          <li>Flamengo</li>
+          <li>Fluminense</li>
+          <li>Grêmio</li>
+          <li>Internacional</li>
+          <li>Palmeiras</li>
+          <li>Santos</li>
+          <li>São Paulo</li>
+          <li>Vasco</li>
+
+          <li data-role="list-divider">... e internacionais</li> 
+          <li>Real Madrid</li>
+          <li>Barcelona</li>
+          <li>Milan</li>
+          <li>Juventus</li>
+          <li>Bayern Munchen</li>
+          <li>Manchester United</li>
+          <li>Peñarol</li>
+          <li>Boca Juniors</li>
+          <li>Liverpool</li>
+          <li>Ajax</li>
+          <li>Inter de Milão</li>
+          <li>Porto</li>
+          <li>Benfica</li>
+          <li>River Plate</li>
+          <li>Glasgow Rangers</li>
+          <li>Independiente</li>
+          <li>São Paulo</li>
+          <li>Nacional</li>
+          <li>Santos</li>
+          <li>Linfield</li>
+          <li>Celtic</li>
+          <li>Flamengo</li>
+          <li>Internacional</li>
+          <li>Olimpia</li>
+          <li>Arsenal</li>
+          <li>Athletic Bilbao</li>
+          <li>Sparta Praha</li>
+          <li>Olympiakos</li>
+          <li>PSV Eindhoven</li>
+          <li>Sporting</li>
+          <li>Feyenoord</li>
+          <li>Estrela Vermelha</li>
+          <li>Atlético de Madrid</li>
+          <li>Anderlecht</li>
+          <li>Rapid Viena</li>
+          <li>Zamalek</li>
+          <li>Ferencváros TC</li>
+          <li>Austria Viena</li>
+          <li>Dínamo Kiev</li>
+          <li>Colo Colo</li>
+          <li>CSKA Sofia</li>
+          <li>Valência</li>
+          <li>Éverton</li>
+          <li>Aston Villa</li>
+          <li>Grasshopper</li>
+          <li>Glentoran</li>
+          <li>Borussia Dortmund</li>
+          <li>Copenhague</li>
+        </ul>
       </nav> 
-    </div> 
- 
-    
- 
+    </div>
+
   </div> 
   
   <div data-role="footer" class="nav-glyphish-example"> 

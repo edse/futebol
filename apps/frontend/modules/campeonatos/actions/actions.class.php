@@ -79,10 +79,11 @@ class campeonatosActions extends sfActions
 
       //TEAMS
       foreach($array2["lista_de_jogos"]["campeonato"]["edicao_campeonato"]["equipes"] as $key=>$value){
-        if(!$team = Doctrine_Core::getTable('Team')->findOneByTeamExtId($key))
+        //$team = Doctrine_Core::getTable('Team')->findOneByOfficialName($value["nome"]))
+        if(!$team = Doctrine_Core::getTable('Team')->findOneByOfficialName($value["nome"]))
           $team = new Team();
         echo "Adding Team: ".$value["nome"]."...\n";
-        $team = new Team();
+        //$team = new Team();
         $team->setTeamExtId($key);
         $team->setOfficialName($value["nome"]);
         $team->setName($value["nome_popular"]);

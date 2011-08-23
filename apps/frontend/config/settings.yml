@@ -24,6 +24,12 @@ test:
 
 all:
   .settings:
+    # Internationalization and localization
+    charset: utf-8
+    i18n: true
+    standard_helpers: [Partial, Cache, I18N]
+    default_culture: en_US
+    
     # Form security secret (CSRF protection)
     csrf_secret:            505ef3c93c0d1db10f48fc64587c5c79336aadfe
 
@@ -33,3 +39,12 @@ all:
 
     # Enable the database manager
     use_database:           true
+
+    enabled_modules:        [default, sfMelody, sfGuardAuth]
+
+    login_module:           index
+    login_action:           index
+
+    secure_module:          sfGuardAuth
+    secure_action:          secure_action
+
