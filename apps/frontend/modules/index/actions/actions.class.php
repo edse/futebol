@@ -16,7 +16,7 @@ class indexActions extends sfActions
   * @param sfRequest $request A request object
   */
   public function executeIndex(sfWebRequest $request) {
-    
+
     if($this->getUser()->isAuthenticated() == true){
       $this->oauths = TokenTable::getInstance()
         ->createQuery('t')
@@ -26,10 +26,6 @@ class indexActions extends sfActions
         ->createQuery('t')
         ->where('user_id = ?', $this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser'))
         ->execute();
-        
-      //$culture = $request->getPreferredCulture(array('pt_BR'));
-      //$this->getUser()->setCulture($culture);
-
     }
   }
 
@@ -50,10 +46,10 @@ class indexActions extends sfActions
 
       $username = $request->getParameter('username');
       $email = $request->getParameter('email');
-      //$this->forward404Unless($username);
-      $this->forward404Unless($email);
+      $this->redirectUnless($username, '@default?module=index&action=register');
+      $this->redirectUnless($email, '@default?module=index&action=register');
 
-      //$this->user->setUsername($username);
+      $this->user->setUsername($username);
       $this->user->setEmailAddress($email);
       $this->user->setIsActive(true);
       $this->user->save();
@@ -74,7 +70,25 @@ class indexActions extends sfActions
 
     if($logintype == 'oauth' && ($service == 'twitter' or $service == 'facebook')){
       $this->getUser()->connect($service);
+    } else if ($logintype == 'openid' && ($service == 'google' or $service == 'yahoo' or $service == 'myopenid')) {
+      $openidurl = null;
+      switch($service){
+        case 'google':
+          $openidurl = 'https://www.google.com/accounts/o8/id';
+        break;
+        case 'yahoo':
+          $openidurl = 'http://me.yahoo.com/';
+        break;
+        case 'myopenid':
+          $openidurl = 'http://myopenid.com/';
+        break;
+      }
+      $this->forward404Unless($openidurl);
+      $this->getUser()->setAttribute('openidurl', $openidurl);
+      $this->forward('openid', 'verifylink');
     } else if ($logintype == 'openid') {
+      $identity = $request->getParameter('identity');
+      $this->forward404Unless($identity);
       $this->forward('openid', 'verify');
     }
 

@@ -79,7 +79,6 @@ class campeonatosActions extends sfActions
 
       //TEAMS
       foreach($array2["lista_de_jogos"]["campeonato"]["edicao_campeonato"]["equipes"] as $key=>$value){
-        //$team = Doctrine_Core::getTable('Team')->findOneByOfficialName($value["nome"]))
         if(!$team = Doctrine_Core::getTable('Team')->findOneByOfficialName($value["nome"]))
           $team = new Team();
         echo "Adding Team: ".$value["nome"]."...\n";

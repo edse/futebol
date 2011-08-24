@@ -131,6 +131,8 @@ class Auth_Yadis_ParanoidHTTPFetcher extends Auth_Yadis_HTTPFetcher {
             if (defined('Auth_OpenID_VERIFY_HOST')) {
                 curl_setopt($c, CURLOPT_SSL_VERIFYPEER, true);
                 curl_setopt($c, CURLOPT_SSL_VERIFYHOST, 2);
+            } else {
+                curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
             }
             curl_exec($c);
 
@@ -204,6 +206,8 @@ class Auth_Yadis_ParanoidHTTPFetcher extends Auth_Yadis_HTTPFetcher {
         if (defined('Auth_OpenID_VERIFY_HOST')) {
             curl_setopt($c, CURLOPT_SSL_VERIFYPEER, true);
             curl_setopt($c, CURLOPT_SSL_VERIFYHOST, 2);
+        } else {
+            curl_setopt($c, CURLOPT_SSL_VERIFYPEER, false);
         }
 
         curl_exec($c);

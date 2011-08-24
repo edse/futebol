@@ -1,7 +1,5 @@
-<?php use_helper('I18N', 'Date') ?>
-
 <?php if ($sf_user->isAuthenticated()): ?>
-  <?php echo __('Service connected:') ?>
+  service connected:
   <?php foreach($oauths as $oauth): ?>
     <?php echo $oauth->name; ?>.com, 
   <?php endforeach; ?>
@@ -9,21 +7,22 @@
     <?php echo $openid->name; ?>, 
   <?php endforeach; ?>
   <br/>
-  <?php echo __('Add another login service:') ?>
-  <br/>
+  Add another login service:<br/>
 <?php else: ?> 
-  <?php echo __('Login or sign up using:') ?>
-  <br/>
+  Login or sign up using:<br/>
 <?php endif; ?>
 
 <?php echo link_to('Facebook', '@default?module=index&action=login&service=facebook&type=oauth', array('class' => 'oauth')) ?> | 
 <?php echo link_to('Twitter', '@default?module=index&action=login&service=twitter&type=oauth', array('class' => 'oauth')) ?> | 
-<?php echo link_to('OpenId', '@homepage', array('id' => 'openid')) ?>
-
+<?php echo link_to('Google', '@default?module=index&action=login&service=google&type=openid', array('class' => 'openid')) ?> | 
+<?php echo link_to('Yahoo', '@default?module=index&action=login&service=yahoo&type=openid', array('class' => 'openid')) ?> | 
+<?php echo link_to('MyOpenid', '@default?module=index&action=login&service=myopenid&type=openid', array('class' => 'openid')) ?>
+<br/>
+<small><?php echo link_to('more openid', '@homepage', array('id' => 'openid')) ?></small>
 <div id="openidform" style="display:none;">
   <form method="post" action="<?php echo url_for('@default?module=index&action=login&service=identity&type=openid') ?>" />
-    <input type="text" name="identity" placeholder="<?php echo __('Login using OpenID') ?>"/>
-    <input type="submit" name="submit" value="<?php echo __('Login') ?>"/>
+    <input type="text" name="identity" placeholder="Login using OpenID"/>
+    <input type="submit" name="submit" value="Log in"/>
   </form>
 </div>
 
