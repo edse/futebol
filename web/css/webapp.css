@@ -292,3 +292,7 @@ dd h4 { margin:15px 0 0 0; }
 #skull .ui-icon { background:  url(/images/icons/21-skull.png) 50% 50% no-repeat;  background-size: 22px 24px; }
 
 #_login .ui-link-inherit { padding: 1.7em 75px 0.7em 55px; }
+
+#_my_team .ui-link-inherit { padding: 1.7em 75px 0.7em 55px; }
+
+.type-interior .content-secondary { padding: 0em 1.2em 1.2em 1.2em; border: none; }

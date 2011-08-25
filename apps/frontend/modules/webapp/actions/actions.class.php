@@ -20,6 +20,11 @@ class webappActions extends sfActions
     //$this->forward('default', 'module');
   }
 
+  public function executeHome(sfWebRequest $request)
+  {
+    //$this->forward('default', 'module');
+  }
+
   public function executeScroll(sfWebRequest $request)
   {
     //$this->forward('default', 'module');

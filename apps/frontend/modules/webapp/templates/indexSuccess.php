@@ -12,8 +12,10 @@
 </head> 
 <body> 
   
-<div data-role="page" id="jqm-home" class="type-home"> 
-  <div data-role="content"> 
+<div data-role="page" id="jqm-home" class="type-home">
+   
+  <div data-role="content">
+     
     <div class="content-secondary">
       <div id="jqm-homeheader"> 
         <h1 id="jqm-logo"><img src="/images/logo.png" alt="Futebol Clube" /></h1> 
