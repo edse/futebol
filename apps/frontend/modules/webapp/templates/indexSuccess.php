@@ -25,7 +25,7 @@
 
       <p class="intro"><strong>Futebol Clube</strong> permite acesso rápido e fácil a informações dos principais campeonatos de futebol do planeta.</p>
 
-      <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f" id="_login"> 
+      <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" id="_login"> 
         <li data-role="list-divider">Entrar usando...</li>
         <li><a href="<?php echo url_for('@default?module=index&action=login&service=twitter&type=oauth') ?>" rel="external"><img src="/images/twitter.png" alt="Twitter" class="ui-li-icon">Twitter</a></li> 
         <li><a href="<?php echo url_for('@default?module=index&action=login&service=facebook&type=oauth') ?>" rel="external"><img src="/images/facebook.png" alt="Facebook" class="ui-li-icon">Facebook</a></li>
