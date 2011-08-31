@@ -42,6 +42,7 @@ class campeonatosActions extends sfActions
     $contents = str_replace(');', "", $contents);
     //echo $contents;
     $array = json_decode($contents, true);
+    unset($contents);
     //echo var_dump($array["campeonatos"]);
     foreach($array["campeonatos"] as $a){
       echo "<pre>";
@@ -66,6 +67,7 @@ class campeonatosActions extends sfActions
           $tournamentEdition->setName($v["nome"]);
           $tournamentEdition->setSlug($v["slug"]);
           $tournamentEdition->save();
+          unset($tournamentEdition);
           //echo "edicao-nome: ".$v["nome"]."\n";
           //echo "edicao-slug: ".$v["slug"]."\n";
         }
@@ -75,7 +77,9 @@ class campeonatosActions extends sfActions
         $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/turco/campeonatoturco2011/classificacao.json');
       else
         $contents = file_get_contents('http://globoesporte.globo.com/dynamo/futebol/campeonato/'.$tournament->getSlug().'/'.$tournamentEdition->getSlug().'/classificacao.json');
+      
       $array2 = json_decode($contents, true);
+      unset($contents);
 
       //TEAMS
       foreach($array2["lista_de_jogos"]["campeonato"]["edicao_campeonato"]["equipes"] as $key=>$value){
@@ -94,6 +98,7 @@ class campeonatosActions extends sfActions
         @file_put_contents($img, file_get_contents($value["escudo"]));
         $team->setLogo($aux);
         $team->save();
+        unset($team);
         //echo var_dump($a);
       }
 
@@ -111,6 +116,7 @@ class campeonatosActions extends sfActions
         $stadium->setCapacity($value["capacidade_maxima"]);
         $stadium->setAddress($value["endereco"]);
         $stadium->save();
+        unset($stadium);
         //echo var_dump($value);
       }
 
@@ -167,6 +173,7 @@ class campeonatosActions extends sfActions
             $game->setStadiumName($v["local_jogo"]);
             $game->setUrl($v["url_confronto"]);
             $game->save();
+            unset($game);
           }
         }
         elseif(count($value["chaves"])>0){
@@ -207,7 +214,8 @@ class campeonatosActions extends sfActions
             }
             $game->setStadiumExtId($v["sede"]);
             $game->setUrl($v["url_confronto"]);
-            $game->save();                
+            $game->save();
+            unset($game);
           }
         }
         else{
