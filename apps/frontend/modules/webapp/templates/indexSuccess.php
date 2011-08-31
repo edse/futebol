@@ -4,17 +4,11 @@
   <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <title>Futebol Clube: Times, Jogos, Campeonatos, Notícias e Iteratividade em tempo real</title> 
-  <link rel="stylesheet"  href="/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
-  <link rel="stylesheet" href="/css/webapp.css" /> 
-  <script src="/js/jquery-1.6.2.min.js"></script> 
-  <script src="/js/webapp.js"></script> 
-  <script src="/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
-
-  <link rel="stylesheet"  href="/futebolclube/web/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
-  <link rel="stylesheet" href="/futebolclube/web/css/webapp.css" /> 
-  <script src="/futebolclube/web/js/jquery-1.6.2.min.js"></script> 
-  <script src="/futebolclube/web/js/webapp.js"></script> 
-  <script src="/futebolclube/web/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
+  <link rel="stylesheet"  href="../../js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
+  <link rel="stylesheet" href="../../css/webapp.css" /> 
+  <script src="../../js/jquery-1.6.2.min.js"></script> 
+  <script src="../../js/webapp.js"></script> 
+  <script src="../../js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
 </head> 
 <body> 
   
@@ -24,7 +18,7 @@
      
     <div class="content-secondary">
       <div id="jqm-homeheader"> 
-        <h1 id="jqm-logo"><img src="/images/logo.png" alt="Futebol Clube" /></h1> 
+        <h1 id="jqm-logo">Futebol Clube<?php /* <img src="/images/logo.png" alt="Futebol Clube" /> */ ?></h1> 
         <p>Um resumo apurado de tudo que rola no mundo do Futebol em tempo real</p> 
         <p id="jqm-version">Beta Release</p> 
       </div> 
@@ -33,12 +27,12 @@
 
       <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b" id="_login"> 
         <li data-role="list-divider">Entrar usando...</li>
-        <li><a href="<?php echo url_for('@default?module=index&action=login&service=twitter&type=oauth') ?>" rel="external"><img src="/images/twitter.png" alt="Twitter" class="ui-li-icon">Twitter</a></li> 
-        <li><a href="<?php echo url_for('@default?module=index&action=login&service=facebook&type=oauth') ?>" rel="external"><img src="/images/facebook.png" alt="Facebook" class="ui-li-icon">Facebook</a></li>
-        <li><a href="<?php echo url_for('@default?module=index&action=login&service=google&type=openid') ?>" rel="external"><img src="/images/google.png" alt="Google" class="ui-li-icon">Google</a></li> 
-        <li><a href="<?php echo url_for('@default?module=index&action=login&service=yahoo&type=openid') ?>" rel="external"><img src="/images/yahoo.png" alt="Yahoo!" class="ui-li-icon">Yahoo!</a></li> 
-        <li><a href="<?php echo url_for('@default?module=index&action=login&service=myopenid&type=openid') ?>" rel="external"><img src="/images/linkedin.png" alt="Linkedin" class="ui-li-icon">Linkedin</a></li> 
-        <li><a href="<?php echo url_for('@default?module=index&action=login&service=myopenid&type=openid') ?>" rel="external"><img src="/images/hotmail.png" alt="OpenID" class="ui-li-icon">OpenID</a></li> 
+        <li><a href="<?php echo url_for('@default?module=index&action=login&service=twitter&type=oauth') ?>" rel="external"><img src="../../images/twitter.png" alt="Twitter" class="ui-li-icon">Twitter</a></li> 
+        <li><a href="<?php echo url_for('@default?module=index&action=login&service=facebook&type=oauth') ?>" rel="external"><img src="../../images/facebook.png" alt="Facebook" class="ui-li-icon">Facebook</a></li>
+        <li><a href="<?php echo url_for('@default?module=index&action=login&service=google&type=openid') ?>" rel="external"><img src="../../images/google.png" alt="Google" class="ui-li-icon">Google</a></li> 
+        <li><a href="<?php echo url_for('@default?module=index&action=login&service=yahoo&type=openid') ?>" rel="external"><img src="../../images/yahoo.png" alt="Yahoo!" class="ui-li-icon">Yahoo!</a></li> 
+        <li><a href="<?php echo url_for('@default?module=index&action=login&service=myopenid&type=openid') ?>" rel="external"><img src="../../images/linkedin.png" alt="Linkedin" class="ui-li-icon">Linkedin</a></li> 
+        <li><a href="<?php echo url_for('@default?module=index&action=login&service=myopenid&type=openid') ?>" rel="external"><img src="../../images/hotmail.png" alt="OpenID" class="ui-li-icon">OpenID</a></li> 
       </ul> 
 
   <form> 
