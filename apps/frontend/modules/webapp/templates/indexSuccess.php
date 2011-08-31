@@ -9,6 +9,12 @@
   <script src="/js/jquery-1.6.2.min.js"></script> 
   <script src="/js/webapp.js"></script> 
   <script src="/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
+
+  <link rel="stylesheet"  href="/futebolclube/web/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
+  <link rel="stylesheet" href="/futebolclube/web/css/webapp.css" /> 
+  <script src="/futebolclube/web/js/jquery-1.6.2.min.js"></script> 
+  <script src="/futebolclube/web/js/webapp.js"></script> 
+  <script src="/futebolclube/web/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
 </head> 
 <body> 
   
@@ -83,7 +89,7 @@
           <li>Mundial Sub-20</li>
           <li>Recopa Sul-Americana</li>
           <li>Supercopa da Espanha</li>
-
+          <?php /*
           <li data-role="list-divider">São mais de 1800 times de futebol incluindo os nacionais...</li> 
           <li>América-MG</li>
           <li>Atlético-GO</li>
@@ -155,6 +161,7 @@
           <li>Glentoran</li>
           <li>Borussia Dortmund</li>
           <li>Copenhague</li>
+          */ ?>
         </ul>
       </nav> 
     </div>
