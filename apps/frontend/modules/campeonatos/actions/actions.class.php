@@ -67,7 +67,6 @@ class campeonatosActions extends sfActions
           $tournamentEdition->setName($v["nome"]);
           $tournamentEdition->setSlug($v["slug"]);
           $tournamentEdition->save();
-          unset($tournamentEdition);
           //echo "edicao-nome: ".$v["nome"]."\n";
           //echo "edicao-slug: ".$v["slug"]."\n";
         }
@@ -80,6 +79,8 @@ class campeonatosActions extends sfActions
       
       $array2 = json_decode($contents, true);
       unset($contents);
+      unset($tournamentEdition);
+      unset($tournament);
 
       //TEAMS
       foreach($array2["lista_de_jogos"]["campeonato"]["edicao_campeonato"]["equipes"] as $key=>$value){
