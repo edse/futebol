@@ -224,7 +224,7 @@ class campeonatosActions extends sfActions
             var_dump($v);
           }
         }
-        unset($tournament);
+        //unset($tournament);
       }
       echo "</pre>";
     }
