@@ -80,7 +80,6 @@ class campeonatosActions extends sfActions
       $array2 = json_decode($contents, true);
       unset($contents);
       unset($tournamentEdition);
-      unset($tournament);
 
       //TEAMS
       foreach($array2["lista_de_jogos"]["campeonato"]["edicao_campeonato"]["equipes"] as $key=>$value){
@@ -225,7 +224,7 @@ class campeonatosActions extends sfActions
             var_dump($v);
           }
         }
-
+        unset($tournament);
       }
       echo "</pre>";
     }
