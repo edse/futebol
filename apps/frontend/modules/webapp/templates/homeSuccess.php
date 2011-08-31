@@ -4,11 +4,11 @@
   <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <title>Futebol Clube: Times, Jogos, Campeonatos, Notícias e Iteratividade em tempo real</title> 
-  <link rel="stylesheet"  href="/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
-  <link rel="stylesheet" href="/css/webapp.css" /> 
-  <script src="/js/jquery-1.6.2.min.js"></script> 
-  <script src="/js/webapp.js"></script> 
-  <script src="/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
+  <link rel="stylesheet"  href="../js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
+  <link rel="stylesheet" href="../css/webapp.css" /> 
+  <script src="../js/jquery-1.6.2.min.js"></script> 
+  <script src="../js/webapp.js"></script> 
+  <script src="../js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
 </head> 
 <body> 
 
@@ -25,7 +25,7 @@
         
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="f"> 
           <li data-role="list-divider">Emerson</li>
-          <li id="_my_team"><a href="<?php echo url_for('@default?module=webapp&action=time') ?>"><img src="/uploads/assets/teams/sao_paulo_30x30.png" alt="Twitter" class="ui-li-icon">São Paulo FC</a></li> 
+          <li id="_my_team"><a href="<?php echo url_for('@default?module=webapp&action=time') ?>"><img src="../uploads/assets/teams/sao_paulo_30x30.png" alt="Twitter" class="ui-li-icon">São Paulo FC</a></li> 
           <li><a href="#">Jogos de hoje <span class="ui-li-count">3</span></a></li> 
           <li><a href="#">Torcedor</a></li> 
           <li><a href="#">Notícias</a></li> 
