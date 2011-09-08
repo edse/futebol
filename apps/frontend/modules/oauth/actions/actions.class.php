@@ -17,13 +17,13 @@ class oauthActions extends sfActions
   */
   public function executeConnect(sfWebRequest $request) {
     $this->getUser()->setFlash('info', 'connected to service!');
-    $this->redirect('@default?module=webapp&action=finish');
+    $this->redirect('/webapp/finish');
   }
 
   public function executeError(sfWebRequest $request) {
     //get the message error...
     $this->getUser()->setFlash('error', $this->getUser()->getFlash('oauth_error'));
-    $this->redirect("@default?module=webapp&action=index");
+    $this->redirect("/webapp/index");
   }
 
   public function executeRegister(sfWebRequest $request) {
@@ -50,6 +50,6 @@ class oauthActions extends sfActions
 
     $this->getUser()->addToken($access_token);
 
-    $this->redirect("@default?module=webapp&action=register");
+    $this->redirect("/webapp/register");
   }
 }
