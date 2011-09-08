@@ -12,6 +12,7 @@
  * @property string $logo
  * @property string $initials
  * @property string $description
+ * @property Doctrine_Collection $sfGuardUsers
  * @property Doctrine_Collection $TournamentPhaseGroupTeams
  * @property Doctrine_Collection $TournamentStandings
  * @property Doctrine_Collection $HomeGames
@@ -24,6 +25,7 @@
  * @method string              getLogo()                      Returns the current record's "logo" value
  * @method string              getInitials()                  Returns the current record's "initials" value
  * @method string              getDescription()               Returns the current record's "description" value
+ * @method Doctrine_Collection getSfGuardUsers()              Returns the current record's "sfGuardUsers" collection
  * @method Doctrine_Collection getTournamentPhaseGroupTeams() Returns the current record's "TournamentPhaseGroupTeams" collection
  * @method Doctrine_Collection getTournamentStandings()       Returns the current record's "TournamentStandings" collection
  * @method Doctrine_Collection getHomeGames()                 Returns the current record's "HomeGames" collection
@@ -35,6 +37,7 @@
  * @method Team                setLogo()                      Sets the current record's "logo" value
  * @method Team                setInitials()                  Sets the current record's "initials" value
  * @method Team                setDescription()               Sets the current record's "description" value
+ * @method Team                setSfGuardUsers()              Sets the current record's "sfGuardUsers" collection
  * @method Team                setTournamentPhaseGroupTeams() Sets the current record's "TournamentPhaseGroupTeams" collection
  * @method Team                setTournamentStandings()       Sets the current record's "TournamentStandings" collection
  * @method Team                setHomeGames()                 Sets the current record's "HomeGames" collection
@@ -91,6 +94,10 @@ abstract class BaseTeam extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('sfGuardUser as sfGuardUsers', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
         $this->hasMany('TournamentPhaseGroupTeam as TournamentPhaseGroupTeams', array(
              'local' => 'id',
              'foreign' => 'team_id'));

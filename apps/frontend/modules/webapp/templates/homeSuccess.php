@@ -4,11 +4,11 @@
   <meta charset="utf-8"> 
   <meta name="viewport" content="width=device-width, initial-scale=1"> 
   <title>Futebol Clube: Times, Jogos, Campeonatos, Notícias e Iteratividade em tempo real</title> 
-  <link rel="stylesheet"  href="../js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
-  <link rel="stylesheet" href="../css/webapp.css" /> 
-  <script src="../js/jquery-1.6.2.min.js"></script> 
-  <script src="../js/webapp.js"></script> 
-  <script src="../js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
+  <link rel="stylesheet"  href="/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
+  <link rel="stylesheet" href="/css/webapp.css" /> 
+  <script src="/js/jquery-1.6.2.min.js"></script> 
+  <script src="/js/webapp.js"></script> 
+  <script src="/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
 </head> 
 <body> 
 

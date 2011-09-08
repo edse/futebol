@@ -40,12 +40,19 @@ class webappActions extends sfActions
     }
     $this->getUser()->setFlash('info', 'User not activate please confirm');
     if ($request->isMethod('post')) {
-      $username = $request->getParameter('username');
-      $email = $request->getParameter('email');
-      $this->redirectUnless($username, '@default?module=webapp&action=register');
-      $this->redirectUnless($email, '@default?module=webapp&action=register');
-      $this->user->setUsername($username);
-      $this->user->setEmailAddress($email);
+      $this->redirectUnless($request->getParameter('nickname'), '@default?module=webapp&action=register');
+      $this->redirectUnless($request->getParameter('firstname'), '@default?module=webapp&action=register');
+      $this->redirectUnless($request->getParameter('lastname'), '@default?module=webapp&action=register');
+      $this->redirectUnless($request->getParameter('email'), '@default?module=webapp&action=register');
+      $this->redirectUnless($request->getParameter('team'), '@default?module=webapp&action=register');
+
+      $this->user->setNickname($request->getParameter('nickname'));
+      $this->user->setFirstName($request->getParameter('firstname'));
+      $this->user->setLastName($request->getParameter('lastname'));
+      $this->user->setUsername($request->getParameter('email'));
+      $this->user->setEmailAddress($request->getParameter('email'));
+      $this->user->setTeamId($request->getParameter('team'));
+      $this->user->setPhone($request->getParameter('phone'));
       $this->user->setIsActive(true);
       $this->user->save();
       $this->getUser()->setFlash('info', 'User activate');

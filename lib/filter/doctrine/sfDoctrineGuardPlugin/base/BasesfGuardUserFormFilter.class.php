@@ -13,9 +13,12 @@ abstract class BasesfGuardUserFormFilter extends BaseFormFilterDoctrine
   public function setup()
   {
     $this->setWidgets(array(
+      'nickname'         => new sfWidgetFormFilterInput(),
       'first_name'       => new sfWidgetFormFilterInput(),
       'last_name'        => new sfWidgetFormFilterInput(),
+      'team_id'          => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'add_empty' => true)),
       'email_address'    => new sfWidgetFormFilterInput(array('with_empty' => false)),
+      'phone'            => new sfWidgetFormFilterInput(),
       'username'         => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'algorithm'        => new sfWidgetFormFilterInput(array('with_empty' => false)),
       'salt'             => new sfWidgetFormFilterInput(),
@@ -30,9 +33,12 @@ abstract class BasesfGuardUserFormFilter extends BaseFormFilterDoctrine
     ));
 
     $this->setValidators(array(
+      'nickname'         => new sfValidatorPass(array('required' => false)),
       'first_name'       => new sfValidatorPass(array('required' => false)),
       'last_name'        => new sfValidatorPass(array('required' => false)),
+      'team_id'          => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Team'), 'column' => 'id')),
       'email_address'    => new sfValidatorPass(array('required' => false)),
+      'phone'            => new sfValidatorPass(array('required' => false)),
       'username'         => new sfValidatorPass(array('required' => false)),
       'algorithm'        => new sfValidatorPass(array('required' => false)),
       'salt'             => new sfValidatorPass(array('required' => false)),
@@ -100,9 +106,12 @@ abstract class BasesfGuardUserFormFilter extends BaseFormFilterDoctrine
   {
     return array(
       'id'               => 'Number',
+      'nickname'         => 'Text',
       'first_name'       => 'Text',
       'last_name'        => 'Text',
+      'team_id'          => 'ForeignKey',
       'email_address'    => 'Text',
+      'phone'            => 'Text',
       'username'         => 'Text',
       'algorithm'        => 'Text',
       'salt'             => 'Text',
