@@ -81,7 +81,8 @@ class openidActions extends BasesfPHPOpenIDAuthActions {
     $this->getUser()->addIdentify($identity_token, $old_identity);
 
     $this->getUser()->setFlash('info', 'connected to service!');
-    $this->redirect('/webapp/finish');
+    die('>/webapp/index');
+    //$this->redirect('/webapp/finish');
   }
 
   public function executeRegister(sfWebRequest $request) {
