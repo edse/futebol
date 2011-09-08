@@ -81,8 +81,7 @@ class openidActions extends BasesfPHPOpenIDAuthActions {
     $this->getUser()->addIdentify($identity_token, $old_identity);
 
     $this->getUser()->setFlash('info', 'connected to service!');
-    die('>/webapp/index');
-    //$this->redirect('/webapp/finish');
+    $this->redirect('/webapp/finish');
   }
 
   public function executeRegister(sfWebRequest $request) {
@@ -125,12 +124,10 @@ class openidActions extends BasesfPHPOpenIDAuthActions {
 
     $getRedirectHtmlResult = $this->getRedirectHtml($openididentity);
     if ($getRedirectHtmlResult['success']) {
-      die('>'.$getRedirectHtmlResult['url']);
       $this->redirect($getRedirectHtmlResult['url']);
     } else {
       $this->getUser()->setFlash('error', $getRedirectHtmlResult['error']);
-      die('>/webapp/index');
-      //$this->redirect("/webapp/index");
+      $this->redirect("/webapp/index");
     }
 
   }
@@ -146,7 +143,7 @@ class openidActions extends BasesfPHPOpenIDAuthActions {
       $this->redirect($getRedirectHtmlResult['url']);
     } else {
       $this->getUser()->setFlash('error', $getRedirectHtmlResult['error']);
-      $this->redirect("/webapp/index");
+      $this->redirect("/webapp&action=index");
     }
 
   }
