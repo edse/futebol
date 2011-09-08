@@ -128,7 +128,8 @@ class openidActions extends BasesfPHPOpenIDAuthActions {
       $this->redirect($getRedirectHtmlResult['url']);
     } else {
       $this->getUser()->setFlash('error', $getRedirectHtmlResult['error']);
-      $this->redirect("/webapp/index");
+      die('>/webapp/index');
+      //$this->redirect("/webapp/index");
     }
 
   }
