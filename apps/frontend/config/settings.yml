@@ -42,7 +42,7 @@ all:
 
     enabled_modules:        [default, sfMelody, sfGuardAuth]
 
-    login_module:           index
+    login_module:           webapp
     login_action:           index
 
     secure_module:          sfGuardAuth
