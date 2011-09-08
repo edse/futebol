@@ -30,6 +30,7 @@ class indexActions extends sfActions
   }
 
   public function executeFinish(sfWebRequest $request) {
+    $this->redirect('@default?module=webapp&action=home');
   }
 
   public function executeRegister(sfWebRequest $request) {
