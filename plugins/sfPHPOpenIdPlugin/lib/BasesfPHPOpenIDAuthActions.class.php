@@ -134,5 +134,6 @@ class BasesfPHPOpenIDAuthActions extends sfActions
   // Override this method in your app. It is called when user has been authenticated.
   public function openIDCallback($openid_validation_result)
   {
+    die('1');
   }  
 }
