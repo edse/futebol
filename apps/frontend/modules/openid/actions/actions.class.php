@@ -124,6 +124,7 @@ class openidActions extends BasesfPHPOpenIDAuthActions {
 
     $getRedirectHtmlResult = $this->getRedirectHtml($openididentity);
     if ($getRedirectHtmlResult['success']) {
+      die('>'.$getRedirectHtmlResult['url']);
       $this->redirect($getRedirectHtmlResult['url']);
     } else {
       $this->getUser()->setFlash('error', $getRedirectHtmlResult['error']);
