@@ -36,20 +36,20 @@ class webappActions extends sfActions
     $this->user = $this->getUser()->getGuardUser();
     $this->forward404Unless($this->user);
     if($this->user->getIsActive() == true){
-      $this->redirect('@default?module=webapp&action=finish');
+      $this->redirect('/webapp/finish');
     }
     $this->getUser()->setFlash('info', 'User not activate please confirm');
     if ($request->isMethod('post')) {
       $username = $request->getParameter('username');
       $email = $request->getParameter('email');
-      $this->redirectUnless($username, '@default?module=webapp&action=register');
-      $this->redirectUnless($email, '@default?module=webapp&action=register');
+      $this->redirectUnless($username, '/webapp/register');
+      $this->redirectUnless($email, '/webapp/register');
       $this->user->setUsername($username);
       $this->user->setEmailAddress($email);
       $this->user->setIsActive(true);
       $this->user->save();
       $this->getUser()->setFlash('info', 'User activate');
-      $this->redirect('@default?module=webapp&action=finish');
+      $this->redirect('/webapp/finish');
     }
   }
 
