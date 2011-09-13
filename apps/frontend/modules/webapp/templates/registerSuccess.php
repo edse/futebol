@@ -74,9 +74,11 @@
 
 <div data-role="page" class="type-interior">
 
+  <?php include_partial('global/flashes') ?>
+
   <div data-role="header" data-theme="b">
-    <h1>Futebol Clube - Home</h1>
-    <a href="<?php echo url_for("/webapp/index")?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
+    <h1>Futebol Clube - Sign up</h1>
+    <?php /* <a href="<?php echo url_for("/webapp/index")?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a> */ ?>
   </div>
 
 <!-- <div data-role="page" id="jqm-home" class="type-home"> -->
@@ -85,117 +87,69 @@
     
     <div class="ui-body ui-body-b">
 
+    <div class="content-primary"> 
       <form method="post" action="<?php echo url_for('@default?module=webapp&action=register&code=verify') ?>" name="signup" id="signup" />
+        <ul data-role="listview" data-inset="true">
+          <li data-role="fieldcontain"> 
+            <label for="nickname"><em>*</em> Nickname:</label>
+            <input type="text" name="nickname" id="nickname" value="" style="width: 25%;" />
+          </li>
+          <li data-role="fieldcontain"> 
+            <label for="firstname"><em>*</em> First Name:</label>
+            <input type="text" name="firstname" id="firstname" value="" />
+          </li>
+          <li data-role="fieldcontain"> 
+            <label for="lastname"><em>*</em> Last Name:</label>
+            <input type="text" name="lastname" id="lastname" value="" />
+          </li>
+          <li data-role="fieldcontain"> 
+            <label for="email"><em>*</em> Email:</label>
+            <input type="text" name="email" id="email" value="" class="required email" />
+          </li>
+          <li data-role="fieldcontain"> 
+            <label for="phone"><em>*</em> Phone:</label>
+            <input type="text" name="phone" id="phone" value="" />
+          </li>
+          <li data-role="fieldcontain"> 
+            <label for="team" class="select"><em>*</em> Favorite team:</label>
+            <select name="team" id="team">
+              <option value="">Choose one</option>
+              <option value="1">Alabama</option>
+              <option value="1">Alaska</option>
+              <option value="1">Arizona</option>
+              <option value="1">Arkansas</option>
+              <option value="1">California</option>
+            </select>
+          </li>
+          <li data-role="fieldcontain"> 
+            <label for="slider2">Notifications:</label>
+            <select name="slider2" id="slider2" data-role="slider">
+              <option value="on">On</option>
+              <option value="off">Off</option>
+            </select>
+          </li>
+          <li class="ui-body ui-body-b"> 
+            <fieldset class="ui-grid-a" style="padding: 15px;"> 
+              <div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div> 
+            </fieldset> 
+          </li> 
+        </ul> 
 
-      <h2>Form elements</h2>
+      </form>
+    
+    </div>
+
+    <div class="content-secondary">
+      <h1>Form elements</h1> 
       <p>This page contains various progressive-enhancement driven form controls. Native elements are sometimes hidden from view, but their values are maintained so the form can be submitted normally. </p>
       <p>Browsers that don't support the custom controls will still deliver a usable experience, because all are based on native form elements.</p>
       <br />
-      <div data-role="fieldcontain">
-        <label for="nickname"><em>*</em> Nickname:</label>
-        <input type="text" name="nickname" id="nickname" value="" style="width: 25%;" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="firstname"><em>*</em> First Name:</label>
-        <input type="text" name="firstname" id="firstname" value="" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="lastname"><em>*</em> Last Name:</label>
-        <input type="text" name="lastname" id="lastname" value="" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="email"><em>*</em> Email:</label>
-        <input type="text" name="email" id="email" value="" class="required email" />
-      </div>
-      <div data-role="fieldcontain">
-        <label for="phone"><em>*</em> Phone:</label>
-        <input type="text" name="phone" id="phone" value="" />
-      </div>
 
-      <div data-role="fieldcontain">
-        <label for="team" class="select"><em>*</em> Favorite team:</label>
-        <select name="team" id="team">
-          <option value="">Choose one</option>
-          <option value="1">Alabama</option>
-          <option value="1">Alaska</option>
-          <option value="1">Arizona</option>
-          <option value="1">Arkansas</option>
-          <option value="1">California</option>
-     
-          <option value="CO">Colorado</option>
-          <option value="CT">Connecticut</option>
-          <option value="DE">Delaware</option>
-          <option value="FL">Florida</option>
-          <option value="GA">Georgia</option>
-          <option value="HI">Hawaii</option>
-      
-          <option value="ID">Idaho</option>
-          <option value="IL">Illinois</option>
-          <option value="IN">Indiana</option>
-          <option value="IA">Iowa</option>
-          <option value="KS">Kansas</option>
-          <option value="KY">Kentucky</option>
-      
-          <option value="LA">Louisiana</option>
-          <option value="ME">Maine</option>
-          <option value="MD">Maryland</option>
-          <option value="MA">Massachusetts</option>
-          <option value="MI">Michigan</option>
-          <option value="MN">Minnesota</option>
-      
-          <option value="MS">Mississippi</option>
-          <option value="MO">Missouri</option>
-          <option value="MT">Montana</option>
-          <option value="NE">Nebraska</option>
-          <option value="NV">Nevada</option>
-          <option value="NH">New Hampshire</option>
-      
-          <option value="NJ">New Jersey</option>
-          <option value="NM">New Mexico</option>
-          <option value="NY">New York</option>
-          <option value="NC">North Carolina</option>
-          <option value="ND">North Dakota</option>
-          <option value="OH">Ohio</option>
-      
-          <option value="OK">Oklahoma</option>
-          <option value="OR">Oregon</option>
-          <option value="PA">Pennsylvania</option>
-          <option value="RI">Rhode Island</option>
-          <option value="SC">South Carolina</option>
-          <option value="SD">South Dakota</option>
-      
-          <option value="TN">Tennessee</option>
-          <option value="TX">Texas</option>
-          <option value="UT">Utah</option>
-          <option value="VT">Vermont</option>
-          <option value="VA">Virginia</option>
-          <option value="WA">Washington</option>
-      
-          <option value="WV">West Virginia</option>
-          <option value="WI">Wisconsin</option>
-          <option value="WY">Wyoming</option>
-        </select>
-      </div>
+    </div> 
+    </div> 
 
-      <div data-role="fieldcontain">
-        <label for="slider2">Notifications:</label>
-        <select name="slider2" id="slider2" data-role="slider">
-          <option value="on">On</option>
-          <option value="off">Off</option>
-        </select>
-      </div>
+    <?php include_partial('global/footer') ?>
 
-      <fieldset class="ui-grid-a" style="margin-bottom: 45px; margin-top: 35px;">
-        <div class="ui-block-a"><a href="<?php echo url_for("/webapp/index")?>" data-role="button" data-theme="a">Cancel</a></div>
-        <div class="ui-block-b"><button type="submit" data-theme="b">Submit</button></div>
-      </div>
-      
-    </form>
-
-    <div data-role="footer" class="footer-docs" data-theme="c">
-        <p>&copy; 2011 The jQuery Project</p> 
-    </div>  
-      
     </div>
     
   </div>

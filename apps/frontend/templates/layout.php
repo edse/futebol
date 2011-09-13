@@ -1,16 +1,21 @@
 <?php use_helper('I18N', 'Date') ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
-  <head>
-    <?php include_http_metas() ?>
-    <?php include_metas() ?>
-    <?php include_title() ?>
-    <link rel="shortcut icon" href="/favicon.ico" />
-    <?php include_stylesheets() ?>
-    <?php include_javascripts() ?>
-  </head>
-  <body>
-    <?php if ($sf_user->isAuthenticated()): ?> 
+<!DOCTYPE html> 
+<html> 
+<head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <?php include_http_metas() ?>
+  <?php include_metas() ?>
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <title>Futebol Clube: Times, Jogos, Campeonatos, Notícias e Iteratividade em tempo real</title> 
+  <link rel="stylesheet"  href="/js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
+  <link rel="stylesheet" href="/css/webapp.css" /> 
+  <script src="/js/jquery-1.6.2.min.js"></script> 
+  <script src="/js/webapp.js"></script> 
+  <script src="/js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
+</head> 
+<body> 
+   <?php if ($sf_user->isAuthenticated()): ?> 
       <?php echo __('user_id')?>: <?php echo $sf_user->getAttribute('user_id', '', 'sfGuardSecurityUser') ?> - 
       <?php echo link_to(__('logout'), '@sf_guard_signout') ?>
       <br/>
@@ -19,12 +24,15 @@
         <br/>
       <?php endif ?>
     <?php endif ?>
+    
+    <?php if ($sf_user->hasFlash('notice')): ?>
+      <div class="notification info"><?php echo __($sf_user->getFlash('notice'), array(), 'messages') ?></div>
+    <?php endif; ?>
+    
     <?php if ($sf_user->hasFlash('error')): ?>
-      <b><?php echo $sf_user->getFlash('error') ?></b><br/>
-    <?php endif ?>
-    <?php if ($sf_user->hasFlash('info')): ?>
-      <?php echo $sf_user->getFlash('info') ?><br/>
-    <?php endif ?>
+      <div class="notification error"><?php echo __($sf_user->getFlash('error'), array(), 'messages') ?></div>
+    <?php endif; ?>
+    
     <?php echo $sf_content ?>
     
     <br /><br />

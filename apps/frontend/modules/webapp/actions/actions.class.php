@@ -30,13 +30,14 @@ class webappActions extends sfActions
   }
 
   public function executeFinish(sfWebRequest $request) {
+    $this->redirect('@default?module=webapp&action=home');
   }
 
   public function executeRegister(sfWebRequest $request) {
     $this->user = $this->getUser()->getGuardUser();
     $this->forward404Unless($this->user);
     if($this->user->getIsActive() == true){
-      $this->redirect('@default?module=webapp&action=finish');
+      $this->redirect('@default?module=webapp&action=home');
     }
     $this->getUser()->setFlash('info', 'User not activate please confirm');
     if ($request->isMethod('post')) {
@@ -56,7 +57,7 @@ class webappActions extends sfActions
       $this->user->setIsActive(true);
       $this->user->save();
       $this->getUser()->setFlash('info', 'User activate');
-      $this->redirect('@default?module=webapp&action=finish');
+      $this->redirect('@default?module=webapp&action=home');
     }
   }
 
@@ -95,12 +96,24 @@ class webappActions extends sfActions
 
   public function executeHome(sfWebRequest $request)
   {
-    //$this->forward('default', 'module');
+    if($this->getUser()->isAuthenticated() != true){
+      $this->redirect('@homepage');
+    }
   }
 
   public function executeTime(sfWebRequest $request)
   {
-    //$this->forward('default', 'module');
+    if($this->getUser()->isAuthenticated() != true){
+      $this->getUser()->setFlash('error', 'You must be logged in to access this content');
+      $this->redirect('@homepage');
+    }elseif(!$request->getParameter('time')){
+      $this->getUser()->setFlash('error', 'Team not found');
+      $this->redirect('webapp/home');
+    }
+    elseif(!$this->team = Doctrine_Core::getTable('Team')->findOneBySlug($request->getParameter('time'))){
+      $this->getUser()->setFlash('error', 'Team not found');
+      $this->redirect('webapp/home');
+    }
   }
 
   public function executeScroll(sfWebRequest $request)

@@ -183,9 +183,9 @@ dd h4 { margin:15px 0 0 0; }
   }
   .content-secondary,
   .type-interior .content-secondary {
-    margin: 30px 0 20px 2%;
-    padding: 20px 4% 0 0;
-      background: none;
+    margin: 0px 0 20px 2%;
+    padding: 0px 4% 0 0;
+    background: none;
   }
   .type-index .content-secondary {
     padding: 0;
@@ -261,11 +261,6 @@ dd h4 { margin:15px 0 0 0; }
   .type-interior .ui-content {
     background-position: 30%;
   }
-  .content-secondary {
-    width: 30%;
-    padding-right:6%;
-    margin: 30px 0 20px 5%;
-  }
   .type-interior .content-secondary {
     margin: 0;
     padding: 0;
@@ -296,3 +291,44 @@ dd h4 { margin:15px 0 0 0; }
 #_my_team .ui-link-inherit { padding: 1.7em 75px 0.7em 55px; }
 
 .type-interior .content-secondary { padding: 0em 1.2em 1.2em 1.2em; border: none; }
+
+
+.ui-body-suc {
+   border: 1px solid       #459216;
+   color:               #333333;
+   text-shadow: 0 1px 0    #fff;
+   background:          #75c443;
+   background-image: -moz-linear-gradient(top, 
+                     #fff, 
+                     #75c443);
+   background-image: -webkit-gradient(linear,left top,left bottom,
+      color-stop(0,     #fff),
+      color-stop(1,     #75c443));
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#75c443')";
+}
+.ui-body-err {
+   border: 1px solid       #6c2527 ;
+   color:               #fff;
+   text-shadow: 0 0px 0    #000;
+   background:          #bf3639;
+   background-image: -moz-linear-gradient(top, 
+                     #d78485, 
+                     #bf3639);
+   background-image: -webkit-gradient(linear,left top,left bottom,
+      color-stop(0,     #d78485),
+      color-stop(1,     #bf3639));
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#d78485', EndColorStr='#bf3639')";
+}
+.ui-body-info {
+   border: 1px solid       #235596;
+   color:               #333333;
+   text-shadow: 0 1px 0    #fff;
+   background:          #559ed3;
+   background-image: -moz-linear-gradient(top, 
+                     #fff, 
+                     #559ed3);
+   background-image: -webkit-gradient(linear,left top,left bottom,
+      color-stop(0,     #fff),
+      color-stop(1,     #559ed3));
+   -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorStr='#ffffff', EndColorStr='#559ed3')";
+}

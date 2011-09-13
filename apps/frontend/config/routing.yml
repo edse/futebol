@@ -1,6 +1,12 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
+time:
+  url:   /webapp/time/:time
+  param: { module: webapp, action: time }
+
+# # # # # # # # # # 
+
 change_language:
   url:   /change_language
   param: { module: language, action: changeLanguage }

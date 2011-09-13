@@ -53,3 +53,24 @@ $(function(){
 	setDefaultTransition();
 	$( window ).bind( "throttledresize", setDefaultTransition );
 });
+
+
+$(function() {
+   // find any notification and display it as a popup
+   // will disperse them 100px apart
+   $(".notification").each(function(i) {
+      var $me = $(this);
+      if( $me.hasClass("success")) aclass = "ui-body-suc";
+      if( $me.hasClass("error")) aclass = "ui-body-err";
+      if( $me.hasClass("info")) aclass = "ui-body-info";
+      if( $me.hasClass("warning")) aclass = "ui-body-e";
+      $("<div class='ui-loader ui-overlay-shadow ui-body-e ui-corner-all'><h1>"+ $(this).text() +"</h1></div>").css({ 
+         "display": "block", 
+         "opacity": 0.96, 
+         "top": $(window).scrollTop() + 100 + (100 * i)
+      }).addClass(aclass).appendTo('body').delay( 1800 + (400 * i) ).fadeOut( 1400 + (400*i), function(){
+         $(this).remove();
+      });
+      $me.remove();  
+   });
+});

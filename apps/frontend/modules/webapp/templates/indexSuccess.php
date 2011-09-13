@@ -1,19 +1,5 @@
-<!DOCTYPE html> 
-<html> 
-<head> 
-  <meta charset="utf-8"> 
-  <meta name="viewport" content="width=device-width, initial-scale=1"> 
-  <title>Futebol Clube: Times, Jogos, Campeonatos, Notícias e Iteratividade em tempo real</title> 
-  <link rel="stylesheet"  href="../js/jquery.mobile/jquery.mobile-1.0b2.min.css" /> 
-  <link rel="stylesheet" href="../css/webapp.css" /> 
-  <script src="../js/jquery-1.6.2.min.js"></script> 
-  <script src="../js/webapp.js"></script> 
-  <script src="../js/jquery.mobile/jquery.mobile-1.0b2.min.js"></script>
-</head> 
-<body> 
-  
 <div data-role="page" id="jqm-home" class="type-home">
-   
+
   <div data-role="content">
      
     <div class="content-secondary">
@@ -34,29 +20,6 @@
         <li><a href="<?php echo url_for('@default?module=webapp&action=login&service=myopenid&type=openid') ?>" rel="external"><img src="../images/linkedin.png" alt="Linkedin" class="ui-li-icon">Linkedin</a></li> 
         <li><a href="<?php echo url_for('@default?module=webapp&action=login&service=myopenid&type=openid') ?>" rel="external"><img src="../images/hotmail.png" alt="OpenID" class="ui-li-icon">OpenID</a></li> 
       </ul> 
-
-  <form> 
-    <ul data-role="listview" data-inset="true"> 
-      <li data-role="fieldcontain"> 
-        <label for="name">Nome:</label> 
-        <input type="text" name="name" id="name" value=""  /> 
-      </li> 
-      <li data-role="fieldcontain"> 
-        <label for="name">Email:</label> 
-        <input type="text" name="email" id="email" value=""  /> 
-      </li>
-      <li class="ui-body ui-body-b"> 
-        <fieldset class="ui-grid-a"> 
-            <div class="ui-block-a"><button type="submit" data-theme="d">Cancel</button></div> 
-            <div class="ui-block-b"><button type="submit" data-theme="a">Submit</button></div> 
-          </fieldset> 
-      </li> 
-      
-    </ul> 
- 
- 
-    
-    </form> 
 
     </div><!--/content-primary--> 
     
@@ -162,6 +125,7 @@
 
   </div> 
   
+  <?php /*
   <div data-role="footer" class="nav-glyphish-example"> 
     <div data-role="navbar" data-grid="d" data-theme="e" class="nav-glyphish-example"> 
       <ul> 
@@ -172,12 +136,11 @@
         <li><a href="#" id="coffee" data-icon="custom" data-theme="b">Coffee</a></li> 
       </ul> 
     </div> 
-  </div> 
+  </div>
+  */ ?>
 
-  <div data-role="footer" class="footer-docs" data-theme="c"> 
-      <p>&copy; 2011 The jQuery Project</p> 
-  </div>  
-  
+  <?php include_partial('global/footer') ?>
+
 </div> 
 </body> 
 </html> 

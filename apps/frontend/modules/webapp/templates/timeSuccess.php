@@ -14,6 +14,8 @@
 
   <div data-role="page" class="type-index ui-body-b">
 
+    <?php include_partial('global/flashes') ?>
+
     <div data-role="header" data-theme="f">
       <h1>Futebol Clube - Time - São Paulo FC</h1>
       <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
