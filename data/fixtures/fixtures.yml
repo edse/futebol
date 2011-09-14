@@ -15,3 +15,12 @@
 #     password: changeme
 #     name:     Kris Wallsmith
 #     email:    kris.wallsmith@symfony-project.com
+
+Team:
+  saopaulo:
+    official_name: São Paulo Futebol Clube
+    name: São Paulo
+    nickname: São Paulo
+    logo: sao_paulo_30x30.png
+    initials: SPO
+    slug: sao-paulo-ap

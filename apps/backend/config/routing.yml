@@ -1,3 +1,85 @@
+openid_verify:
+  url:   /openid/verify
+  param: { module: openid, action: verify }
+
+openid_finishauth:
+  url: /openid/finish
+  param: { module: openid, action: finish }
+
+openid_register:
+  url:   /openid/register
+  param: { module: openid, action: register }
+
+openid_error:
+  url: /openid/error
+  param: { module: openid, action: error }
+
+# # # # # # # # # # 
+
+oauth_connect:
+  url:   /oauth/connect
+  param: { module: oauth, action: connect }
+
+oauth_register:
+  url:   /oauth/register
+  param: { module: oauth, action: register }
+
+oauth_error:
+  url:   /oauth/error
+  param: { module: oauth, action: error }
+
+# # # # # # # # # # 
+
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
+
+# # # # # # # # # # 
+
+tournament:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Tournament
+    module:               tournament
+    prefix_path:          /tournament
+    column:               id
+    with_wildcard_routes: true
+
+team:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Team
+    module:               team
+    prefix_path:          /team
+    column:               id
+    with_wildcard_routes: true
+
+stadium:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Stadium
+    module:               stadium
+    prefix_path:          /stadium
+    column:               id
+    with_wildcard_routes: true
+
+game:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Game
+    module:               game
+    prefix_path:          /game
+    column:               id
+    with_wildcard_routes: true
+
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/10-Routing
 
@@ -14,3 +96,16 @@ default_index:
 
 default:
   url:   /:module/:action/*
+
+# sf_guard
+sf_guard_signin:
+  url:   /login
+  param: { module: sfGuardAuth, action: signin }
+
+sf_guard_signout:
+  url:   /logout
+  param: { module: sfGuardAuth, action: signout }
+
+sf_guard_password:
+  url:   /request_password
+  param: { module: sfGuardAuth, action: password }
