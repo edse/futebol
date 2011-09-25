@@ -1,7 +1,7 @@
   <div data-role="page" id="jqm-home" class="type-home">
 
     <div data-role="header" data-theme="b">
-      <h1>Futebol Clube - Home</h1>
+      <h1>Emerson Futebol Clube</h1>
       <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
     </div>
 
@@ -10,16 +10,18 @@
       <div class="content-secondary">
 
         <ul data-role="listview" data-inset="true" data-theme="c" data-dividertheme="b"> 
-          <li data-role="list-divider">Emerson</li>
-          <li id="_my_team"><a href="<?php echo url_for('@default?module=webapp&action=time') ?>"><img src="/uploads/assets/teams/sao_paulo_30x30.png" alt="Twitter" class="ui-li-icon">São Paulo FC</a></li> 
-          <li><a href="#">Jogos de hoje <span class="ui-li-count">3</span></a></li> 
+          <li data-role="list-divider">Meu time</li>
+          <li id="_my_team"><a href="<?php echo url_for('@default?module=webapp&action=time&time=sao-paulo') ?>"><img src="/uploads/assets/teams/sao_paulo_30x30.png" alt="Twitter" class="ui-li-icon">São Paulo FC</a></li> 
           <li><a href="#">Torcedor</a></li> 
+          <li data-role="list-divider">Em tempo real</li>
+          <li><a href="#">Jogos de hoje <span class="ui-li-count">3</span></a></li> 
           <li><a href="#">Notícias</a></li> 
           <li data-role="list-divider">Outros</li>
           <li><a href="#">Campeonatos <span class="ui-li-count">30</span></a></li> 
           <li><a href="#">Times <span class="ui-li-count">510</span></a></li> 
-          <li><a href="#">Ranking da FIFA</a></li> 
           <li><a href="#">Estádios <span class="ui-li-count">300</span></a></li> 
+          <li><a href="#">Ranking da FIFA</a></li> 
+          <li><a href="#">Regras do jogo</a></li> 
         </ul> 
       </div> 
 
