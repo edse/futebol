@@ -68,24 +68,20 @@
       padding-right: .25em; 
   }
   </style>
-</head> 
+</head>
 <body> 
-  
 
-<div data-role="page" class="type-interior">
+  <div data-role="page" class="type-index">
 
-  <div data-role="header" data-theme="b">
-    <h1>Futebol Clube - Sign up</h1>
-    <?php /* <a href="<?php echo url_for("/webapp/index")?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a> */ ?>
-  </div>
+    <div data-role="header" data-theme="b">
+      <h1>Futebol Clube - Sign up</h1>
+      <?php /* <a href="<?php echo url_for("/webapp/index")?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a> */ ?>
+    </div>
 
-<!-- <div data-role="page" id="jqm-home" class="type-home"> -->
-  
-  <div data-role="content">
+    <div data-role="content">
     
-    <div class="ui-body ui-body-b">
-
-    <div class="content-primary"> 
+      <p>All form elements begin with standard html controls that are enhanced to make them more attractive and easy-to-use. In browsers that don't support the custom controls, they will still have a usable experience because these are all based on native form elements.</p>
+      
       <form method="post" action="<?php echo url_for('@default?module=webapp&action=register&code=verify') ?>" name="signup" id="signup" />
         <ul data-role="listview" data-inset="true">
           <li data-role="fieldcontain"> 
@@ -134,24 +130,10 @@
         </ul> 
 
       </form>
-    
-    </div>
 
-    <div class="content-secondary">
-      <h1>Form elements</h1> 
-      <p>This page contains various progressive-enhancement driven form controls. Native elements are sometimes hidden from view, but their values are maintained so the form can be submitted normally. </p>
-      <p>Browsers that don't support the custom controls will still deliver a usable experience, because all are based on native form elements.</p>
-      <br />
+  </div><!-- /ui-body wrapper -->
+ 
+</div><!-- /page -->
 
-    </div> 
-    </div> 
-
-    <?php //include_partial('global/footer') ?>
-
-    </div>
-    
-  </div>
-
-</div> 
 </body> 
 </html>

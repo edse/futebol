@@ -58,7 +58,8 @@ class webappActions extends sfActions
       $this->user->save();
       $this->getUser()->setFlash('info', 'User activate');
       $this->redirect('@default?module=webapp&action=home');
-    }
+    }else
+      $this->getUser()->setFlash('info', 'All credentials need aproval from the site admin.');
   }
 
   public function executeLogin(sfWebRequest $request) {

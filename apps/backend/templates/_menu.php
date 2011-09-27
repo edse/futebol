@@ -1,6 +1,6 @@
         <div id="masthead">
             <div id="masthead-utility">
-              <a href="<?php echo url_for('@homepage') ?>" title="Futebol Clube" style="border: 0; float: left; padding: 0;"><img id="logoA" src="/images/ast.jpg" alt="Futebol Clube" style="height:35px;"></a>
+              <a href="<?php echo url_for('@homepage') ?>" title="Futebol Clube" style="border: 0; float: left; padding: 0;"><img id="logoA" src="/images/logo.png" alt="Futebol Clube" style="height:35px; margin-bottom: 5px;"></a>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <strong><?php echo $sf_user->getName(); ?> (Futebol Clube)</strong>
                 <?php endif; ?>
@@ -14,33 +14,24 @@
             	<?php
               $c = 'yt-navbar-item';
               $m = $sf_params->get('module');
-              
-              echo link_to('Tournaments', 'tournament/index', array(
-                'class'  => $m=='tournament' ? $c.' yt-navbar-item-current' : $c
-              ));
-              
-              echo link_to('Teams', 'team/index', array(
-                'class'  => $m=='team' ? $c.' yt-navbar-item-current' : $c
-              ));
-
-              echo link_to('Games', 'game/index', array(
-                'class'  => $m=='game' ? $c.' yt-navbar-item-current' : $c
-              ));
-
               if(($sf_user->hasPermission('admin')) || ($sf_user->hasPermission('editor'))) {
-                echo link_to('Grade', 'schedule/index', array(
-                  'class'  => $m=='schedule' ? $c.' yt-navbar-item-current' : $c
+                echo link_to('Tournaments', 'tournament/index', array(
+                  'class'  => $m=='tournament' ? $c.' yt-navbar-item-current' : $c
                 ));
-                echo link_to('Programas', 'program/index', array(
-                  'class'  => $m=='program' ? $c.' yt-navbar-item-current' : $c
+                echo link_to('Teams', 'team/index', array(
+                  'class'  => $m=='team' ? $c.' yt-navbar-item-current' : $c
                 ));
-                echo link_to('Sites', 'site/index', array(
-                  'class'  => $m=='site' || $m=='section' || $m=='block' || $m=='display' ? $c.' yt-navbar-item-current' : $c
+                echo link_to('Games', 'game/index', array(
+                  'class'  => $m=='game' ? $c.' yt-navbar-item-current' : $c
+                ));
+                echo link_to('Stadiums', 'stadium/index', array(
+                  'class'  => $m=='stadium' ? $c.' yt-navbar-item-current' : $c
+                ));
+                echo link_to('Users', 'sfGuardUser/index', array(
+                  'class'  => $m=='sfGuardUser' ? $c.' yt-navbar-item-current' : $c
                 ));
               }
       				?>
-
             <?php endif; ?>
-
             </div>
         </div>
