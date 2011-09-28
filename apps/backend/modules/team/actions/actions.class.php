@@ -13,4 +13,7 @@ require_once dirname(__FILE__).'/../lib/teamGeneratorHelper.class.php';
  */
 class teamActions extends autoTeamActions
 {
+  public function executeListGames(sfWebRequest $request) {
+    $this->forward('team_games', 'index');
+  }
 }

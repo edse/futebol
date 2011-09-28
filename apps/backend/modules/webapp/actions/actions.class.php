@@ -30,7 +30,7 @@ class webappActions extends sfActions
   }
 
   public function executeFinish(sfWebRequest $request) {
-    $this->redirect('@default?module=webapp&action=home');
+    $this->redirect('@default?module=tournament&action=index');
   }
 
   public function executeRegister(sfWebRequest $request) {

@@ -1,0 +1,2 @@
+<?php echo $helper->linkToNew(array(  'params' =>   array(  ),  'class_suffix' => 'new',  'label' => 'New',)) ?>
+<li class="sf_admin_action_editions"><a href="/backend_dev.php/tournament/new">Synchronize All</a></li>

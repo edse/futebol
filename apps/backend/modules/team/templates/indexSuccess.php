@@ -8,7 +8,7 @@
 <?php include_partial('team/assets') ?>
 
 <div id="sf_admin_container">
-  <h1><?php echo __('Team List', array(), 'messages') ?></h1>
+  <h1><?php echo __('Teams', array(), 'messages') ?></h1>
 
   <?php include_partial('team/flashes') ?>
 

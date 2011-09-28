@@ -1,3 +1,57 @@
+game_team_games:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Game
+    module:               team_games
+    prefix_path:          /team_games
+    column:               id
+    with_wildcard_routes: true
+
+game_tournament_games:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Game
+    module:               tournament_games
+    prefix_path:          /tournament_games
+    column:               id
+    with_wildcard_routes: true
+
+tournament_phase_strip:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TournamentPhaseStrip
+    module:               tournament_phase_strip
+    prefix_path:          /tournament_phase_strip
+    column:               id
+    with_wildcard_routes: true
+
+tournament_standings:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TournamentStandings
+    module:               tournament_standings
+    prefix_path:          /tournament_standings
+    column:               id
+    with_wildcard_routes: true
+
+tournament_phase:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TournamentPhase
+    module:               tournament_phase
+    prefix_path:          /tournament_phase
+    column:               id
+    with_wildcard_routes: true
+
+tournament_edition:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                TournamentEdition
+    module:               tournament_edition
+    prefix_path:          /tournament_edition
+    column:               id
+    with_wildcard_routes: true
+
 openid_verify:
   url:   /openid/verify
   param: { module: openid, action: verify }
@@ -86,7 +140,7 @@ game:
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: tournament, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules

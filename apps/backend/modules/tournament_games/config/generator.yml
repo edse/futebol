@@ -1,13 +1,13 @@
 generator:
   class: sfDoctrineGenerator
   param:
-    model_class:           Tournament
+    model_class:           Game
     theme:                 admin
     non_verbose_templates: true
     with_show:             false
     singular:              ~
     plural:                ~
-    route_prefix:          tournament
+    route_prefix:          game_tournament_games
     with_doctrine_route:   true
     actions_base_class:    sfActions
 
@@ -15,11 +15,11 @@ generator:
       actions: ~
       fields:  ~
       list:
-        title:   Tournaments
-        display: [=name, description, slug, created_at, updated_at]
+        title:   Tournament games
+        display: [Tournament, date_start, date, time, round, Stadium, home_team_name, home_team_score, away_team_score, away_team_name, created_at, updated_at]
         object_actions:
-          editions:     ~
-          synchronize:   ~
+          synchronize:  ~
+          details:      ~
           _edit:        ~
           _delete:      ~
       filter:  ~

@@ -1,6 +1,9 @@
         <div id="masthead">
             <div id="masthead-utility">
-              <a href="<?php echo url_for('@homepage') ?>" title="Futebol Clube" style="border: 0; float: left; padding: 0;"><img id="logoA" src="/images/logo.png" alt="Futebol Clube" style="height:35px; margin-bottom: 5px;"></a>
+              <a href="<?php echo url_for('@homepage') ?>" title="Futebol Clube" style="border: 0; float: left; padding: 0;">
+                <img id="logoA" src="/images/logo.png" alt="Futebol Clube" style="height:35px; margin-bottom: 5px; float: left;">
+                <h2 style="margin-left:7px; margin-top: 20px; float: left;">FutebolClube</h2>
+              </a>
                 <?php if($sf_user->isAuthenticated()): ?>
                 <strong><?php echo $sf_user->getName(); ?> (Futebol Clube)</strong>
                 <?php endif; ?>
