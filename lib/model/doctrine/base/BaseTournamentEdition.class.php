@@ -14,25 +14,28 @@
  * @property timestamp $date_start
  * @property timestamp $date_end
  * @property Tournament $Tournament
+ * @property Doctrine_Collection $Games
  * 
- * @method integer           getTournamentEditionExtId()    Returns the current record's "tournament_edition_ext_id" value
- * @method integer           getTournamentId()              Returns the current record's "tournament_id" value
- * @method string            getName()                      Returns the current record's "name" value
- * @method string            getDescription()               Returns the current record's "description" value
- * @method text              getRules()                     Returns the current record's "rules" value
- * @method string            getLocation()                  Returns the current record's "location" value
- * @method timestamp         getDateStart()                 Returns the current record's "date_start" value
- * @method timestamp         getDateEnd()                   Returns the current record's "date_end" value
- * @method Tournament        getTournament()                Returns the current record's "Tournament" value
- * @method TournamentEdition setTournamentEditionExtId()    Sets the current record's "tournament_edition_ext_id" value
- * @method TournamentEdition setTournamentId()              Sets the current record's "tournament_id" value
- * @method TournamentEdition setName()                      Sets the current record's "name" value
- * @method TournamentEdition setDescription()               Sets the current record's "description" value
- * @method TournamentEdition setRules()                     Sets the current record's "rules" value
- * @method TournamentEdition setLocation()                  Sets the current record's "location" value
- * @method TournamentEdition setDateStart()                 Sets the current record's "date_start" value
- * @method TournamentEdition setDateEnd()                   Sets the current record's "date_end" value
- * @method TournamentEdition setTournament()                Sets the current record's "Tournament" value
+ * @method integer             getTournamentEditionExtId()    Returns the current record's "tournament_edition_ext_id" value
+ * @method integer             getTournamentId()              Returns the current record's "tournament_id" value
+ * @method string              getName()                      Returns the current record's "name" value
+ * @method string              getDescription()               Returns the current record's "description" value
+ * @method text                getRules()                     Returns the current record's "rules" value
+ * @method string              getLocation()                  Returns the current record's "location" value
+ * @method timestamp           getDateStart()                 Returns the current record's "date_start" value
+ * @method timestamp           getDateEnd()                   Returns the current record's "date_end" value
+ * @method Tournament          getTournament()                Returns the current record's "Tournament" value
+ * @method Doctrine_Collection getGames()                     Returns the current record's "Games" collection
+ * @method TournamentEdition   setTournamentEditionExtId()    Sets the current record's "tournament_edition_ext_id" value
+ * @method TournamentEdition   setTournamentId()              Sets the current record's "tournament_id" value
+ * @method TournamentEdition   setName()                      Sets the current record's "name" value
+ * @method TournamentEdition   setDescription()               Sets the current record's "description" value
+ * @method TournamentEdition   setRules()                     Sets the current record's "rules" value
+ * @method TournamentEdition   setLocation()                  Sets the current record's "location" value
+ * @method TournamentEdition   setDateStart()                 Sets the current record's "date_start" value
+ * @method TournamentEdition   setDateEnd()                   Sets the current record's "date_end" value
+ * @method TournamentEdition   setTournament()                Sets the current record's "Tournament" value
+ * @method TournamentEdition   setGames()                     Sets the current record's "Games" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -87,6 +90,10 @@ abstract class BaseTournamentEdition extends sfDoctrineRecord
         $this->hasOne('Tournament', array(
              'local' => 'tournament_id',
              'foreign' => 'id'));
+
+        $this->hasMany('Game as Games', array(
+             'local' => 'id',
+             'foreign' => 'tournament_edition_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $sluggable0 = new Doctrine_Template_Sluggable();

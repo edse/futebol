@@ -147,6 +147,7 @@ Game:
   actAs: { Timestampable: ~, }
   columns:
     tournament_id:            { type: integer }
+    tournament_edition_id:    { type: integer }
     game_ext_id:              { type: integer }
     date_start:               { type: timestamp, notnull: true }
     date:                     { type: string(255), notnull: true }
@@ -173,6 +174,7 @@ Game:
     stadium_ext_id:           { type: integer }
     url:                      { type: string(255), notnull: true }
   relations:
+    TournamentEdition: { local: tournament_edition_id, foreign: id, class: TournamentEdition, foreignAlias: Games }
     Tournament: { local: tournament_id, foreign: id, class: Tournament, foreignAlias: Games }
     HomeTeam: { local: home_team_id, foreign: id, class: Team, foreignAlias: HomeGames }
     AwayTeam: { local: away_team_id, foreign: id, class: Team, foreignAlias: AwayGames } 

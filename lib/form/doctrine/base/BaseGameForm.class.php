@@ -17,6 +17,7 @@ abstract class BaseGameForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                      => new sfWidgetFormInputHidden(),
       'tournament_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'add_empty' => true)),
+      'tournament_edition_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentEdition'), 'add_empty' => true)),
       'game_ext_id'             => new sfWidgetFormInputText(),
       'date_start'              => new sfWidgetFormDateTime(),
       'date'                    => new sfWidgetFormInputText(),
@@ -49,6 +50,7 @@ abstract class BaseGameForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                      => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'tournament_id'           => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'required' => false)),
+      'tournament_edition_id'   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentEdition'), 'required' => false)),
       'game_ext_id'             => new sfValidatorInteger(array('required' => false)),
       'date_start'              => new sfValidatorDateTime(),
       'date'                    => new sfValidatorString(array('max_length' => 255)),

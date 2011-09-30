@@ -1,10 +1,5 @@
 <?php use_helper('I18N', 'Date') ?>
 
-<div id="alerts"></div>
-<div id="header"></div>
-<div id="content">
-  <div id="dashboard-main">
-
 <?php include_partial('tournament_games/assets') ?>
 
 <div id="sf_admin_container">
@@ -28,17 +23,5 @@
 
   <div id="sf_admin_footer">
     <?php include_partial('tournament_games/list_footer', array('pager' => $pager)) ?>
-  </div>
-</div>
-
-</div>
-<div id="dashboard-side">
-  <div id="dashboard-blog" class="module">
-    <h3>Filtros</h3>
-    <div class="module-info">
-      <div id="sf_admin_bar">
-      <?php include_partial('tournament_games/filters', array('form' => $filters, 'configuration' => $configuration)) ?>
-      </div>
-    </div>
   </div>
 </div>

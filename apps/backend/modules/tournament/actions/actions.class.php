@@ -17,7 +17,7 @@ class tournamentActions extends autoTournamentActions
     $this->forward('tournament_edition', 'index');
   }
 
-  public function executeListSnchronize(sfWebRequest $request) {
+  public function executeListSynchronize(sfWebRequest $request) {
     //ini_set("memory_limit", "1700M");
     //ini_set("max_input_time", "3600");
     //ini_set("max_execution_time", "3600");

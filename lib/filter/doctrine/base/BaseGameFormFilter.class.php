@@ -14,6 +14,7 @@ abstract class BaseGameFormFilter extends BaseFormFilterDoctrine
   {
     $this->setWidgets(array(
       'tournament_id'           => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'add_empty' => true)),
+      'tournament_edition_id'   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentEdition'), 'add_empty' => true)),
       'game_ext_id'             => new sfWidgetFormFilterInput(),
       'date_start'              => new sfWidgetFormFilterDate(array('from_date' => new sfWidgetFormDate(), 'to_date' => new sfWidgetFormDate(), 'with_empty' => false)),
       'date'                    => new sfWidgetFormFilterInput(array('with_empty' => false)),
@@ -45,6 +46,7 @@ abstract class BaseGameFormFilter extends BaseFormFilterDoctrine
 
     $this->setValidators(array(
       'tournament_id'           => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('Tournament'), 'column' => 'id')),
+      'tournament_edition_id'   => new sfValidatorDoctrineChoice(array('required' => false, 'model' => $this->getRelatedModelName('TournamentEdition'), 'column' => 'id')),
       'game_ext_id'             => new sfValidatorSchemaFilter('text', new sfValidatorInteger(array('required' => false))),
       'date_start'              => new sfValidatorDateRange(array('required' => false, 'from_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 00:00:00')), 'to_date' => new sfValidatorDateTime(array('required' => false, 'datetime_output' => 'Y-m-d 23:59:59')))),
       'date'                    => new sfValidatorPass(array('required' => false)),
@@ -93,6 +95,7 @@ abstract class BaseGameFormFilter extends BaseFormFilterDoctrine
     return array(
       'id'                      => 'Number',
       'tournament_id'           => 'ForeignKey',
+      'tournament_edition_id'   => 'ForeignKey',
       'game_ext_id'             => 'Number',
       'date_start'              => 'Date',
       'date'                    => 'Text',

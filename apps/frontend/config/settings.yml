@@ -31,7 +31,7 @@ all:
     default_culture: en_US
     
     # Form security secret (CSRF protection)
-    csrf_secret:            505ef3c93c0d1db10f48fc64587c5c79336aadfe
+    csrf_secret:            XXX
 
     # Output escaping settings
     escaping_strategy:      true
