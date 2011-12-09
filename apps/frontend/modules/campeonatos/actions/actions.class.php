@@ -107,8 +107,9 @@ class campeonatosActions extends sfActions
             #TEAM-LOGO
             $aux = @end(explode("/",$value["escudo"]));
             $img = @sfConfig::get('sf_upload_dir').'/assets/teams/'.$aux;
-            $img = str_replace("30", "65", $value["escudo"]);
-            @file_put_contents($img, file_get_contents($img));
+            //$img_url = $value["escudo"];
+            $img_url = str_replace("30", "65", $value["escudo"]);
+            @file_put_contents($img, file_get_contents($img_url));
             $team->setLogo($aux);
             $team->save();
             unset($team);
