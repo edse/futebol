@@ -105,12 +105,18 @@ class campeonatosActions extends sfActions
             $team->setNickname($value["apelido"]);
             $team->setInitials($value["sigla"]);
             #TEAM-LOGO
+            // 30x30 + 65x65
             $aux = @end(explode("/",$value["escudo"]));
-            $img = @sfConfig::get('sf_upload_dir').'/assets/teams/'.$aux;
-            //$img_url = $value["escudo"];
-            $img_url = str_replace("30", "65", $value["escudo"]);
-            @file_put_contents($img, file_get_contents($img_url));
-            $team->setLogo($aux);
+            $aux1 = $aux;
+            $aux2 = str_replace("30", "65", $aux);
+            $img1 = @sfConfig::get('sf_upload_dir').'/assets/teams/'.$aux1;
+            $img2 = @sfConfig::get('sf_upload_dir').'/assets/teams/'.$aux2;
+
+            $img_url1 = $value["escudo"];
+            $img_url2 = str_replace("30", "65", $value["escudo"]);
+            @file_put_contents($img1, file_get_contents($img_url1));
+            @file_put_contents($img2, file_get_contents($img_url2));
+            $team->setLogo($aux2);
             $team->save();
             unset($team);
             //echo var_dump($a);
