@@ -290,7 +290,13 @@ dd h4 { margin:15px 0 0 0; }
 
 #_my_team .ui-link-inherit { padding: 1.7em 75px 0.7em 55px; }
 
-.type-interior .content-secondary { padding: 0em 1.2em 1.2em 1.2em; border: none; }
+.type-interior .content-secondary { 
+  padding: 0; border: none;
+}
+
+.type-interior .content-secondary2 { 
+  padding: 0em 1.2em 1.2em 1.2em; border: none;
+}
 
 
 .ui-body-suc {
