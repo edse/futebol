@@ -17,7 +17,7 @@ class campeonatosActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    $this->forward('default', 'module');
+    //$this->forward('default', 'module');
   }
 
   public function executeUpdate(sfWebRequest $request)
