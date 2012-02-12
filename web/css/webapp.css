@@ -242,9 +242,14 @@ dd h4 { margin:15px 0 0 0; }
   .type-interior .ui-content {
     background-position: 39%;
   }
-  .content-secondary {
+  .content-secondary2 {
     width: 34%;
   }
+
+  .content-secondary {
+    width: 30%;
+  }
+  
   .content-primary {
     width: 56%;
     padding-right: 1%;
