@@ -17,7 +17,17 @@ class campeonatosActions extends sfActions
   */
   public function executeIndex(sfWebRequest $request)
   {
-    //$this->forward('default', 'module');
+    $this->campeonatos = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Tournament t')
+      ->where('t.is_active = ?', 1)
+      ->orderBy('t.title')
+      ->execute();
+    
+    if($request->getParameter('slug'))
+      $this->campeonato = Doctrine::getTable('Tournament')->findOneBySlug($request->getParameter('slug'));
+    else
+      $this->campeonato = $campeonatos[0];
   }
 
   public function executeUpdate(sfWebRequest $request)
