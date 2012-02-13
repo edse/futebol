@@ -26,11 +26,6 @@ class webappActions extends sfActions
         ->createQuery('t')
         ->where('user_id = ?', $this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser'))
         ->execute();
-      $this->campeonatos = Doctrine_Query::create()
-        ->select('t.*')
-        ->from('Tournament t')
-        ->orderBy('t.name')
-        ->execute();
     }
   }
 
@@ -103,6 +98,13 @@ class webappActions extends sfActions
   {
     if($this->getUser()->isAuthenticated() != true){
       $this->redirect('@homepage');
+    }
+    else{
+      $this->campeonatos = Doctrine_Query::create()
+        ->select('t.*')
+        ->from('Tournament t')
+        ->orderBy('t.name')
+        ->execute();
     }
   }
 
