@@ -22,11 +22,10 @@ class campeonatosActions extends sfActions
       ->from('Tournament t')
       ->orderBy('t.name')
       ->execute();
-    
     if($request->getParameter('slug'))
       $this->campeonato = Doctrine::getTable('Tournament')->findOneBySlug($request->getParameter('slug'));
     else
-      $this->campeonato = $campeonatos[0];
+      $this->campeonato = $this->campeonatos[0];
   }
 
   public function executeUpdate(sfWebRequest $request)
