@@ -17,9 +17,9 @@
           <li><a href="#">Jogos de hoje <span class="ui-li-count">3</span></a></li> 
           <li><a href="#">Notícias</a></li> 
           <li data-role="list-divider">Outros</li>
-          <li><a href="#">Campeonatos <span class="ui-li-count"><?php echo count($campeonatos) ?></span></a></li> 
-          <li><a href="#">Times <span class="ui-li-count"><?php echo count($times) ?></span></a></li> 
-          <li><a href="#">Estádios <span class="ui-li-count"><?php echo count($estadios) ?></span></a></li> 
+          <li><a href="<?php echo url_for('@default?module=campeonatos&action=index') ?>">Campeonatos <span class="ui-li-count"><?php echo count($campeonatos) ?></span></a></li> 
+          <li><a href="<?php echo url_for('@default?module=times&action=index') ?>">Times <span class="ui-li-count"><?php echo count($times) ?></span></a></li> 
+          <li><a href="<?php echo url_for('@default?module=estadios&action=index') ?>">Estádios <span class="ui-li-count"><?php echo count($estadios) ?></span></a></li> 
           <li><a href="#">Ranking da FIFA</a></li> 
           <li><a href="#">Regras do jogo</a></li> 
         </ul> 
