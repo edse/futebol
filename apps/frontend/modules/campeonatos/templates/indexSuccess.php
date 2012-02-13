@@ -5,7 +5,7 @@
   </div>
   <div data-role="content" data-theme="c">
     <div class="content-primary">
-      <h2>Working with jQuery Mobile's Auto-initialization</h2>
+      <h2><?php echo $campeonato->getName() ?></h2>
       <p>
         Unlike other jQuery projects, such as jQuery and jQuery UI, jQuery Mobile automatically applies many markup enhancements as soon as it loads (long before <code>
           document.ready</code>
