@@ -32,6 +32,7 @@ class webappActions extends sfActions
       ->orderBy('t.name')
       ->execute();
     $this->num_campeonatos = count($campeonatos);
+    echo ">>>".$num_campeonatos;
     unset($campeonatos);
     }
   }
