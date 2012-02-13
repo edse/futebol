@@ -105,6 +105,16 @@ class webappActions extends sfActions
         ->from('Tournament t')
         ->orderBy('t.name')
         ->execute();
+      $this->times = Doctrine_Query::create()
+        ->select('t.*')
+        ->from('Team t')
+        ->orderBy('t.name')
+        ->execute();
+      $this->estadios = Doctrine_Query::create()
+        ->select('s.*')
+        ->from('Stadium s')
+        ->orderBy('s.name')
+        ->execute();
     }
   }
 
