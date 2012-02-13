@@ -62,9 +62,7 @@
       
     </div><!-- /content -->
     
-    <div data-role="footer" class="footer-docs" data-theme="c">
-      <p>&copy; 2011 The jQuery Project</p>
-    </div>
+  <?php include_partial('global/footer') ?>
 
   </div><!-- /page -->
 

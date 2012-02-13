@@ -247,35 +247,23 @@ $(document).bind("mobileinit", function(){
     </div><!--/content-secondary -->
     <div class="content-secondary">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
-        <h3>More in this section</h3>
+        <h3>Campeonatos</h3>
         <ul data-role="listview"  data-theme="c" data-dividertheme="d">
           <li data-role="list-divider">
-            API
+            Todos os Campeonatos
           </li>
-          <li data-theme="a">
-            <a href="../../docs/api/globalconfig.html">Configuring defaults</a>
+          <?php foreach($campeonatos as $c): ?>
+          <li<?php if($campeonato->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
+            <a href="<?php echo url_for('@default?module=campeonatos&action=index&slug='.$c->getSlug()) ?>"><?php echo $c->getTitle() ?></a>
           </li>
-          <li>
-            <a href="../../docs/api/events.html">Events</a>
-          </li>
-          <li>
-            <a href="../../docs/api/methods.html">Methods &amp; Utilities</a>
-          </li>
-          <li>
-            <a href="../../docs/api/data-attributes.html">Data attribute reference</a>
-          </li>
-          <li>
-            <a href="../../docs/api/themes.html">Theme framework</a>
-          </li>
+          <?php endforeach; ?>
         </ul>
       </div>
     </div>
   </div><!-- /content -->
-  <div data-role="footer" class="footer-docs" data-theme="c">
-    <p>
-      &copy; 2011 The jQuery Project
-    </p>
-  </div>
+
+  <?php include_partial('global/footer') ?>
+
 </div><!-- /page -->
 </body>
 </html> 
