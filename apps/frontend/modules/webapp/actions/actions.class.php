@@ -26,11 +26,11 @@ class webappActions extends sfActions
         ->createQuery('t')
         ->where('user_id = ?', $this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser'))
         ->execute();
-    $this->campeonatos = Doctrine_Query::create()
-      ->select('t.*')
-      ->from('Tournament t')
-      ->orderBy('t.name')
-      ->execute();
+      $this->campeonatos = Doctrine_Query::create()
+        ->select('t.*')
+        ->from('Tournament t')
+        ->orderBy('t.name')
+        ->execute();
     }
   }
 
