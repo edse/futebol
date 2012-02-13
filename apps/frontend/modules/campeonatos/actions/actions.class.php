@@ -20,7 +20,6 @@ class campeonatosActions extends sfActions
     $this->campeonatos = Doctrine_Query::create()
       ->select('t.*')
       ->from('Tournament t')
-      ->where('t.is_active = ?', 1)
       ->orderBy('t.title')
       ->execute();
     
