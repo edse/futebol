@@ -26,6 +26,13 @@ class webappActions extends sfActions
         ->createQuery('t')
         ->where('user_id = ?', $this->getUser()->getAttribute('user_id', '', 'sfGuardSecurityUser'))
         ->execute();
+    $campeonatos = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Tournament t')
+      ->orderBy('t.name')
+      ->execute();
+    $this->num_campeonatos = count($campeonatos);
+    unset($campeonatos);
     }
   }
 

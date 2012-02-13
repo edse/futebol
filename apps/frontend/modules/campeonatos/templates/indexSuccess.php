@@ -247,7 +247,7 @@ $(document).bind("mobileinit", function(){
     </div><!--/content-secondary -->
     <div class="content-secondary">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
-        <h3>Campeonatos</h3>
+        <h3>Campeonatos em andamento</h3>
         <ul data-role="listview"  data-theme="c" data-dividertheme="d">
           <li data-role="list-divider">
             Todos os Campeonatos
