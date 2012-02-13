@@ -1,8 +1,8 @@
 <div data-role="page" class="type-interior">
-  <div data-role="header" data-theme="f">
-    <h1>Configuring Defaults</h1>
-    <a href="../../" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-  </div><!-- /header -->
+  <div data-role="header" data-theme="b">
+    <h1>Emerson Futebol Clube</h1>
+    <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
+  </div>
   <div data-role="content" data-theme="c">
     <div class="content-primary">
       <h2>Working with jQuery Mobile's Auto-initialization</h2>
