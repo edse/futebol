@@ -254,7 +254,7 @@ $(document).bind("mobileinit", function(){
           </li>
           <?php foreach($campeonatos as $c): ?>
           <li<?php if($campeonato->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
-            <a href="<?php echo url_for('@default?module=campeonatos&action=index&slug='.$c->getSlug()) ?>"><?php echo $c->getTitle() ?></a>
+            <a href="<?php echo url_for('@default?module=campeonatos&action=index&slug='.$c->getSlug()) ?>"><?php echo $c->getName() ?></a>
           </li>
           <?php endforeach; ?>
         </ul>

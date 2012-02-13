@@ -20,7 +20,7 @@ class campeonatosActions extends sfActions
     $this->campeonatos = Doctrine_Query::create()
       ->select('t.*')
       ->from('Tournament t')
-      ->orderBy('t.title')
+      ->orderBy('t.name')
       ->execute();
     
     if($request->getParameter('slug'))
