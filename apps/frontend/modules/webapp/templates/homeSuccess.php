@@ -17,7 +17,7 @@
           <li><a href="#">Jogos de hoje <span class="ui-li-count">3</span></a></li> 
           <li><a href="#">Notícias</a></li> 
           <li data-role="list-divider">Outros</li>
-          <li><a href="#">Campeonatos <span class="ui-li-count"><?php echo $num_campeonatos ?></span></a></li> 
+          <li><a href="#">Campeonatos <span class="ui-li-count"><?php echo count($campeonatos) ?></span></a></li> 
           <li><a href="#">Times <span class="ui-li-count">510</span></a></li> 
           <li><a href="#">Estádios <span class="ui-li-count">300</span></a></li> 
           <li><a href="#">Ranking da FIFA</a></li> 
