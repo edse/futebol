@@ -247,14 +247,14 @@ $(document).bind("mobileinit", function(){
     </div><!--/content-secondary -->
     <div class="content-secondary">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
-        <h3>Estádios</h3>
+        <h3>Times</h3>
         <ul data-role="listview"  data-theme="c" data-dividertheme="d">
           <li data-role="list-divider">
-            Estádios
+            Times
           </li>
           <?php foreach($times as $c): ?>
           <li<?php if($time->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
-            <a href="<?php echo url_for('@default?module=estadios&action=index&slug='.$c->getSlug()) ?>"><?php echo $c->getName() ?></a>
+            <a href="<?php echo url_for('@default?module=times&action=index&slug='.$c->getSlug()) ?>"><?php echo $c->getName() ?></a>
           </li>
           <?php endforeach; ?>
         </ul>
