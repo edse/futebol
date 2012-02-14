@@ -253,7 +253,7 @@ $(document).bind("mobileinit", function(){
             Estádios
           </li>
           <?php foreach($times as $c): ?>
-          <li<?php if($rime->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
+          <li<?php if($time->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
             <a href="<?php echo url_for('@default?module=estadios&action=index&slug='.$c->getSlug()) ?>"><?php echo $c->getName() ?></a>
           </li>
           <?php endforeach; ?>
