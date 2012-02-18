@@ -249,7 +249,7 @@ $(document).bind("mobileinit", function(){
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
         <h3>Campeonatos em andamento</h3>
         
-      <ul data-role="listview" data-filter="true" data-filter-placeholder="Search people..." data-filter-theme="b">
+      <ul data-role="listview" data-filter="true" data-filter-placeholder="Search ticker or firm name..." data-inset="true">
         <li data-role="list-divider">A</li>
         <li><a href="index.html">Adam Kinkaid</a></li>
         <li><a href="index.html">Alex Wickerham</a></li>
