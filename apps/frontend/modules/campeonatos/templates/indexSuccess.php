@@ -248,6 +248,46 @@ $(document).bind("mobileinit", function(){
     <div class="content-secondary">
       <div data-role="collapsible" data-collapsed="true" data-theme="b" data-content-theme="d">
         <h3>Campeonatos em andamento</h3>
+        
+      <ul data-role="listview" data-filter="true" data-filter-placeholder="Search people..." data-filter-theme="b">
+        <li data-role="list-divider">A</li>
+        <li><a href="index.html">Adam Kinkaid</a></li>
+        <li><a href="index.html">Alex Wickerham</a></li>
+        <li><a href="index.html">Avery Johnson</a></li>
+        <li data-role="list-divider">B</li>
+        <li><a href="index.html">Bob Cabot</a></li>
+        <li data-role="list-divider">C</li>
+        <li><a href="index.html">Caleb Booth</a></li>
+        <li><a href="index.html">Christopher Adams</a></li>
+        <li><a href="index.html">Culver James</a></li>
+        <li data-role="list-divider">D</li>
+        <li><a href="index.html">David Walsh</a></li>
+        <li><a href="index.html">Drake Alfred</a></li>
+        <li data-role="list-divider">E</li>
+        <li><a href="index.html">Elizabeth Bacon</a></li>
+        <li><a href="index.html">Emery Parker</a></li>
+        <li><a href="index.html">Enid Voldon</a></li>
+        <li data-role="list-divider">F</li>
+        <li><a href="index.html">Francis Wall</a></li>
+        <li data-role="list-divider">G</li>
+        <li><a href="index.html">Graham Smith</a></li>
+        <li><a href="index.html">Greta Peete</a></li>
+        <li data-role="list-divider">H</li>
+        <li><a href="index.html">Harvey Walls</a></li>
+        <li data-role="list-divider">M</li>
+        <li><a href="index.html">Mike Farnsworth</a></li>
+        <li><a href="index.html">Murray Vanderbuilt</a></li>
+        <li data-role="list-divider">N</li>
+        <li><a href="index.html">Nathan Williams</a></li>
+        <li data-role="list-divider">P</li>
+        <li><a href="index.html">Paul Baker</a></li>
+        <li><a href="index.html">Pete Mason</a></li>
+        <li data-role="list-divider">R</li>
+        <li><a href="index.html">Rod Tarker</a></li>
+        <li data-role="list-divider">S</li>
+        <li><a href="index.html">Sawyer Wakefield</a></li>
+      </ul>
+        
         <ul data-role="listview"  data-theme="c" data-dividertheme="d">
           <li data-role="list-divider">
             Todos os Campeonatos
