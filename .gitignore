@@ -8,3 +8,4 @@
 /plugins/.lock
 /.settings
 .project
+/web/run.php

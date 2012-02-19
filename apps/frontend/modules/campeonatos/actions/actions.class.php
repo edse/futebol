@@ -26,6 +26,13 @@ class campeonatosActions extends sfActions
       $this->campeonato = Doctrine::getTable('Tournament')->findOneBySlug($request->getParameter('slug'));
     else
       $this->campeonato = $this->campeonatos[0];
+
+    $this->classificacao = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('TournamentStandings t')
+      ->Where('t.tournament_id = ?', $this->campeonato->getId())
+      ->orderBy('t.rank')
+      ->execute();
   }
 
   public function executeUpdate(sfWebRequest $request)
