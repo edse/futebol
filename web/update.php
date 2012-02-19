@@ -17,5 +17,8 @@ $ts = Doctrine_Query::create()
   ->execute();
 
 foreach($ts as $t){
+  echo "\n\n".$t->getSlug();
+  flush();
   echo "\n".exec("wget http://futebolclube.possum-cms.com/campeonatos/import?slug=".$t->getSlug());
+  die('1');
 }
