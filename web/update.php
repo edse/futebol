@@ -22,3 +22,5 @@ foreach($ts as $t){
   echo "\n".exec("wget http://futebolclube.possum-cms.com/campeonatos/import?slug=".$t->getSlug());
   die('1');
 }
+
+die('2');
