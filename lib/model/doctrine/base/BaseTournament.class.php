@@ -9,18 +9,21 @@
  * @property string $name
  * @property string $description
  * @property Doctrine_Collection $TournamentEditions
+ * @property Doctrine_Collection $TournamentStandings
  * @property Doctrine_Collection $Games
  * 
- * @method integer             getTournamentExtId()    Returns the current record's "tournament_ext_id" value
- * @method string              getName()               Returns the current record's "name" value
- * @method string              getDescription()        Returns the current record's "description" value
- * @method Doctrine_Collection getTournamentEditions() Returns the current record's "TournamentEditions" collection
- * @method Doctrine_Collection getGames()              Returns the current record's "Games" collection
- * @method Tournament          setTournamentExtId()    Sets the current record's "tournament_ext_id" value
- * @method Tournament          setName()               Sets the current record's "name" value
- * @method Tournament          setDescription()        Sets the current record's "description" value
- * @method Tournament          setTournamentEditions() Sets the current record's "TournamentEditions" collection
- * @method Tournament          setGames()              Sets the current record's "Games" collection
+ * @method integer             getTournamentExtId()     Returns the current record's "tournament_ext_id" value
+ * @method string              getName()                Returns the current record's "name" value
+ * @method string              getDescription()         Returns the current record's "description" value
+ * @method Doctrine_Collection getTournamentEditions()  Returns the current record's "TournamentEditions" collection
+ * @method Doctrine_Collection getTournamentStandings() Returns the current record's "TournamentStandings" collection
+ * @method Doctrine_Collection getGames()               Returns the current record's "Games" collection
+ * @method Tournament          setTournamentExtId()     Sets the current record's "tournament_ext_id" value
+ * @method Tournament          setName()                Sets the current record's "name" value
+ * @method Tournament          setDescription()         Sets the current record's "description" value
+ * @method Tournament          setTournamentEditions()  Sets the current record's "TournamentEditions" collection
+ * @method Tournament          setTournamentStandings() Sets the current record's "TournamentStandings" collection
+ * @method Tournament          setGames()               Sets the current record's "Games" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -54,6 +57,10 @@ abstract class BaseTournament extends sfDoctrineRecord
     {
         parent::setUp();
         $this->hasMany('TournamentEdition as TournamentEditions', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentStandings', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
 

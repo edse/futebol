@@ -17,6 +17,7 @@ abstract class BaseTournamentStandingsForm extends BaseFormDoctrine
     $this->setWidgets(array(
       'id'                        => new sfWidgetFormInputHidden(),
       'team_id'                   => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'add_empty' => true)),
+      'tournament_id'             => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'add_empty' => true)),
       'tournament_phase_strip_id' => new sfWidgetFormDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentPhaseStrip'), 'add_empty' => true)),
       'rank'                      => new sfWidgetFormInputText(),
       'defeats'                   => new sfWidgetFormInputText(),
@@ -28,6 +29,7 @@ abstract class BaseTournamentStandingsForm extends BaseFormDoctrine
       'score_difference'          => new sfWidgetFormInputText(),
       'games'                     => new sfWidgetFormInputText(),
       'variation'                 => new sfWidgetFormInputText(),
+      'rate'                      => new sfWidgetFormInputText(),
       'display_order'             => new sfWidgetFormInputText(),
       'created_at'                => new sfWidgetFormDateTime(),
       'updated_at'                => new sfWidgetFormDateTime(),
@@ -36,6 +38,7 @@ abstract class BaseTournamentStandingsForm extends BaseFormDoctrine
     $this->setValidators(array(
       'id'                        => new sfValidatorChoice(array('choices' => array($this->getObject()->get('id')), 'empty_value' => $this->getObject()->get('id'), 'required' => false)),
       'team_id'                   => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Team'), 'required' => false)),
+      'tournament_id'             => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('Tournament'), 'required' => false)),
       'tournament_phase_strip_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('TournamentPhaseStrip'), 'required' => false)),
       'rank'                      => new sfValidatorNumber(array('required' => false)),
       'defeats'                   => new sfValidatorInteger(array('required' => false)),
@@ -47,6 +50,7 @@ abstract class BaseTournamentStandingsForm extends BaseFormDoctrine
       'score_difference'          => new sfValidatorInteger(array('required' => false)),
       'games'                     => new sfValidatorInteger(array('required' => false)),
       'variation'                 => new sfValidatorInteger(array('required' => false)),
+      'rate'                      => new sfValidatorNumber(array('required' => false)),
       'display_order'             => new sfValidatorString(array('max_length' => 255, 'required' => false)),
       'created_at'                => new sfValidatorDateTime(),
       'updated_at'                => new sfValidatorDateTime(),
