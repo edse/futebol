@@ -34,6 +34,83 @@ class campeonatosActions extends sfActions
       ->orderBy('t.rank')
       ->execute();
   }
+  
+ /**
+  * Executes jogos action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeJogos(sfWebRequest $request)
+  {
+    $this->campeonatos = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Tournament t')
+      ->orderBy('t.name')
+      ->execute();
+    if($request->getParameter('slug'))
+      $this->campeonato = Doctrine::getTable('Tournament')->findOneBySlug($request->getParameter('slug'));
+    else
+      $this->campeonato = $this->campeonatos[0];
+
+    $this->jogos = Doctrine_Query::create()
+      ->select('g.*')
+      ->from('Game g')
+      ->Where('g.tournament_id = ?', $this->campeonato->getId())
+      ->andWhere('g.date_start > ?', date('Y-m-d'))
+      ->orderBy('g.date_start')
+      ->execute();
+  }
+  
+ /**
+  * Executes jogosanteriores action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeJogosanteriores(sfWebRequest $request)
+  {
+    $this->campeonatos = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Tournament t')
+      ->orderBy('t.name')
+      ->execute();
+    if($request->getParameter('slug'))
+      $this->campeonato = Doctrine::getTable('Tournament')->findOneBySlug($request->getParameter('slug'));
+    else
+      $this->campeonato = $this->campeonatos[0];
+
+    $this->jogos = Doctrine_Query::create()
+      ->select('g.*')
+      ->from('Game g')
+      ->Where('g.tournament_id = ?', $this->campeonato->getId())
+      ->andWhere('g.date_start < ?', date('Y-m-d'))
+      ->orderBy('g.date_start desc')
+      ->execute();
+  }
+  
+ /**
+  * Executes noticias action
+  *
+  * @param sfRequest $request A request object
+  */
+  public function executeNoticias(sfWebRequest $request)
+  {
+    $this->campeonatos = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Tournament t')
+      ->orderBy('t.name')
+      ->execute();
+    if($request->getParameter('slug'))
+      $this->campeonato = Doctrine::getTable('Tournament')->findOneBySlug($request->getParameter('slug'));
+    else
+      $this->campeonato = $this->campeonatos[0];
+
+    $this->classificacao = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('TournamentStandings t')
+      ->Where('t.tournament_id = ?', $this->campeonato->getId())
+      ->orderBy('t.rank')
+      ->execute();
+  }
 
   public function executeUpdate(sfWebRequest $request)
   {

@@ -1,6 +1,6 @@
 <div data-role="page" class="type-interior">
   <div data-role="header" data-theme="b">
-    <h1>Futebol Clube - <?php echo $campeonato->getName() ?> - Classificação</h1>
+    <h1>Futebol Clube - <?php echo $campeonato->getName() ?> - Notícias</h1>
     <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
     <a href="index.html" data-icon="refresh" class="ui-btn-right">Atualizar</a>
   </div>
@@ -11,16 +11,62 @@
 
       <div data-role="navbar" data-theme="c">
         <ul>
-          <li><a href="<?php echo url_for('@default?module=campeonatos&action=index&slug='.$campeonato->getSlug()) ?>" class="ui-btn-active">Classificação</a></li>
+          <li><a href="<?php echo url_for('@default?module=campeonatos&action=index&slug='.$campeonato->getSlug()) ?>">Classificação</a></li>
           <li><a href="<?php echo url_for('@default?module=campeonatos&action=jogos&slug='.$campeonato->getSlug()) ?>">Jogos</a></li>
-          <li><a href="<?php echo url_for('@default?module=campeonatos&action=noticias&slug='.$campeonato->getSlug()) ?>">Notícias</a></li>
+          <li><a href="<?php echo url_for('@default?module=campeonatos&action=noticias&slug='.$campeonato->getSlug()) ?>" class="ui-btn-active">Notícias</a></li>
         </ul>
       </div><!-- /navbar -->
 
-      <p>Confira a classificação do <strong><?php echo $campeonato->getName() ?></strong> em tempo real. Atualizada minuto a minuto.</p>
+      <p>Confira as últimas notícias do <strong><?php echo $campeonato->getName() ?></strong> em tempo real. Atualizadas minuto a minuto.</p>
       <hr />
       <ul data-role="listview">
-      <?php foreach($classificacao as $c): ?>
+        
+    <ul data-role="listview">
+      <li data-role="list-divider">Friday, October 8, 2010 <span class="ui-li-count">2</span></li>
+      <li><a href="index.html">
+        
+          <h3>Stephen Weber</h3>
+          <p><strong>You've been invited to a meeting at Filament Group in Boston, MA</strong></p>
+          <p>Hey Stephen, if you're available at 10am tomorrow, we've got a meeting with the jQuery team.</p>
+          <p class="ui-li-aside"><strong>6:24</strong>PM</p>
+        
+      </a></li>
+      <li><a href="index.html">
+        
+        <h3>jQuery Team</h3>
+        <p><strong>Boston Conference Planning</strong></p>
+        <p>In preparation for the upcoming conference in Boston, we need to start gathering a list of sponsors and speakers.</p>
+        <p class="ui-li-aside"><strong>9:18</strong>AM</p>
+        
+      </a></li>
+      <li data-role="list-divider">Thursday, October 7, 2010 <span class="ui-li-count">1</span></li>
+      <li><a href="index.html">
+        <h3>Avery Walker</h3>
+        <p><strong>Re: Dinner Tonight</strong></p>
+        <p>Sure, let's plan on meeting at Highland Kitchen at 8:00 tonight. Can't wait! </p>
+        <p class="ui-li-aside"><strong>4:48</strong>PM</p>
+      </a></li>
+      <li data-role="list-divider">Wednesday, October 6, 2010 <span class="ui-li-count">3</span></li>
+      <li><a href="index.html">
+        <h3>Amazon.com</h3>
+        <p><strong>4-for-3 Books for Kids</strong></p>
+        <p>As someone who has purchased children's books from our 4-for-3 Store, you may be interested in these featured books.</p>
+        <p class="ui-li-aside"><strong>12:47</strong>PM</p>
+      </a></li>
+      <li><a href="index.html">
+        <h3>Mike Taylor</h3>
+        <p><strong>Re: This weekend in Maine</strong></p>
+        <p>Hey little buddy, sorry but I can't make it up to vacationland this weekend. Maybe next weekend?</p>
+        <p class="ui-li-aside"><strong>6:24</strong>AM</p>
+      </a></li>
+      <li><a href="index.html">
+        <h3>Redfin</h3>
+        <p><strong>Redfin listing updates for today</strong></p>
+        <p>There are 3 updates for the home on your watchlist: 1 updated MLS listing and 2 homes under contract.</p>
+        <p class="ui-li-aside"><strong>5:52</strong>AM</p>
+      </a></li>
+
+      <?php /* foreach($classificacao as $c): 
       <li><a href="<?php echo url_for('@default?module=times&action=index&slug='.$c->Team->getSlug()) ?>" style="padding-left: 65px; padding: .7em 110px .7em 60px;">
         <?php if($c->Team->getLogo() != ""):?>
         <img src="/uploads/assets/teams/<?php echo $c->Team->getLogo()?>" alt="<?php echo $c->Team->getName()?>" class="ui-li-icon">
@@ -39,7 +85,7 @@
           <?php endif; ?>
           <span class="ui-li-count"><?php echo intval($c->getRank())?>&deg; lugar</span></p>
       </a></li>
-      <?php endforeach; ?>
+      <?php endforeach; */ ?>
       </ul>
       
     </div><!--/content-secondary -->
