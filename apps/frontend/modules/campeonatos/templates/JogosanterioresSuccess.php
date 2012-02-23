@@ -32,8 +32,14 @@
       <br />
 
       <ul data-role="listview">
-      <?php $now = 0; ?>
-      <?php foreach($jogos as $c): ?>
+      <?php $now = ""; $i=0; ?>
+      <?php foreach($jogos as $d): ?>
+      <?php 
+      $now = format_date(strtotime(date('Y-m-d',strtotime($dias[$i]["date"]))), 'D');
+      ?>
+      <li data-role="list-divider"><?php echo $now ?> <span class="ui-li-count"><?php echo count($d)?></span></li>
+        <?php foreach($d as $c): ?>
+      
       <li><a title="Confira todos os detalhes desse jogo" href="<?php echo url_for('@default?module=jogos&action=details&id='.$c->getId()) ?>" style="padding-left: 65px; padding: .7em 110px .7em 60px;">
         <table><tr><td>
         <?php if($c->HomeTeam->getLogo() != ""):?>
@@ -72,6 +78,7 @@
 
       </li>
       <?php endforeach; ?>
+      <?php $now++; $i++; endforeach; ?>
       </ul>
       
     </div><!--/content-secondary -->

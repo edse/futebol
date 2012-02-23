@@ -52,7 +52,7 @@ class campeonatosActions extends sfActions
     else
       $this->campeonato = $this->campeonatos[0];
 
-    $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-1.7*60*60);
+    $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-2*60*60);
 
     $this->dias = Doctrine_Query::create()
       ->select('DATE_FORMAT(g.date_start,"%Y-%m-%d") as date')
@@ -75,15 +75,6 @@ class campeonatosActions extends sfActions
         ->execute();
     }
     $this->jogos = $jogos;
-    /*
-    $this->jogos = Doctrine_Query::create()
-      ->select('g.*')
-      ->from('Game g')
-      ->Where('g.tournament_id = ?', $this->campeonato->getId())
-      ->andWhere('g.date_start > ?', date('Y-m-d'))
-      ->orderBy('g.date_start')
-      ->execute();
-    */
   }
   
  /**
@@ -103,13 +94,29 @@ class campeonatosActions extends sfActions
     else
       $this->campeonato = $this->campeonatos[0];
 
-    $this->jogos = Doctrine_Query::create()
-      ->select('g.*')
+    $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-2*60*60);
+
+    $this->dias = Doctrine_Query::create()
+      ->select('DATE_FORMAT(g.date_start,"%Y-%m-%d") as date')
       ->from('Game g')
       ->Where('g.tournament_id = ?', $this->campeonato->getId())
-      ->andWhere('g.date_start < ?', date('Y-m-d'))
+      ->andWhere('g.date_start < ?', $t)
+      ->groupBy('DATE_FORMAT(g.date_start,"%Y-%m-%d")') 
       ->orderBy('g.date_start desc')
+      ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
       ->execute();
+
+    foreach($this->dias as $d) {
+      $jogos[] = Doctrine_Query::create()
+        ->select('g.*')
+        ->from('Game g')
+        ->Where('g.tournament_id = ?', $this->campeonato->getId())
+        ->andWhere('g.date_start < ?', $t)
+        ->andWhere('DATE_FORMAT(g.date_start,"%Y-%m-%d") = ?', $d['date'])
+        ->orderBy('g.date_start desc')
+        ->execute();
+    }
+    $this->jogos = $jogos;
   }
   
  /**
