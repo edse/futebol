@@ -52,6 +52,30 @@ class campeonatosActions extends sfActions
     else
       $this->campeonato = $this->campeonatos[0];
 
+    $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-1.7*60*60);
+
+    $this->dias = Doctrine_Query::create()
+      ->select('DATE_FORMAT(g.date_start,"%Y-%m-%d") as date')
+      ->from('Game g')
+      ->Where('g.tournament_id = ?', $this->campeonato->getId())
+      ->andWhere('g.date_start > ?', $t)
+      ->groupBy('DATE_FORMAT(g.date_start,"%Y-%m-%d")') 
+      ->orderBy('g.date_start')
+      ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+      ->execute();
+
+    foreach($this->dias as $d) {
+      $jogos[] = Doctrine_Query::create()
+        ->select('g.*')
+        ->from('Game g')
+        ->Where('g.tournament_id = ?', $this->campeonato->getId())
+        ->andWhere('g.date_start > ?', $t)
+        ->andWhere('DATE_FORMAT(g.date_start,"%Y-%m-%d") = ?', $d['date'])
+        ->orderBy('g.date_start')
+        ->execute();
+    }
+    $this->jogos = $jogos;
+    /*
     $this->jogos = Doctrine_Query::create()
       ->select('g.*')
       ->from('Game g')
@@ -59,6 +83,7 @@ class campeonatosActions extends sfActions
       ->andWhere('g.date_start > ?', date('Y-m-d'))
       ->orderBy('g.date_start')
       ->execute();
+    */
   }
   
  /**
@@ -118,7 +143,32 @@ class campeonatosActions extends sfActions
     ini_set("max_input_time", "3600");
     ini_set("max_execution_time", "3600");
     set_time_limit(0);
-    die("1");
+    $contents = json_decode(file_get_contents('http://globoesporte.globo.com/temporeal/futebol/central.json'), true);
+    echo "<h3>Jogos em andamento:</h3>";
+    foreach($contents["jogos"] as $key => $value) {
+      if($value["status"]=="Em Andamento"){
+        $game = Doctrine::getTable('Game')->findOneByGameExtId($value["id"]);
+        if($game){
+          $update = false;
+          if($game->getHomeTeamScore() != $value["time_casa"]["placar"]){
+            $game->setHomeTeamScore($value["time_casa"]["placar"]);
+            $update = true;
+          }
+          if($game->getAwayTeamScore() != $value["time_visitante"]["placar"]){
+            $update = true;
+            $game->setAwayTeamScore($value["time_visitante"]["placar"]);
+          }
+          if($update){
+            echo "Updated!<br />";
+            $game->save();
+          }
+          echo $game->HomeTeam->getName()." ".$game->getHomeTeamScore()." x ".$game->getAwayTeamScore()." ".$game->AwayTeam->getName();
+          echo "<hr />";
+        }
+      }
+      //echo "<hr />";
+    }
+    die();
   }
 
   public function executeImport(sfWebRequest $request)

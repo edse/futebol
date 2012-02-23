@@ -161,16 +161,16 @@ Game:
     home_team_name:           { type: string(255), notnull: true }
     home_team_initials:       { type: string(255), notnull: true }
     home_team_slug:           { type: string(255), notnull: true }
-    home_team_score:          { type: integer }
-    home_team_penalty_score:  { type: integer }
+    home_team_score:          { type: integer, default: 0 }
+    home_team_penalty_score:  { type: integer, default: 0 }
     away_team_id:             { type: integer }
     away_team_ext_id:         { type: integer }
     away_team_logo:           { type: string(255), notnull: true }
     away_team_name:           { type: string(255), notnull: true }
     away_team_initials:       { type: string(255), notnull: true }
     away_team_slug:           { type: string(255), notnull: true }
-    away_team_score:          { type: integer }
-    away_team_penalty_score:  { type: integer }
+    away_team_score:          { type: integer, default: 0 }
+    away_team_penalty_score:  { type: integer, default: 0 }
     stadium_name:             { type: string(255), notnull: true }
     stadium_id:               { type: integer }
     stadium_ext_id:           { type: integer }
