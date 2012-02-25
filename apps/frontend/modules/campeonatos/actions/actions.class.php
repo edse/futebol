@@ -200,53 +200,55 @@ class campeonatosActions extends sfActions
       $xml = new SimpleXMLElement(file_get_contents($f->getUrl()));      
       //$contents = json_decode($c, true);
       echo $f->getUrl()."<br>";
-      foreach($xml->channel as $key => $value) {
-        //echo "<br>".$key." = ".count($value);
-        //echo "<br>".$value["data"]." - ".count($value["materias"]);
-        //echo "<pre>";
-        foreach($value->item as $k => $v) {
-          //var_dump($v);
-
-          $asset = Doctrine::getTable('Asset')->findOneByTitle($v->title);
-
-          if(!$asset)
-            $asset = new Asset();
-
-          $asset->setAssetTypeId(1);
-          $asset->setTitle($v->title);
-          $asset->setDescription($v->description);
-          $asset->setTournaments($f->Tournaments);
-          $asset->setTeams($f->Teams);
-          $asset->setGames($f->Games);
-          $asset->setDateStart(date("Y-m-d H:i:s", strtotime($v->pubDate)));
-          $asset->setUserId(1);
-          $asset->setIsActive(true);
-          $asset->save();
-          
-          echo "<pre>";
-          var_dump($v);
-          echo "</pre>";
-          
-          // create HTML DOM
-          $html = file_get_html($v->link);
-          if($html){
-            // get news block
-            foreach($html->find('div#materia-letra') as $article) {
-              // get title
-              //$item['title'] = trim($article->find('h3', 0)->plaintext);
-              // get details
-              $item = trim($article);
-              if(!$asset->AssetContent)
-                $asset->AssetContent = new AssetContent();
-              $asset->AssetContent->setContent($item);
-              $asset->AssetContent->setSource($f->getSiteName());
-              $asset->AssetContent->save();
+      if($xml){
+        foreach($xml->channel as $key => $value) {
+          //echo "<br>".$key." = ".count($value);
+          //echo "<br>".$value["data"]." - ".count($value["materias"]);
+          //echo "<pre>";
+          foreach($value->item as $k => $v) {
+            //var_dump($v);
+  
+            $asset = Doctrine::getTable('Asset')->findOneByTitle($v->title);
+  
+            if(!$asset)
+              $asset = new Asset();
+  
+            $asset->setAssetTypeId(1);
+            $asset->setTitle($v->title);
+            $asset->setDescription($v->description);
+            $asset->setTournaments($f->Tournaments);
+            $asset->setTeams($f->Teams);
+            $asset->setGames($f->Games);
+            $asset->setDateStart(date("Y-m-d H:i:s", strtotime($v->pubDate)));
+            $asset->setUserId(1);
+            $asset->setIsActive(true);
+            $asset->save();
+            
+            echo "<pre>";
+            var_dump($v);
+            echo "</pre>";
+            
+            // create HTML DOM
+            $html = file_get_html($v->link);
+            if($html){
+              // get news block
+              foreach($html->find('div#materia-letra') as $article) {
+                // get title
+                //$item['title'] = trim($article->find('h3', 0)->plaintext);
+                // get details
+                $item = trim($article);
+                if(!$asset->AssetContent)
+                  $asset->AssetContent = new AssetContent();
+                $asset->AssetContent->setContent($item);
+                $asset->AssetContent->setSource($f->getSiteName());
+                $asset->AssetContent->save();
+              }
+              // clean up memory
+              $html->clear();
+              unset($html);
             }
-            // clean up memory
-            $html->clear();
-            unset($html);
+            echo "<hr />";
           }
-          echo "<hr />";
         }
       }
     }
