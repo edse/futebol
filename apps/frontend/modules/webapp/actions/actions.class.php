@@ -58,6 +58,12 @@ class webappActions extends sfActions
       $this->user->save();
       $this->getUser()->setFlash('info', 'User activate');
       $this->redirect('@default?module=webapp&action=home');
+    }else{
+      $this->times = Doctrine_Query::create()
+        ->select('t.*')
+        ->from('Team t')
+        ->orderBy('t.name')
+        ->execute();
     }
   }
 

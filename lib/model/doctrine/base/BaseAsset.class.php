@@ -17,6 +17,9 @@
  * @property AssetType $AssetType
  * @property sfGuardUser $sfGuardUser
  * @property Doctrine_Collection $RelatedAssets
+ * @property Doctrine_Collection $Teams
+ * @property Doctrine_Collection $Tournaments
+ * @property Doctrine_Collection $Games
  * @property AssetContent $AssetContent
  * @property AssetImage $AssetImage
  * @property AssetVideo $AssetVideo
@@ -42,6 +45,9 @@
  * @method AssetType           getAssetType()          Returns the current record's "AssetType" value
  * @method sfGuardUser         getSfGuardUser()        Returns the current record's "sfGuardUser" value
  * @method Doctrine_Collection getRelatedAssets()      Returns the current record's "RelatedAssets" collection
+ * @method Doctrine_Collection getTeams()              Returns the current record's "Teams" collection
+ * @method Doctrine_Collection getTournaments()        Returns the current record's "Tournaments" collection
+ * @method Doctrine_Collection getGames()              Returns the current record's "Games" collection
  * @method AssetContent        getAssetContent()       Returns the current record's "AssetContent" value
  * @method AssetImage          getAssetImage()         Returns the current record's "AssetImage" value
  * @method AssetVideo          getAssetVideo()         Returns the current record's "AssetVideo" value
@@ -66,6 +72,9 @@
  * @method Asset               setAssetType()          Sets the current record's "AssetType" value
  * @method Asset               setSfGuardUser()        Sets the current record's "sfGuardUser" value
  * @method Asset               setRelatedAssets()      Sets the current record's "RelatedAssets" collection
+ * @method Asset               setTeams()              Sets the current record's "Teams" collection
+ * @method Asset               setTournaments()        Sets the current record's "Tournaments" collection
+ * @method Asset               setGames()              Sets the current record's "Games" collection
  * @method Asset               setAssetContent()       Sets the current record's "AssetContent" value
  * @method Asset               setAssetImage()         Sets the current record's "AssetImage" value
  * @method Asset               setAssetVideo()         Sets the current record's "AssetVideo" value
@@ -149,6 +158,21 @@ abstract class BaseAsset extends sfDoctrineRecord
         $this->hasMany('RelatedAsset as RelatedAssets', array(
              'local' => 'id',
              'foreign' => 'asset_id'));
+
+        $this->hasMany('Team as Teams', array(
+             'refClass' => 'TeamAsset',
+             'local' => 'asset_id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('Tournament as Tournaments', array(
+             'refClass' => 'TournamentAsset',
+             'local' => 'asset_id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('Game as Games', array(
+             'refClass' => 'GameAsset',
+             'local' => 'asset_id',
+             'foreign' => 'game_id'));
 
         $this->hasOne('AssetContent', array(
              'local' => 'id',

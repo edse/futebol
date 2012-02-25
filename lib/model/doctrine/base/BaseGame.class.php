@@ -37,71 +37,156 @@
  * @property Team $HomeTeam
  * @property Team $AwayTeam
  * @property Stadium $Stadium
+ * @property Doctrine_Collection $Feed
+ * @property Doctrine_Collection $Feeds
+ * @property Doctrine_Collection $Asset
  * 
- * @method integer           getTournamentId()            Returns the current record's "tournament_id" value
- * @method integer           getTournamentEditionId()     Returns the current record's "tournament_edition_id" value
- * @method integer           getGameExtId()               Returns the current record's "game_ext_id" value
- * @method timestamp         getDateStart()               Returns the current record's "date_start" value
- * @method string            getDate()                    Returns the current record's "date" value
- * @method string            getTime()                    Returns the current record's "time" value
- * @method string            getRound()                   Returns the current record's "round" value
- * @method integer           getHomeTeamId()              Returns the current record's "home_team_id" value
- * @method integer           getHomeTeamExtId()           Returns the current record's "home_team_ext_id" value
- * @method string            getHomeTeamLogo()            Returns the current record's "home_team_logo" value
- * @method string            getHomeTeamName()            Returns the current record's "home_team_name" value
- * @method string            getHomeTeamInitials()        Returns the current record's "home_team_initials" value
- * @method string            getHomeTeamSlug()            Returns the current record's "home_team_slug" value
- * @method integer           getHomeTeamScore()           Returns the current record's "home_team_score" value
- * @method integer           getHomeTeamPenaltyScore()    Returns the current record's "home_team_penalty_score" value
- * @method integer           getAwayTeamId()              Returns the current record's "away_team_id" value
- * @method integer           getAwayTeamExtId()           Returns the current record's "away_team_ext_id" value
- * @method string            getAwayTeamLogo()            Returns the current record's "away_team_logo" value
- * @method string            getAwayTeamName()            Returns the current record's "away_team_name" value
- * @method string            getAwayTeamInitials()        Returns the current record's "away_team_initials" value
- * @method string            getAwayTeamSlug()            Returns the current record's "away_team_slug" value
- * @method integer           getAwayTeamScore()           Returns the current record's "away_team_score" value
- * @method integer           getAwayTeamPenaltyScore()    Returns the current record's "away_team_penalty_score" value
- * @method string            getStadiumName()             Returns the current record's "stadium_name" value
- * @method integer           getStadiumId()               Returns the current record's "stadium_id" value
- * @method integer           getStadiumExtId()            Returns the current record's "stadium_ext_id" value
- * @method string            getUrl()                     Returns the current record's "url" value
- * @method TournamentEdition getTournamentEdition()       Returns the current record's "TournamentEdition" value
- * @method Tournament        getTournament()              Returns the current record's "Tournament" value
- * @method Team              getHomeTeam()                Returns the current record's "HomeTeam" value
- * @method Team              getAwayTeam()                Returns the current record's "AwayTeam" value
- * @method Stadium           getStadium()                 Returns the current record's "Stadium" value
- * @method Game              setTournamentId()            Sets the current record's "tournament_id" value
- * @method Game              setTournamentEditionId()     Sets the current record's "tournament_edition_id" value
- * @method Game              setGameExtId()               Sets the current record's "game_ext_id" value
- * @method Game              setDateStart()               Sets the current record's "date_start" value
- * @method Game              setDate()                    Sets the current record's "date" value
- * @method Game              setTime()                    Sets the current record's "time" value
- * @method Game              setRound()                   Sets the current record's "round" value
- * @method Game              setHomeTeamId()              Sets the current record's "home_team_id" value
- * @method Game              setHomeTeamExtId()           Sets the current record's "home_team_ext_id" value
- * @method Game              setHomeTeamLogo()            Sets the current record's "home_team_logo" value
- * @method Game              setHomeTeamName()            Sets the current record's "home_team_name" value
- * @method Game              setHomeTeamInitials()        Sets the current record's "home_team_initials" value
- * @method Game              setHomeTeamSlug()            Sets the current record's "home_team_slug" value
- * @method Game              setHomeTeamScore()           Sets the current record's "home_team_score" value
- * @method Game              setHomeTeamPenaltyScore()    Sets the current record's "home_team_penalty_score" value
- * @method Game              setAwayTeamId()              Sets the current record's "away_team_id" value
- * @method Game              setAwayTeamExtId()           Sets the current record's "away_team_ext_id" value
- * @method Game              setAwayTeamLogo()            Sets the current record's "away_team_logo" value
- * @method Game              setAwayTeamName()            Sets the current record's "away_team_name" value
- * @method Game              setAwayTeamInitials()        Sets the current record's "away_team_initials" value
- * @method Game              setAwayTeamSlug()            Sets the current record's "away_team_slug" value
- * @method Game              setAwayTeamScore()           Sets the current record's "away_team_score" value
- * @method Game              setAwayTeamPenaltyScore()    Sets the current record's "away_team_penalty_score" value
- * @method Game              setStadiumName()             Sets the current record's "stadium_name" value
- * @method Game              setStadiumId()               Sets the current record's "stadium_id" value
- * @method Game              setStadiumExtId()            Sets the current record's "stadium_ext_id" value
- * @method Game              setUrl()                     Sets the current record's "url" value
- * @method Game              setTournamentEdition()       Sets the current record's "TournamentEdition" value
- * @method Game              setTournament()              Sets the current record's "Tournament" value
- * @method Game              setHomeTeam()                Sets the current record's "HomeTeam" value
- * @method Game              setAwayTeam()                Sets the current record's "AwayTeam" value
- * @method Game              setStadium()                 Sets the current record's "Stadium" value
+ * @method integer             getTournamentId()            Returns the current record's "tournament_id" value
+ * @method integer             getTournamentEditionId()     Returns the current record's "tournament_edition_id" value
+ * @method integer             getGameExtId()               Returns the current record's "game_ext_id" value
+ * @method timestamp           getDateStart()               Returns the current record's "date_start" value
+ * @method string              getDate()                    Returns the current record's "date" value
+ * @method string              getTime()                    Returns the current record's "time" value
+ * @method string              getRound()                   Returns the current record's "round" value
+ * @method integer             getHomeTeamId()              Returns the current record's "home_team_id" value
+ * @method integer             getHomeTeamExtId()           Returns the current record's "home_team_ext_id" value
+ * @method string              getHomeTeamLogo()            Returns the current record's "home_team_logo" value
+ * @method string              getHomeTeamName()            Returns the current record's "home_team_name" value
+ * @method string              getHomeTeamInitials()        Returns the current record's "home_team_initials" value
+ * @method string              getHomeTeamSlug()            Returns the current record's "home_team_slug" value
+ * @method integer             getHomeTeamScore()           Returns the current record's "home_team_score" value
+ * @method integer             getHomeTeamPenaltyScore()    Returns the current record's "home_team_penalty_score" value
+ * @method integer             getAwayTeamId()              Returns the current record's "away_team_id" value
+ * @method integer             getAwayTeamExtId()           Returns the current record's "away_team_ext_id" value
+ * @method string              getAwayTeamLogo()            Returns the current record's "away_team_logo" value
+ * @method string              getAwayTeamName()            Returns the current record's "away_team_name" value
+ * @method string              getAwayTeamInitials()        Returns the current record's "away_team_initials" value
+ * @method string              getAwayTeamSlug()            Returns the current record's "away_team_slug" value
+ * @method integer             getAwayTeamScore()           Returns the current record's "away_team_score" value
+ * @method integer             getAwayTeamPenaltyScore()    Returns the current record's "away_team_penalty_score" value
+ * @method string              getStadiumName()             Returns the current record's "stadium_name" value
+ * @method integer             getStadiumId()               Returns the current record's "stadium_id" value
+ * @method integer             getStadiumExtId()            Returns the current record's "stadium_ext_id" value
+ * @method string              getUrl()                     Returns the current record's "url" value
+ * @method TournamentEdition   getTournamentEdition()       Returns the current record's "TournamentEdition" value
+ * @method Tournament          getTournament()              Returns the current record's "Tournament" value
+ * @method Team                getHomeTeam()                Returns the current record's "HomeTeam" value
+ * @method Team                getAwayTeam()                Returns the current record's "AwayTeam" value
+ * @method Stadium             getStadium()                 Returns the current record's "Stadium" value
+ * @method Doctrine_Collection getFeed()                    Returns the current record's "Feed" collection
+ * @method Doctrine_Collection getFeeds()                   Returns the current record's "Feeds" collection
+ * @method Doctrine_Collection getAssets()                  Returns the current record's "Assets" collection
+ * @method Doctrine_Collection getAsset()                   Returns the current record's "Asset" collection
+ * @method Game                setTournamentId()            Sets the current record's "tournament_id" value
+ * @method Game                setTournamentEditionId()     Sets the current record's "tournament_edition_id" value
+ * @method Game                setGameExtId()               Sets the current record's "game_ext_id" value
+ * @method Game                setDateStart()               Sets the current record's "date_start" value
+ * @method Game                setDate()                    Sets the current record's "date" value
+ * @method Game                setTime()                    Sets the current record's "time" value
+ * @method Game                setRound()                   Sets the current record's "round" value
+ * @method Game                setHomeTeamId()              Sets the current record's "home_team_id" value
+ * @method Game                setHomeTeamExtId()           Sets the current record's "home_team_ext_id" value
+ * @method Game                setHomeTeamLogo()            Sets the current record's "home_team_logo" value
+ * @method Game                setHomeTeamName()            Sets the current record's "home_team_name" value
+ * @method Game                setHomeTeamInitials()        Sets the current record's "home_team_initials" value
+ * @method Game                setHomeTeamSlug()            Sets the current record's "home_team_slug" value
+ * @method Game                setHomeTeamScore()           Sets the current record's "home_team_score" value
+ * @method Game                setHomeTeamPenaltyScore()    Sets the current record's "home_team_penalty_score" value
+ * @method Game                setAwayTeamId()              Sets the current record's "away_team_id" value
+ * @method Game                setAwayTeamExtId()           Sets the current record's "away_team_ext_id" value
+ * @method Game                setAwayTeamLogo()            Sets the current record's "away_team_logo" value
+ * @method Game                setAwayTeamName()            Sets the current record's "away_team_name" value
+ * @method Game                setAwayTeamInitials()        Sets the current record's "away_team_initials" value
+ * @method Game                setAwayTeamSlug()            Sets the current record's "away_team_slug" value
+ * @method Game                setAwayTeamScore()           Sets the current record's "away_team_score" value
+ * @method Game                setAwayTeamPenaltyScore()    Sets the current record's "away_team_penalty_score" value
+ * @method Game                setStadiumName()             Sets the current record's "stadium_name" value
+ * @method Game                setStadiumId()               Sets the current record's "stadium_id" value
+ * @method Game                setStadiumExtId()            Sets the current record's "stadium_ext_id" value
+ * @method Game                setUrl()                     Sets the current record's "url" value
+ * @method Game                setTournamentEdition()       Sets the current record's "TournamentEdition" value
+ * @method Game                setTournament()              Sets the current record's "Tournament" value
+ * @method Game                setHomeTeam()                Sets the current record's "HomeTeam" value
+ * @method Game                setAwayTeam()                Sets the current record's "AwayTeam" value
+ * @method Game                setStadium()                 Sets the current record's "Stadium" value
+ * @method Game                setFeed()                    Sets the current record's "Feed" collection
+ * @method Game                setFeeds()                   Sets the current record's "Feeds" collection
+ * @method Game                setAssets()                  Sets the current record's "Assets" collection
+ * @method Game                setAsset()                   Sets the current record's "Asset" collections
+ * @property Doctrine_Collection $Asset
+ * 
+ * @method integer             getTournamentId()            Returns the current record's "tournament_id" value
+ * @method integer             getTournamentEditionId()     Returns the current record's "tournament_edition_id" value
+ * @method integer             getGameExtId()               Returns the current record's "game_ext_id" value
+ * @method timestamp           getDateStart()               Returns the current record's "date_start" value
+ * @method string              getDate()                    Returns the current record's "date" value
+ * @method string              getTime()                    Returns the current record's "time" value
+ * @method string              getRound()                   Returns the current record's "round" value
+ * @method integer             getHomeTeamId()              Returns the current record's "home_team_id" value
+ * @method integer             getHomeTeamExtId()           Returns the current record's "home_team_ext_id" value
+ * @method string              getHomeTeamLogo()            Returns the current record's "home_team_logo" value
+ * @method string              getHomeTeamName()            Returns the current record's "home_team_name" value
+ * @method string              getHomeTeamInitials()        Returns the current record's "home_team_initials" value
+ * @method string              getHomeTeamSlug()            Returns the current record's "home_team_slug" value
+ * @method integer             getHomeTeamScore()           Returns the current record's "home_team_score" value
+ * @method integer             getHomeTeamPenaltyScore()    Returns the current record's "home_team_penalty_score" value
+ * @method integer             getAwayTeamId()              Returns the current record's "away_team_id" value
+ * @method integer             getAwayTeamExtId()           Returns the current record's "away_team_ext_id" value
+ * @method string              getAwayTeamLogo()            Returns the current record's "away_team_logo" value
+ * @method string              getAwayTeamName()            Returns the current record's "away_team_name" value
+ * @method string              getAwayTeamInitials()        Returns the current record's "away_team_initials" value
+ * @method string              getAwayTeamSlug()            Returns the current record's "away_team_slug" value
+ * @method integer             getAwayTeamScore()           Returns the current record's "away_team_score" value
+ * @method integer             getAwayTeamPenaltyScore()    Returns the current record's "away_team_penalty_score" value
+ * @method string              getStadiumName()             Returns the current record's "stadium_name" value
+ * @method integer             getStadiumId()               Returns the current record's "stadium_id" value
+ * @method integer             getStadiumExtId()            Returns the current record's "stadium_ext_id" value
+ * @method string              getUrl()                     Returns the current record's "url" value
+ * @method TournamentEdition   getTournamentEdition()       Returns the current record's "TournamentEdition" value
+ * @method Tournament          getTournament()              Returns the current record's "Tournament" value
+ * @method Team                getHomeTeam()                Returns the current record's "HomeTeam" value
+ * @method Team                getAwayTeam()                Returns the current record's "AwayTeam" value
+ * @method Stadium             getStadium()                 Returns the current record's "Stadium" value
+ * @method Doctrine_Collection getFeed()                    Returns the current record's "Feed" collection
+ * @method Doctrine_Collection getFeeds()                   Returns the current record's "Feeds" collection
+ * @method Doctrine_Collection getAssets()                  Returns the current record's "Assets" collection
+ * @method Doctrine_Collection getAsset()                   Returns the current record's "Asset" collection
+ * @method Game                setTournamentId()            Sets the current record's "tournament_id" value
+ * @method Game                setTournamentEditionId()     Sets the current record's "tournament_edition_id" value
+ * @method Game                setGameExtId()               Sets the current record's "game_ext_id" value
+ * @method Game                setDateStart()               Sets the current record's "date_start" value
+ * @method Game                setDate()                    Sets the current record's "date" value
+ * @method Game                setTime()                    Sets the current record's "time" value
+ * @method Game                setRound()                   Sets the current record's "round" value
+ * @method Game                setHomeTeamId()              Sets the current record's "home_team_id" value
+ * @method Game                setHomeTeamExtId()           Sets the current record's "home_team_ext_id" value
+ * @method Game                setHomeTeamLogo()            Sets the current record's "home_team_logo" value
+ * @method Game                setHomeTeamName()            Sets the current record's "home_team_name" value
+ * @method Game                setHomeTeamInitials()        Sets the current record's "home_team_initials" value
+ * @method Game                setHomeTeamSlug()            Sets the current record's "home_team_slug" value
+ * @method Game                setHomeTeamScore()           Sets the current record's "home_team_score" value
+ * @method Game                setHomeTeamPenaltyScore()    Sets the current record's "home_team_penalty_score" value
+ * @method Game                setAwayTeamId()              Sets the current record's "away_team_id" value
+ * @method Game                setAwayTeamExtId()           Sets the current record's "away_team_ext_id" value
+ * @method Game                setAwayTeamLogo()            Sets the current record's "away_team_logo" value
+ * @method Game                setAwayTeamName()            Sets the current record's "away_team_name" value
+ * @method Game                setAwayTeamInitials()        Sets the current record's "away_team_initials" value
+ * @method Game                setAwayTeamSlug()            Sets the current record's "away_team_slug" value
+ * @method Game                setAwayTeamScore()           Sets the current record's "away_team_score" value
+ * @method Game                setAwayTeamPenaltyScore()    Sets the current record's "away_team_penalty_score" value
+ * @method Game                setStadiumName()             Sets the current record's "stadium_name" value
+ * @method Game                setStadiumId()               Sets the current record's "stadium_id" value
+ * @method Game                setStadiumExtId()            Sets the current record's "stadium_ext_id" value
+ * @method Game                setUrl()                     Sets the current record's "url" value
+ * @method Game                setTournamentEdition()       Sets the current record's "TournamentEdition" value
+ * @method Game                setTournament()              Sets the current record's "Tournament" value
+ * @method Game                setHomeTeam()                Sets the current record's "HomeTeam" value
+ * @method Game                setAwayTeam()                Sets the current record's "AwayTeam" value
+ * @method Game                setStadium()                 Sets the current record's "Stadium" value
+ * @method Game                setFeed()                    Sets the current record's "Feed" collection
+ * @method Game                setFeeds()                   Sets the current record's "Feeds" collection
+ * @method Game                setAssets()                  Sets the current record's "Assets" collection
+ * @method Game                setAsset()                   Sets the current record's "Asset" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -169,9 +254,11 @@ abstract class BaseGame extends sfDoctrineRecord
              ));
         $this->hasColumn('home_team_score', 'integer', null, array(
              'type' => 'integer',
+             'default' => 0,
              ));
         $this->hasColumn('home_team_penalty_score', 'integer', null, array(
              'type' => 'integer',
+             'default' => 0,
              ));
         $this->hasColumn('away_team_id', 'integer', null, array(
              'type' => 'integer',
@@ -201,9 +288,11 @@ abstract class BaseGame extends sfDoctrineRecord
              ));
         $this->hasColumn('away_team_score', 'integer', null, array(
              'type' => 'integer',
+             'default' => 0,
              ));
         $this->hasColumn('away_team_penalty_score', 'integer', null, array(
              'type' => 'integer',
+             'default' => 0,
              ));
         $this->hasColumn('stadium_name', 'string', 255, array(
              'type' => 'string',
@@ -249,6 +338,24 @@ abstract class BaseGame extends sfDoctrineRecord
         $this->hasOne('Stadium', array(
              'local' => 'stadium_id',
              'foreign' => 'id'));
+
+        $this->hasMany('Feed', array(
+             'refClass' => 'GameFeed',
+             'local' => 'game_id',
+             'foreign' => 'feed_id'));
+
+        $this->hasMany('GameFeed as Feeds', array(
+             'local' => 'id',
+             'foreign' => 'game_id'));
+
+        $this->hasMany('GameAsset as Assets', array(
+             'local' => 'id',
+             'foreign' => 'game_id'));
+
+        $this->hasMany('Asset', array(
+             'refClass' => 'GameAsset',
+             'local' => 'game_id',
+             'foreign' => 'asset_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $this->actAs($timestampable0);

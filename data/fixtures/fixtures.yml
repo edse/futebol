@@ -25,6 +25,15 @@ Team:
     initials: SPO
     slug: sao-paulo
 
+Team:
+  saopaulo:
+    official_name: São Paulo Futebol Clube
+    name: São Paulo
+    nickname: São Paulo
+    logo: sao_paulo_30x30.png
+    initials: SPO
+    slug: sao-paulo
+
 ##### SFGUARD #####
 
 sfGuardUser:
@@ -64,3 +73,135 @@ sfGuardPermission:
   Permission_user:
     name:           user
     description:    User permission
+    
+## Asset Types ##
+
+AssetType:
+  content:
+    title: Conteúdo
+    slug: content
+    model: Content
+    is_active: 1
+    is_visible: 1
+  image:
+    title: Imagem
+    slug: image
+    model: Image
+    upload_input: 1
+    is_active: 1
+    is_visible: 0
+  image_gallery:
+    slug: image-gallery
+    title: Galeria de Imagens
+    model: ImageGallery
+    is_active: 1
+    is_visible: 1
+  audio:
+    slug: audio
+    title: Áudio 
+    model: Audio
+    upload_input: 1
+    is_active: 1
+    is_visible: 0
+  audio_gallery:
+    slug: audio-gallery
+    title: Galeria de Áudios (Podcasts)
+    model: AudioGallery
+    is_active: 1
+    is_visible: 1
+  video:
+    slug: video
+    title: Vídeo
+    model: Video
+    upload_input: 1
+    is_active: 1
+    is_visible: 0
+  video_gallery:
+    slug: video-gallery
+    title: Galeria de Vídeos
+    model: VideoGallery
+    upload_input: 1
+    is_active: 1
+    is_visible: 0
+  file:
+    slug: file
+    title: File
+    model: File
+    upload_input: 1
+    is_active: 1
+    is_visible: 0
+  questionnaire:
+    slug: questionnaire
+    title: Questionario
+    model: Questionnaire
+    is_active: 1
+    is_visible: 1
+  question:
+    slug: question
+    title: Pergunta
+    model: Question
+    is_active: 1
+    is_visible: 0
+  answer:
+    slug: answer
+    title: Resposta
+    model: Answer
+    is_active: 1
+    is_visible: 0
+  broadcast:
+    slug: broadcast
+    title: Transmissão
+    model: Broadcast
+    is_active: 1
+    is_visible: 1
+  cam:
+    slug: cam
+    title: Câmera
+    model: Cam
+    is_active: 1
+    is_visible: 0
+  season:
+    slug: season
+    title: Temporada
+    model: Season
+    is_active: 1
+    is_visible: 1
+  episode:
+    slug: episode
+    title: Episódio
+    model: Episode
+    is_active: 1
+    is_visible: 1
+  event:
+    slug: event
+    title: Evento
+    model: Event
+    is_active: 1
+    is_visible: 1
+  link:
+    slug: link
+    title: Link
+    model: Link
+    is_active: 1
+    is_visible: 0
+  tweet:
+    slug: tweet
+    title: Tweet
+    model: Tweet
+    is_active: 1
+    is_visible: 0
+  tweet_monitor:
+    slug: tweet-monitor
+    title: Monitor do Twitter
+    model: TweetMonitor
+    upload_input: 1
+    is_active: 0
+    is_visible: 1
+  person:
+    slug: person
+    title: Pessoa
+    model: Person
+    is_active: 1
+    is_visible: 1
+
+

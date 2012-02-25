@@ -125,20 +125,6 @@
 
   </div> 
   
-  <?php /*
-  <div data-role="footer" class="nav-glyphish-example"> 
-    <div data-role="navbar" data-grid="d" data-theme="e" class="nav-glyphish-example"> 
-      <ul> 
-        <li><a href="#" id="chat" data-icon="custom" data-theme="b">Chat</a></li> 
-        <li><a href="#" id="email" data-icon="custom" data-theme="b">Email</a></li> 
-        <li><a href="#" id="skull" data-icon="custom" data-theme="b">Danger</a></li> 
-        <li><a href="#" id="beer" data-icon="custom" data-theme="b">Beer</a></li> 
-        <li><a href="#" id="coffee" data-icon="custom" data-theme="b">Coffee</a></li> 
-      </ul> 
-    </div> 
-  </div>
-  */ ?>
-
   <?php include_partial('global/footer') ?>
 
 </div> 

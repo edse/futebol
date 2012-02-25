@@ -1,5 +1,101 @@
 detect_relations: true
 
+Feed:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~, Sluggable: fields: [name] canUpdate: true unique: true, }
+  columns:
+    name:               { type: string(255), notnull: true }
+    description:        { type: string(255), notnull: true }
+    type:               { type: string(255) }
+    url:                { type: string(255), notnull: true }
+    site_name:          { type: string(255) }
+    site_url:           { type: string(255) }
+    is_active:          { type: boolean, notnull: true, default: 0 }
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+  relations:
+    Tournaments: { class: Tournament, refClass: TournamentFeed, foreign: tournament_id }
+    Teams: { class: Team, refClass: TeamFeed, foreign: team_id }
+    Games: { class: Game, refClass: GameFeed, foreign: game_id }
+
+TournamentFeed:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    tournament_id:  { type: integer, notnull: true }
+    feed_id:  { type: integer, notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }
+    display_order: { type: integer }
+  relations:
+    Tournament:
+      class: Tournament
+      local: tournament_id
+      foreignAlias: Feeds
+      onDelete: CASCADE
+    Feed:
+      class: Feed
+      local: feed_id
+      foreignAlias: Tournaments
+      onDelete: CASCADE
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+
+TeamFeed:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    team_id:  { type: integer, notnull: true }
+    feed_id:  { type: integer, notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }
+    display_order: { type: integer }
+  relations:
+    Team:
+      class: Team
+      local: team_id
+      foreignAlias: Feeds
+      onDelete: CASCADE
+    Feed:
+      class: Feed
+      local: feed_id
+      foreignAlias: Teams
+      onDelete: CASCADE
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+
+GameFeed:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    game_id:  { type: integer, notnull: true }
+    feed_id:  { type: integer, notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }
+    display_order: { type: integer }
+  relations:
+    Game:
+      class: Game
+      local: game_id
+      foreignAlias: Feeds
+      onDelete: CASCADE
+    Feed:
+      class: Feed
+      local: feed_id
+      foreignAlias: Games
+      onDelete: CASCADE
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+
 Tournament:
   options:
     collate: utf8_unicode_ci
@@ -125,6 +221,19 @@ Team:
     logo:               { type: string(255), notnull: true }
     initials:           { type: string(255), notnull: true }
     description:        { type: string(255), notnull: true }
+  relations:
+    Users: { class: sfGuardUser, local: team_id, foreign: user_id, refClass: TeamUser, foreignAlias: Users }
+
+TeamUser:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  columns:
+    team_id: { type: integer, primary: true }
+    user_id:  { type: integer, primary: true }
+  relations:
+    Team: { onDelete: CASCADE, local: team_id, foreign: id }
+    sfGuardUser: { local: user_id, foreign: id, foreignAlias: sfGuardUser }
 
 Stadium:
   options:
@@ -181,6 +290,81 @@ Game:
     HomeTeam: { local: home_team_id, foreign: id, class: Team, foreignAlias: HomeGames }
     AwayTeam: { local: away_team_id, foreign: id, class: Team, foreignAlias: AwayGames } 
 
+TeamAsset:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    team_id:  { type: integer, notnull: true }
+    asset_id:  { type: integer, notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }
+    display_order: { type: integer }
+  relations:
+    Team:
+      class: Team
+      local: team_id
+      foreignAlias: Assets
+      onDelete: CASCADE
+    Asset:
+      class: Asset
+      local: asset_id
+      foreignAlias: Teams
+      onDelete: CASCADE
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+
+TournamentAsset:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    tournament_id:  { type: integer, notnull: true }
+    asset_id:  { type: integer, notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }
+    display_order: { type: integer }
+  relations:
+    Tournament:
+      class: Tournament
+      local: tournament_id
+      foreignAlias: Assets
+      onDelete: CASCADE
+    Asset:
+      class: Asset
+      local: asset_id
+      foreignAlias: Tournaments
+      onDelete: CASCADE
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+
+GameAsset:
+  options:
+    collate: utf8_unicode_ci
+    charset: utf8
+  actAs: { Timestampable: ~ }
+  columns:
+    game_id:  { type: integer, notnull: true }
+    asset_id:  { type: integer, notnull: true }
+    is_active: { type: boolean, notnull: true, default: 0 }
+    display_order: { type: integer }
+  relations:
+    Tournament:
+      class: Game
+      local: game_id
+      foreignAlias: Assets
+      onDelete: CASCADE
+    Asset:
+      class: Asset
+      local: asset_id
+      foreignAlias: Games
+      onDelete: CASCADE
+  indexes:
+    is_active_idx:
+      fields: [is_active]
+
 ###########
 # CMS
 ###########
@@ -213,6 +397,9 @@ Asset:
       local: id
       foreign: parent_asset_id
       alias: RelatedAssets
+    Teams: { class: Team, refClass: TeamAsset }
+    Tournaments: { class: Tournament, refClass: TournamentAsset }
+    Games: { class: Game, refClass: GameAsset }
   indexes:
     is_active_idx:
       fields: [is_active]

@@ -12,11 +12,16 @@
  * @property string $logo
  * @property string $initials
  * @property string $description
+ * @property Doctrine_Collection $Users
  * @property Doctrine_Collection $sfGuardUsers
+ * @property Doctrine_Collection $Feed
+ * @property Doctrine_Collection $Feeds
  * @property Doctrine_Collection $TournamentPhaseGroupTeams
  * @property Doctrine_Collection $TournamentStandings
+ * @property Doctrine_Collection $TeamUser
  * @property Doctrine_Collection $HomeGames
  * @property Doctrine_Collection $AwayGames
+ * @property Doctrine_Collection $Asset
  * 
  * @method integer             getTeamExtId()                 Returns the current record's "team_ext_id" value
  * @method string              getOfficialName()              Returns the current record's "official_name" value
@@ -25,11 +30,17 @@
  * @method string              getLogo()                      Returns the current record's "logo" value
  * @method string              getInitials()                  Returns the current record's "initials" value
  * @method string              getDescription()               Returns the current record's "description" value
+ * @method Doctrine_Collection getUsers()                     Returns the current record's "Users" collection
  * @method Doctrine_Collection getSfGuardUsers()              Returns the current record's "sfGuardUsers" collection
+ * @method Doctrine_Collection getFeed()                      Returns the current record's "Feed" collection
+ * @method Doctrine_Collection getFeeds()                     Returns the current record's "Feeds" collection
  * @method Doctrine_Collection getTournamentPhaseGroupTeams() Returns the current record's "TournamentPhaseGroupTeams" collection
  * @method Doctrine_Collection getTournamentStandings()       Returns the current record's "TournamentStandings" collection
+ * @method Doctrine_Collection getTeamUser()                  Returns the current record's "TeamUser" collection
  * @method Doctrine_Collection getHomeGames()                 Returns the current record's "HomeGames" collection
  * @method Doctrine_Collection getAwayGames()                 Returns the current record's "AwayGames" collection
+ * @method Doctrine_Collection getAssets()                    Returns the current record's "Assets" collection
+ * @method Doctrine_Collection getAsset()                     Returns the current record's "Asset" collection
  * @method Team                setTeamExtId()                 Sets the current record's "team_ext_id" value
  * @method Team                setOfficialName()              Sets the current record's "official_name" value
  * @method Team                setName()                      Sets the current record's "name" value
@@ -37,11 +48,55 @@
  * @method Team                setLogo()                      Sets the current record's "logo" value
  * @method Team                setInitials()                  Sets the current record's "initials" value
  * @method Team                setDescription()               Sets the current record's "description" value
+ * @method Team                setUsers()                     Sets the current record's "Users" collection
  * @method Team                setSfGuardUsers()              Sets the current record's "sfGuardUsers" collection
+ * @method Team                setFeed()                      Sets the current record's "Feed" collection
+ * @method Team                setFeeds()                     Sets the current record's "Feeds" collection
  * @method Team                setTournamentPhaseGroupTeams() Sets the current record's "TournamentPhaseGroupTeams" collection
  * @method Team                setTournamentStandings()       Sets the current record's "TournamentStandings" collection
+ * @method Team                setTeamUser()                  Sets the current record's "TeamUser" collection
  * @method Team                setHomeGames()                 Sets the current record's "HomeGames" collection
  * @method Team                setAwayGames()                 Sets the current record's "AwayGames" collection
+ * @method Team                setAssets()                    Sets the current record's "Assets" collection
+ * @method Team                setAsset()                     Sets the current record's "Asset" collections
+ * @property Doctrine_Collection $Asset
+ * 
+ * @method integer             getTeamExtId()                 Returns the current record's "team_ext_id" value
+ * @method string              getOfficialName()              Returns the current record's "official_name" value
+ * @method string              getName()                      Returns the current record's "name" value
+ * @method string              getNickname()                  Returns the current record's "nickname" value
+ * @method string              getLogo()                      Returns the current record's "logo" value
+ * @method string              getInitials()                  Returns the current record's "initials" value
+ * @method string              getDescription()               Returns the current record's "description" value
+ * @method Doctrine_Collection getUsers()                     Returns the current record's "Users" collection
+ * @method Doctrine_Collection getSfGuardUsers()              Returns the current record's "sfGuardUsers" collection
+ * @method Doctrine_Collection getFeed()                      Returns the current record's "Feed" collection
+ * @method Doctrine_Collection getFeeds()                     Returns the current record's "Feeds" collection
+ * @method Doctrine_Collection getTournamentPhaseGroupTeams() Returns the current record's "TournamentPhaseGroupTeams" collection
+ * @method Doctrine_Collection getTournamentStandings()       Returns the current record's "TournamentStandings" collection
+ * @method Doctrine_Collection getTeamUser()                  Returns the current record's "TeamUser" collection
+ * @method Doctrine_Collection getHomeGames()                 Returns the current record's "HomeGames" collection
+ * @method Doctrine_Collection getAwayGames()                 Returns the current record's "AwayGames" collection
+ * @method Doctrine_Collection getAssets()                    Returns the current record's "Assets" collection
+ * @method Doctrine_Collection getAsset()                     Returns the current record's "Asset" collection
+ * @method Team                setTeamExtId()                 Sets the current record's "team_ext_id" value
+ * @method Team                setOfficialName()              Sets the current record's "official_name" value
+ * @method Team                setName()                      Sets the current record's "name" value
+ * @method Team                setNickname()                  Sets the current record's "nickname" value
+ * @method Team                setLogo()                      Sets the current record's "logo" value
+ * @method Team                setInitials()                  Sets the current record's "initials" value
+ * @method Team                setDescription()               Sets the current record's "description" value
+ * @method Team                setUsers()                     Sets the current record's "Users" collection
+ * @method Team                setSfGuardUsers()              Sets the current record's "sfGuardUsers" collection
+ * @method Team                setFeed()                      Sets the current record's "Feed" collection
+ * @method Team                setFeeds()                     Sets the current record's "Feeds" collection
+ * @method Team                setTournamentPhaseGroupTeams() Sets the current record's "TournamentPhaseGroupTeams" collection
+ * @method Team                setTournamentStandings()       Sets the current record's "TournamentStandings" collection
+ * @method Team                setTeamUser()                  Sets the current record's "TeamUser" collection
+ * @method Team                setHomeGames()                 Sets the current record's "HomeGames" collection
+ * @method Team                setAwayGames()                 Sets the current record's "AwayGames" collection
+ * @method Team                setAssets()                    Sets the current record's "Assets" collection
+ * @method Team                setAsset()                     Sets the current record's "Asset" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -94,7 +149,21 @@ abstract class BaseTeam extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('sfGuardUser as Users', array(
+             'refClass' => 'TeamUser',
+             'local' => 'team_id',
+             'foreign' => 'user_id'));
+
         $this->hasMany('sfGuardUser as sfGuardUsers', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('Feed', array(
+             'refClass' => 'TeamFeed',
+             'local' => 'team_id',
+             'foreign' => 'feed_id'));
+
+        $this->hasMany('TeamFeed as Feeds', array(
              'local' => 'id',
              'foreign' => 'team_id'));
 
@@ -106,6 +175,10 @@ abstract class BaseTeam extends sfDoctrineRecord
              'local' => 'id',
              'foreign' => 'team_id'));
 
+        $this->hasMany('TeamUser', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
         $this->hasMany('Game as HomeGames', array(
              'local' => 'id',
              'foreign' => 'home_team_id'));
@@ -113,6 +186,15 @@ abstract class BaseTeam extends sfDoctrineRecord
         $this->hasMany('Game as AwayGames', array(
              'local' => 'id',
              'foreign' => 'away_team_id'));
+
+        $this->hasMany('TeamAsset as Assets', array(
+             'local' => 'id',
+             'foreign' => 'team_id'));
+
+        $this->hasMany('Asset', array(
+             'refClass' => 'TeamAsset',
+             'local' => 'team_id',
+             'foreign' => 'asset_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $sluggable0 = new Doctrine_Template_Sluggable();

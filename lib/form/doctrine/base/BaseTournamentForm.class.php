@@ -22,6 +22,8 @@ abstract class BaseTournamentForm extends BaseFormDoctrine
       'created_at'        => new sfWidgetFormDateTime(),
       'updated_at'        => new sfWidgetFormDateTime(),
       'slug'              => new sfWidgetFormInputText(),
+      'feed_list'         => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Feed')),
+      'asset_list'        => new sfWidgetFormDoctrineChoice(array('multiple' => true, 'model' => 'Asset')),
     ));
 
     $this->setValidators(array(
@@ -32,6 +34,8 @@ abstract class BaseTournamentForm extends BaseFormDoctrine
       'created_at'        => new sfValidatorDateTime(),
       'updated_at'        => new sfValidatorDateTime(),
       'slug'              => new sfValidatorString(array('max_length' => 255, 'required' => false)),
+      'feed_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Feed', 'required' => false)),
+      'asset_list'        => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'Asset', 'required' => false)),
     ));
 
     $this->validatorSchema->setPostValidator(
@@ -50,6 +54,106 @@ abstract class BaseTournamentForm extends BaseFormDoctrine
   public function getModelName()
   {
     return 'Tournament';
+  }
+
+  public function updateDefaultsFromObject()
+  {
+    parent::updateDefaultsFromObject();
+
+    if (isset($this->widgetSchema['feed_list']))
+    {
+      $this->setDefault('feed_list', $this->object->Feed->getPrimaryKeys());
+    }
+
+    if (isset($this->widgetSchema['asset_list']))
+    {
+      $this->setDefault('asset_list', $this->object->Asset->getPrimaryKeys());
+    }
+
+  }
+
+  protected function doSave($con = null)
+  {
+    $this->saveFeedList($con);
+    $this->saveAssetList($con);
+
+    parent::doSave($con);
+  }
+
+  public function saveFeedList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['feed_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Feed->getPrimaryKeys();
+    $values = $this->getValue('feed_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Feed', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Feed', array_values($link));
+    }
+  }
+
+  public function saveAssetList($con = null)
+  {
+    if (!$this->isValid())
+    {
+      throw $this->getErrorSchema();
+    }
+
+    if (!isset($this->widgetSchema['asset_list']))
+    {
+      // somebody has unset this widget
+      return;
+    }
+
+    if (null === $con)
+    {
+      $con = $this->getConnection();
+    }
+
+    $existing = $this->object->Asset->getPrimaryKeys();
+    $values = $this->getValue('asset_list');
+    if (!is_array($values))
+    {
+      $values = array();
+    }
+
+    $unlink = array_diff($existing, $values);
+    if (count($unlink))
+    {
+      $this->object->unlink('Asset', array_values($unlink));
+    }
+
+    $link = array_diff($values, $existing);
+    if (count($link))
+    {
+      $this->object->link('Asset', array_values($link));
+    }
   }
 
 }

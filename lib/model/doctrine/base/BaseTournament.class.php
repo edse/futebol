@@ -8,22 +8,55 @@
  * @property integer $tournament_ext_id
  * @property string $name
  * @property string $description
+ * @property Doctrine_Collection $Feed
+ * @property Doctrine_Collection $Feeds
  * @property Doctrine_Collection $TournamentEditions
  * @property Doctrine_Collection $TournamentStandings
  * @property Doctrine_Collection $Games
+ * @property Doctrine_Collection $Asset
  * 
  * @method integer             getTournamentExtId()     Returns the current record's "tournament_ext_id" value
  * @method string              getName()                Returns the current record's "name" value
  * @method string              getDescription()         Returns the current record's "description" value
+ * @method Doctrine_Collection getFeed()                Returns the current record's "Feed" collection
+ * @method Doctrine_Collection getFeeds()               Returns the current record's "Feeds" collection
  * @method Doctrine_Collection getTournamentEditions()  Returns the current record's "TournamentEditions" collection
  * @method Doctrine_Collection getTournamentStandings() Returns the current record's "TournamentStandings" collection
  * @method Doctrine_Collection getGames()               Returns the current record's "Games" collection
+ * @method Doctrine_Collection getAssets()              Returns the current record's "Assets" collection
+ * @method Doctrine_Collection getAsset()               Returns the current record's "Asset" collection
  * @method Tournament          setTournamentExtId()     Sets the current record's "tournament_ext_id" value
  * @method Tournament          setName()                Sets the current record's "name" value
  * @method Tournament          setDescription()         Sets the current record's "description" value
+ * @method Tournament          setFeed()                Sets the current record's "Feed" collection
+ * @method Tournament          setFeeds()               Sets the current record's "Feeds" collection
  * @method Tournament          setTournamentEditions()  Sets the current record's "TournamentEditions" collection
  * @method Tournament          setTournamentStandings() Sets the current record's "TournamentStandings" collection
  * @method Tournament          setGames()               Sets the current record's "Games" collection
+ * @method Tournament          setAssets()              Sets the current record's "Assets" collection
+ * @method Tournament          setAsset()               Sets the current record's "Asset" collections
+ * @property Doctrine_Collection $Asset
+ * 
+ * @method integer             getTournamentExtId()     Returns the current record's "tournament_ext_id" value
+ * @method string              getName()                Returns the current record's "name" value
+ * @method string              getDescription()         Returns the current record's "description" value
+ * @method Doctrine_Collection getFeed()                Returns the current record's "Feed" collection
+ * @method Doctrine_Collection getFeeds()               Returns the current record's "Feeds" collection
+ * @method Doctrine_Collection getTournamentEditions()  Returns the current record's "TournamentEditions" collection
+ * @method Doctrine_Collection getTournamentStandings() Returns the current record's "TournamentStandings" collection
+ * @method Doctrine_Collection getGames()               Returns the current record's "Games" collection
+ * @method Doctrine_Collection getAssets()              Returns the current record's "Assets" collection
+ * @method Doctrine_Collection getAsset()               Returns the current record's "Asset" collection
+ * @method Tournament          setTournamentExtId()     Sets the current record's "tournament_ext_id" value
+ * @method Tournament          setName()                Sets the current record's "name" value
+ * @method Tournament          setDescription()         Sets the current record's "description" value
+ * @method Tournament          setFeed()                Sets the current record's "Feed" collection
+ * @method Tournament          setFeeds()               Sets the current record's "Feeds" collection
+ * @method Tournament          setTournamentEditions()  Sets the current record's "TournamentEditions" collection
+ * @method Tournament          setTournamentStandings() Sets the current record's "TournamentStandings" collection
+ * @method Tournament          setGames()               Sets the current record's "Games" collection
+ * @method Tournament          setAssets()              Sets the current record's "Assets" collection
+ * @method Tournament          setAsset()               Sets the current record's "Asset" collection
  * 
  * @package    futebol
  * @subpackage model
@@ -56,6 +89,15 @@ abstract class BaseTournament extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
+        $this->hasMany('Feed', array(
+             'refClass' => 'TournamentFeed',
+             'local' => 'tournament_id',
+             'foreign' => 'feed_id'));
+
+        $this->hasMany('TournamentFeed as Feeds', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
         $this->hasMany('TournamentEdition as TournamentEditions', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
@@ -67,6 +109,15 @@ abstract class BaseTournament extends sfDoctrineRecord
         $this->hasMany('Game as Games', array(
              'local' => 'id',
              'foreign' => 'tournament_id'));
+
+        $this->hasMany('TournamentAsset as Assets', array(
+             'local' => 'id',
+             'foreign' => 'tournament_id'));
+
+        $this->hasMany('Asset', array(
+             'refClass' => 'TournamentAsset',
+             'local' => 'tournament_id',
+             'foreign' => 'asset_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable();
         $sluggable0 = new Doctrine_Template_Sluggable();

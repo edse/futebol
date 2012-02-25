@@ -114,11 +114,9 @@
             <label for="team" class="select"><em>*</em> Favorite team:</label>
             <select name="team" id="team">
               <option value="">Choose one</option>
-              <option value="1">Alabama</option>
-              <option value="1">Alaska</option>
-              <option value="1">Arizona</option>
-              <option value="1">Arkansas</option>
-              <option value="1">California</option>
+              <?php foreach($times as $t): ?>
+              <option value="<?php echo $t->getId()?>"><?php echo $t->getName()?></option>
+              <?php endforeach; ?>
             </select>
           </li>
           <li data-role="fieldcontain"> 

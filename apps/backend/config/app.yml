@@ -4,26 +4,10 @@
 # default values
 
 all:
-
-  melody:
-    create_user: false
-    redirect_register: @oauth_register
-    redirect_error: @oauth_error
-
-    facebook:
-      key: XXX
-      secret: XXX
-      callback: @oauth_connect
-      scope: [email]
-
-    twitter:
-      key: XXX
-      secret: XXX
-      api: YOUR_API_HERE
-      callback: @oauth_connect
-      scope: [email]
-
-  sf_phpopenid_plugin:
-    lib_path: %SF_ROOT_DIR%/lib/vendor/php-openid
-    create_user: false
-    redirect_register: @openid_register
+  
+  # sfCKEditorPlugin
+  ckeditor:
+    basePath: /js/ckeditor
+  ckfinder:
+    active: true
+    basePath: /js/ckfinder

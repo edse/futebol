@@ -18,6 +18,9 @@
               $c = 'yt-navbar-item';
               $m = $sf_params->get('module');
               if(($sf_user->hasPermission('admin')) || ($sf_user->hasPermission('editor'))) {
+                echo link_to('Feeds', 'feed/index', array(
+                  'class'  => $m=='feed' ? $c.' yt-navbar-item-current' : $c
+                ));
                 echo link_to('Tournaments', 'tournament/index', array(
                   'class'  => $m=='tournament' ? $c.' yt-navbar-item-current' : $c
                 ));
@@ -29,6 +32,9 @@
                 ));
                 echo link_to('Stadiums', 'stadium/index', array(
                   'class'  => $m=='stadium' ? $c.' yt-navbar-item-current' : $c
+                ));
+                echo link_to('Assets', 'asset/index', array(
+                  'class'  => $m=='asset' ? $c.' yt-navbar-item-current' : $c
                 ));
                 echo link_to('Users', 'sfGuardUser/index', array(
                   'class'  => $m=='sfGuardUser' ? $c.' yt-navbar-item-current' : $c

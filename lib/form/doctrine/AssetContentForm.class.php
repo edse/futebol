@@ -12,5 +12,12 @@ class AssetContentForm extends BaseAssetContentForm
 {
   public function configure()
   {
+    unset($this['asset_id']);
+
+    //$this->widgetSchema['content'] = new sfWidgetFormCKEditor();
+    $this->widgetSchema['content'] = new sfWidgetFormCKEditor();
+
+    $this->widgetSchema['headline'] = new sfWidgetFormInputText(array(), array('style' => 'width: 450px;'));
+    
   }
 }

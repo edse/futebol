@@ -21,11 +21,13 @@
  * @property Doctrine_Collection $Groups
  * @property Doctrine_Collection $Permissions
  * @property Team $Team
+ * @property Doctrine_Collection $Teams
  * @property Doctrine_Collection $sfGuardUserPermission
  * @property Doctrine_Collection $sfGuardUserGroup
  * @property sfGuardRememberKey $RememberKeys
  * @property sfGuardForgotPassword $ForgotPassword
  * @property Doctrine_Collection $Tokens
+ * @property Doctrine_Collection $sfGuardUser
  * @property Doctrine_Collection $Assets
  * 
  * @method string                getNickname()              Returns the current record's "nickname" value
@@ -44,11 +46,13 @@
  * @method Doctrine_Collection   getGroups()                Returns the current record's "Groups" collection
  * @method Doctrine_Collection   getPermissions()           Returns the current record's "Permissions" collection
  * @method Team                  getTeam()                  Returns the current record's "Team" value
+ * @method Doctrine_Collection   getTeams()                 Returns the current record's "Teams" collection
  * @method Doctrine_Collection   getSfGuardUserPermission() Returns the current record's "sfGuardUserPermission" collection
  * @method Doctrine_Collection   getSfGuardUserGroup()      Returns the current record's "sfGuardUserGroup" collection
  * @method sfGuardRememberKey    getRememberKeys()          Returns the current record's "RememberKeys" value
  * @method sfGuardForgotPassword getForgotPassword()        Returns the current record's "ForgotPassword" value
  * @method Doctrine_Collection   getTokens()                Returns the current record's "Tokens" collection
+ * @method Doctrine_Collection   getSfGuardUser()           Returns the current record's "sfGuardUser" collection
  * @method Doctrine_Collection   getAssets()                Returns the current record's "Assets" collection
  * @method sfGuardUser           setNickname()              Sets the current record's "nickname" value
  * @method sfGuardUser           setFirstName()             Sets the current record's "first_name" value
@@ -66,11 +70,13 @@
  * @method sfGuardUser           setGroups()                Sets the current record's "Groups" collection
  * @method sfGuardUser           setPermissions()           Sets the current record's "Permissions" collection
  * @method sfGuardUser           setTeam()                  Sets the current record's "Team" value
+ * @method sfGuardUser           setTeams()                 Sets the current record's "Teams" collection
  * @method sfGuardUser           setSfGuardUserPermission() Sets the current record's "sfGuardUserPermission" collection
  * @method sfGuardUser           setSfGuardUserGroup()      Sets the current record's "sfGuardUserGroup" collection
  * @method sfGuardUser           setRememberKeys()          Sets the current record's "RememberKeys" value
  * @method sfGuardUser           setForgotPassword()        Sets the current record's "ForgotPassword" value
  * @method sfGuardUser           setTokens()                Sets the current record's "Tokens" collection
+ * @method sfGuardUser           setSfGuardUser()           Sets the current record's "sfGuardUser" collection
  * @method sfGuardUser           setAssets()                Sets the current record's "Assets" collection
  * 
  * @package    futebol
@@ -166,6 +172,11 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'local' => 'team_id',
              'foreign' => 'id'));
 
+        $this->hasMany('Team as Teams', array(
+             'refClass' => 'TeamUser',
+             'local' => 'user_id',
+             'foreign' => 'team_id'));
+
         $this->hasMany('sfGuardUserPermission', array(
              'local' => 'id',
              'foreign' => 'user_id'));
@@ -183,6 +194,10 @@ abstract class BasesfGuardUser extends sfDoctrineRecord
              'foreign' => 'user_id'));
 
         $this->hasMany('Token as Tokens', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
+
+        $this->hasMany('TeamUser as sfGuardUser', array(
              'local' => 'id',
              'foreign' => 'user_id'));
 

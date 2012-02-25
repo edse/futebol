@@ -13,7 +13,7 @@ body { background: #dddddd; }
 .ui-mobile #jqm-version { text-indent: -99999px; background: url(../images/version.png) top right no-repeat; width: 119px; height: 122px; overflow: hidden; position: absolute; z-index: 50; top: 0; right: 0; }
 .ui-mobile .jqm-themeswitcher { margin: 10px 25px 10px 10px;  }
 
-h2 { margin:1.2em 0 .4em 0; }
+h2 { margin:0 0 .4em 0; }
 p code { font-size:1.2em; font-weight:bold; } 
 
 dt { font-weight: bold; margin: 2em 0 .5em; }
@@ -284,6 +284,28 @@ dd h4 { margin:15px 0 0 0; }
 
 .nav-glyphish-example .ui-btn .ui-btn-inner { padding-top: 40px !important; }
 .nav-glyphish-example .ui-btn .ui-icon { width: 30px!important; height: 30px!important; margin-left: -15px !important; box-shadow: none!important; -moz-box-shadow: none!important; -webkit-box-shadow: none!important; -webkit-border-radius: none !important; border-radius: none !important; }
+#heart .ui-icon { background:  url(/images/icons/29-heart.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#movie .ui-icon { background:  url(/images/icons/46-movie-2.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#tshirt .ui-icon { background:  url(/images/icons/67-tshirt.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#stopwatch .ui-icon { background:  url(/images/icons/78-stopwatch.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#calendar .ui-icon { background:  url(/images/icons/83-calendar.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#trophy .ui-icon { background:  url(/images/icons/85-trophy.png) 50% 50% no-repeat; background-size: 24px 24px; }
+#gameplan .ui-icon { background:  url(/images/icons/101-gameplan.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#badge .ui-icon { background:  url(/images/icons/108-badge.png) 50% 50% no-repeat; background-size: 21px 26px; }
+#user .ui-icon { background:  url(/images/icons/111-user.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#group .ui-icon { background:  url(/images/icons/112-group.png) 50% 50% no-repeat; background-size: 32px 21px; }
+#stats .ui-icon { background:  url(/images/icons/122-stats.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#idcard .ui-icon { background:  url(/images/icons/123-id-card.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#bullhorn .ui-icon { background:  url(/images/icons/124-bullhorn.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#persondot .ui-icon { background:  url(/images/icons/145-persondot.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#linechart .ui-icon { background:  url(/images/icons/16-line-chart.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#barchart .ui-icon { background:  url(/images/icons/17-bar-chart.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#gear .ui-icon { background:  url(/images/icons/19-gear.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#gear2 .ui-icon { background:  url(/images/icons/20-gear2.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#star .ui-icon { background:  url(/images/icons/28-star.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#newspaper .ui-icon { background:  url(/images/icons/166-newspaper.png) 50% 50% no-repeat; background-size: 24px 22px; }
+#clock .ui-icon { background:  url(/images/icons/11-clock.png) 50% 50% no-repeat; background-size: 25px 25px; }
+
 #chat .ui-icon { background:  url(/images/icons/09-chat-2.png) 50% 50% no-repeat; background-size: 24px 22px; }
 #email .ui-icon { background:  url(/images/icons/18-envelope.png) 50% 50% no-repeat; background-size: 24px 16px;  }
 #login .ui-icon { background:  url(/images/icons/30-key.png) 50% 50% no-repeat;  background-size: 12px 26px; }

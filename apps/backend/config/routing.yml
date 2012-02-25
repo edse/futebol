@@ -1,3 +1,21 @@
+asset:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Asset
+    module:               asset
+    prefix_path:          /asset
+    column:               id
+    with_wildcard_routes: true
+
+feed:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Feed
+    module:               feed
+    prefix_path:          /feed
+    column:               id
+    with_wildcard_routes: true
+
 game_team_games:
   class: sfDoctrineRouteCollection
   options:
