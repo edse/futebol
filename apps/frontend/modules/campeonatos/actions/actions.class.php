@@ -229,21 +229,23 @@ class campeonatosActions extends sfActions
           
           // create HTML DOM
           $html = file_get_html($v->link);
-          // get news block
-          foreach($html->find('div#materia-letra') as $article) {
-            // get title
-            //$item['title'] = trim($article->find('h3', 0)->plaintext);
-            // get details
-            $item = trim($article);
-            if(!$asset->AssetContent)
-              $asset->AssetContent = new AssetContent();
-            $asset->AssetContent->setContent($item);
-            $asset->AssetContent->setSource($f->getSiteName());
-            $asset->AssetContent->save();
+          if($html){
+            // get news block
+            foreach($html->find('div#materia-letra') as $article) {
+              // get title
+              //$item['title'] = trim($article->find('h3', 0)->plaintext);
+              // get details
+              $item = trim($article);
+              if(!$asset->AssetContent)
+                $asset->AssetContent = new AssetContent();
+              $asset->AssetContent->setContent($item);
+              $asset->AssetContent->setSource($f->getSiteName());
+              $asset->AssetContent->save();
+            }
+            // clean up memory
+            $html->clear();
+            unset($html);
           }
-          // clean up memory
-          $html->clear();
-          unset($html);
           echo "<hr />";
         }
       }
