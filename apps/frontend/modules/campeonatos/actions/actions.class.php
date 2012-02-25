@@ -183,7 +183,7 @@ class campeonatosActions extends sfActions
     ini_set("memory_limit", "1700M");
     ini_set("max_input_time", "3600");
     ini_set("max_execution_time", "3600");
-    ini_set('user_agent', 'My-Application/2.5');
+    //ini_set('user_agent', 'My-Application/2.5');
     set_time_limit(0);
 
     // they will check user_agent header...
