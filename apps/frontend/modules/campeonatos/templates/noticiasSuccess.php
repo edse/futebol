@@ -1,3 +1,4 @@
+<?php use_helper('I18N', 'Date') ?>
 <div data-role="page" class="type-interior">
   
   <?php include_partial('global/header', array('title'=>$campeonato->getName().' - Notícias')) ?>
