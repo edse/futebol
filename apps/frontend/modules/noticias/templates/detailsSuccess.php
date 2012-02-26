@@ -26,7 +26,7 @@
         </style>
         <ul data-role="listview" data-filter="true" data-filter-placeholder="nome do time ou data do jogo..." data-inset="true">
           <?php foreach($campeonatos as $c): ?>
-          <li<?php if($campeonato->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
+          <li>
             <a href="<?php echo url_for('@default?module=campeonatos&action=noticias&slug='.$c->getSlug()) ?>"><?php echo $c->getName() ?></a>
           </li>
           <?php endforeach; ?>
