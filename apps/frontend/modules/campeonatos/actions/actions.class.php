@@ -241,13 +241,18 @@ class campeonatosActions extends sfActions
                 $asset->setAssetTypeId(1);
                 $asset->setTitle($v->title);
                 $asset->setDescription($v->description);
-                $asset->setTournaments($f->Tournaments);
+                //$asset->setTournaments($f->Tournaments);
                 $asset->setTeams($f->Teams);
                 $asset->setGames($f->Games);
                 $asset->setDateStart(date("Y-m-d H:i:s", strtotime($v->pubDate)));
                 $asset->setUserId(1);
                 $asset->setIsActive(true);
                 $asset->save();
+
+                $at = new AssetTournament();
+                $at->setAssetId($asset->getId());
+                $at->setTournamentId($f->Tournaments[0]->getId());
+                $at->save();
                 
                 echo "<pre>";
                 var_dump($v);
