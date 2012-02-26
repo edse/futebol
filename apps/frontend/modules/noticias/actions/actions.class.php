@@ -33,18 +33,45 @@ class noticiasActions extends sfActions
   */
   public function executeDetails(sfWebRequest $request)
   {
-    if($request->getParameter('id')){
-      $this->jogo = Doctrine::getTable('Game')->find($request->getParameter('id'));
-      $this->noticias = Doctrine_Query::create()
-        ->select('g.*')
-        ->from('Game g')
-        ->where('g.date_start > ?', date('Y-m-d'))
-        ->orderBy('g.date_start')
-        ->limit(60)
-        ->execute();
-    }else{
+    if($request->getParameter('id'))
+      $this->asset = Doctrine::getTable('Asset')->find($request->getParameter('id'));
+    elseif($request->getParameter('slug'))
+      $this->asset = Doctrine::getTable('Asset')->findOneBySlug($request->getParameter('slug'));
+    
+    if(!$asset)
       $this->forward404();
+
+    $this->campeonatos = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Tournament t')
+      ->orderBy('t.name')
+      ->execute();
+      
+    $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-3*60*60);
+
+    $this->dias = Doctrine_Query::create()
+      ->select('DATE_FORMAT(a.date_start,"%Y-%m-%d") as date')
+      ->from('Asset a, TournamentAsset ta')
+      ->Where('ta.tournament_id = ?', $this->campeonato->getId())
+      ->andWhere('ta.asset_id = a.id')
+      ->andWhere('a.date_start < ?', $t)
+      ->groupBy('DATE_FORMAT(a.date_start,"%Y-%m-%d")') 
+      ->orderBy('a.date_start desc')
+      ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
+      ->execute();
+
+    foreach($this->dias as $d) {
+      $assets[] = Doctrine_Query::create()
+        ->select('a.*')
+        ->from('Asset a, TournamentAsset ta')
+        ->Where('ta.tournament_id = ?', $this->campeonato->getId())
+        ->andWhere('ta.asset_id = a.id')
+        ->andWhere('a.date_start < ?', $t)
+        ->andWhere('DATE_FORMAT(a.date_start,"%Y-%m-%d") = ?', $d['date'])
+        ->orderBy('a.date_start desc')
+        ->execute();
     }
+    $this->assets = $assets;
 
   }
 
