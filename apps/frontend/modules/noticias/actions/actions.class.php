@@ -38,7 +38,7 @@ class noticiasActions extends sfActions
     elseif($request->getParameter('slug'))
       $this->asset = Doctrine::getTable('Asset')->findOneBySlug($request->getParameter('slug'));
     
-    if(!$asset)
+    if(!$this->asset)
       $this->forward404();
 
     $this->campeonatos = Doctrine_Query::create()
