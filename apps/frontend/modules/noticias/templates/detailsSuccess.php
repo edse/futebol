@@ -7,12 +7,12 @@
 
       <h2><?php echo $asset->getTitle() ?></h2>
 
-      <h3><?php echo strip_tags(urldecode($asset->getDescription())) ?></h2>
+      <h3><?php echo strip_tags(html_entity_decode($asset->getDescription())) ?></h2>
 
       <hr />
 
       <div>
-        <?php echo urldecode($asset->AssetContent->getContent()) ?>
+        <?php echo html_entity_decode($asset->AssetContent->getContent()) ?>
       </div>
       
     </div><!--/content-secondary -->
