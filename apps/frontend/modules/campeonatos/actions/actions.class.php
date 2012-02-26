@@ -225,7 +225,7 @@ class campeonatosActions extends sfActions
         try{
           $xml = new SimpleXMLElement(file_get_contents($f->getUrl()));      
           foreach($xml->channel as $key => $value) {
-            $f->setDateImport($now);
+            $f->setDateImport(date("Y-m-d H:i:s"));
             $f->save();
             //echo "<br>".$key." = ".count($value);
             //echo "<br>".$value["data"]." - ".count($value["materias"]);
