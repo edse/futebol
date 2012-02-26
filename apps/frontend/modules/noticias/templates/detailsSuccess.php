@@ -5,9 +5,9 @@
   <div data-role="content" data-theme="c">
     <div class="content-primary">
 
-      <h2><?php echo $jogo->Tournament->getName() ?></h2>
+      <h2><?php echo $asset->getTitle() ?></h2>
 
-      <h3><?php echo $jogo->HomeTeam->getName() ?> x <?php echo $jogo->AwayTeam->getName() ?></h2>
+      <h3><?php echo strip_tags($asset->getDescription()) ?></h2>
 
       <hr />
       
@@ -25,9 +25,9 @@
           }
         </style>
         <ul data-role="listview" data-filter="true" data-filter-placeholder="nome do time ou data do jogo..." data-inset="true">
-          <?php foreach($jogos as $c): ?>
-          <li<?php if($jogo->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
-            <a href="<?php echo url_for('@default?module=jogos&action=details&id='.$c->getId()) ?>"><?php echo $c->HomeTeam->getName() ?> x <?php echo $c->AwayTeam->getName() ?></a>
+          <?php foreach($campeonatos as $c): ?>
+          <li<?php if($campeonato->getId() == $c->getId()): ?> data-theme="a"<?php endif; ?>>
+            <a href="<?php echo url_for('@default?module=campeonatos&action=noticias&slug='.$c->getSlug()) ?>"><?php echo $c->getName() ?></a>
           </li>
           <?php endforeach; ?>
         </ul>
