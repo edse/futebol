@@ -51,10 +51,8 @@ class noticiasActions extends sfActions
 
     $this->dias = Doctrine_Query::create()
       ->select('DATE_FORMAT(a.date_start,"%Y-%m-%d") as date')
-      ->from('Asset a, TournamentAsset ta')
-      ->Where('ta.tournament_id = ?', $this->campeonato->getId())
-      ->andWhere('ta.asset_id = a.id')
-      ->andWhere('a.date_start < ?', $t)
+      ->from('Asset a')
+      ->where('a.date_start < ?', $t)
       ->groupBy('DATE_FORMAT(a.date_start,"%Y-%m-%d")') 
       ->orderBy('a.date_start desc')
       ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
@@ -63,9 +61,7 @@ class noticiasActions extends sfActions
     foreach($this->dias as $d) {
       $assets[] = Doctrine_Query::create()
         ->select('a.*')
-        ->from('Asset a, TournamentAsset ta')
-        ->Where('ta.tournament_id = ?', $this->campeonato->getId())
-        ->andWhere('ta.asset_id = a.id')
+        ->from('Asset a')
         ->andWhere('a.date_start < ?', $t)
         ->andWhere('DATE_FORMAT(a.date_start,"%Y-%m-%d") = ?', $d['date'])
         ->orderBy('a.date_start desc')
