@@ -21,7 +21,7 @@
     <ul data-role="listview">
 
       <?php $now = ""; $i=0; ?>
-      <?php foreach($jogos as $d): ?>
+      <?php foreach($assets as $d): ?>
       <?php 
       $now = format_date(strtotime(date('Y-m-d',strtotime($dias[$i]["date"]))), 'D');
       ?>
