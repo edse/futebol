@@ -2,7 +2,7 @@
 <?php $sf_user->setCulture('pt_BR') ?>
 <div data-role="page" class="type-interior">
 
-  <?php include_partial('global/header', array('title'=>$campeonato->getName().' - Jogos Anteriores', 'refresh'=>1)) ?>
+  <?php include_partial('global/header', array('title'=>$campeonato->getName().' - Jogos Anteriores')) ?>
 
   <div data-role="content" data-theme="c">
     <div class="content-primary">

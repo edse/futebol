@@ -136,12 +136,29 @@ class campeonatosActions extends sfActions
     else
       $this->campeonato = $this->campeonatos[0];
 
-    $this->classificacao = Doctrine_Query::create()
-      ->select('t.*')
-      ->from('TournamentStandings t')
-      ->Where('t.tournament_id = ?', $this->campeonato->getId())
-      ->orderBy('t.rank')
+    $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-3*60*60);
+
+    $this->dias = Doctrine_Query::create()
+      ->select('DATE_FORMAT(g.date_start,"%Y-%m-%d") as date')
+      ->from('Asset a')
+      ->Where('a.tournament_id = ?', $this->campeonato->getId())
+      ->andWhere('g.date_start < ?', $t)
+      ->groupBy('DATE_FORMAT(g.date_start,"%Y-%m-%d")') 
+      ->orderBy('g.date_start desc')
+      ->setHydrationMode(Doctrine::HYDRATE_ARRAY)
       ->execute();
+
+    foreach($this->dias as $d) {
+      $assets[] = Doctrine_Query::create()
+        ->select('a.*')
+        ->from('Asset a')
+        ->Where('a.tournament_id = ?', $this->campeonato->getId())
+        ->andWhere('a.date_start < ?', $t)
+        ->andWhere('DATE_FORMAT(a.date_start,"%Y-%m-%d") = ?', $d['date'])
+        ->orderBy('a.date_start desc')
+        ->execute();
+    }
+    $this->assets = $assets;
   }
 
   public function executeUpdate(sfWebRequest $request)
