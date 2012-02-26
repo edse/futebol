@@ -10,6 +10,10 @@
       <h3><?php echo strip_tags($asset->getDescription()) ?></h2>
 
       <hr />
+
+      <div>
+        <?php echo $asset->AssetContent->getContent() ?>
+      </div>
       
     </div><!--/content-secondary -->
     <div class="content-secondary">
