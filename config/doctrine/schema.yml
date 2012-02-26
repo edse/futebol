@@ -12,6 +12,7 @@ Feed:
     url:                { type: string(255), notnull: true }
     site_name:          { type: string(255) }
     site_url:           { type: string(255) }
+    date_import:        { type: timestamp }
     is_active:          { type: boolean, notnull: true, default: 0 }
   indexes:
     is_active_idx:
