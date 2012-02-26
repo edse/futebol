@@ -1,9 +1,7 @@
 <div data-role="page" class="type-interior">
-  <div data-role="header" data-theme="b">
-    <h1><?php echo $jogo->HomeTeam->getName() ?> x <?php echo $jogo->AwayTeam->getName() ?> - <?php echo $jogo->Tournament->getName() ?></h1>
-    <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-    <a href="#" data-icon="refresh" class="ui-btn-right">Atualizar</a>
-  </div>
+
+  <?php include_partial('global/header', array('title'=>$jogo->HomeTeam->getName()." x ".$jogo->AwayTeam->getName()." (".$jogo->Tournament->getName().")", 'refresh'=>1)) ?>
+
   <div data-role="content" data-theme="c">
     <div class="content-primary">
 

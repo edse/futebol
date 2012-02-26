@@ -1,8 +1,7 @@
 <div data-role="page" class="type-interior">
-  <div data-role="header" data-theme="b">
-    <h1>Emerson Futebol Clube</h1>
-    <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
-  </div>
+  
+  <?php include_partial('global/header', array('title'=>'Times - '.$time->getName())) ?>
+
   <div data-role="content" data-theme="c">
     <div class="content-primary">
       <h2><?php echo $time->getName() ?></h2>

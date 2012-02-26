@@ -1,11 +1,15 @@
 <?php use_helper('I18N', 'Date') ?>
 <?php $sf_user->setCulture('pt_BR') ?>
 <div data-role="page" class="type-interior">
+  
+  <?php include_partial('global/header', array('title'=>'Jogos')) ?>
+
   <div data-role="header" data-theme="b">
     <h1>Futebol Clube - Jogos</h1>
     <a href="<?php echo url_for('@default?module=webapp&action=home') ?>" data-icon="home" data-iconpos="notext" data-direction="reverse" class="ui-btn-right jqm-home">Home</a>
     <a href="index.html" data-icon="refresh" class="ui-btn-right">Atualizar</a>
   </div>
+
   <div data-role="content" data-theme="c">
     <div class="content-primary">
 
