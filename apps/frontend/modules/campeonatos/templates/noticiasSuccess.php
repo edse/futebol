@@ -30,7 +30,7 @@
         <?php foreach($d as $c): ?>
           <li><a href="<?php echo url_for('@default?module=noticias&action=details&id='.$c->getId()) ?>">
           <h3><?php echo $c->getTitle() ?></h3>
-          <p><?php echo strip_tags($c->getDescription()) ?></p>
+          <p><?php echo strip_tags(html_entity_decode($c->getDescription())) ?></p>
           <p class="ui-li-aside"><strong><?php echo format_date(strtotime($c->getDateStart()), 't') ?></strong></p>
       </a></li>
       <?php endforeach; ?>
