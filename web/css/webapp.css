@@ -4,6 +4,10 @@ Beware: lots of last-minute CSS going on in here
 cobblers, shoes, 
 */
 
+.foto strong{
+  display: block;
+}
+
 body { background: #dddddd; }
 
 .ui-mobile #jqm-home {  background: #e5e5e5 url(../images/sitebg.png) top center repeat-x; }
