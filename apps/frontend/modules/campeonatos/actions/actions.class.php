@@ -139,7 +139,7 @@ class campeonatosActions extends sfActions
     $t = date("Y-m-d H:i:s", strtotime(date('Y-m-d H:i:s'))-3*60*60);
 
     $this->dias = Doctrine_Query::create()
-      ->select('DATE_FORMAT(g.date_start,"%Y-%m-%d") as date')
+      ->select('DATE_FORMAT(a.date_start,"%Y-%m-%d") as date')
       ->from('Asset a')
       ->Where('a.tournament_id = ?', $this->campeonato->getId())
       ->andWhere('g.date_start < ?', $t)
