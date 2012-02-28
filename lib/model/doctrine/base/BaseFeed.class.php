@@ -11,6 +11,7 @@
  * @property string $url
  * @property string $site_name
  * @property string $site_url
+ * @property timestamp $date_import
  * @property boolean $is_active
  * @property Doctrine_Collection $Tournaments
  * @property Doctrine_Collection $Teams
@@ -22,6 +23,7 @@
  * @method string              getUrl()         Returns the current record's "url" value
  * @method string              getSiteName()    Returns the current record's "site_name" value
  * @method string              getSiteUrl()     Returns the current record's "site_url" value
+ * @method timestamp           getDateImport()  Returns the current record's "date_import" value
  * @method boolean             getIsActive()    Returns the current record's "is_active" value
  * @method Doctrine_Collection getTournaments() Returns the current record's "Tournaments" collection
  * @method Doctrine_Collection getTeams()       Returns the current record's "Teams" collection
@@ -32,6 +34,7 @@
  * @method Feed                setUrl()         Sets the current record's "url" value
  * @method Feed                setSiteName()    Sets the current record's "site_name" value
  * @method Feed                setSiteUrl()     Sets the current record's "site_url" value
+ * @method Feed                setDateImport()  Sets the current record's "date_import" value
  * @method Feed                setIsActive()    Sets the current record's "is_active" value
  * @method Feed                setTournaments() Sets the current record's "Tournaments" collection
  * @method Feed                setTeams()       Sets the current record's "Teams" collection
@@ -73,6 +76,9 @@ abstract class BaseFeed extends sfDoctrineRecord
         $this->hasColumn('site_url', 'string', 255, array(
              'type' => 'string',
              'length' => 255,
+             ));
+        $this->hasColumn('date_import', 'timestamp', null, array(
+             'type' => 'timestamp',
              ));
         $this->hasColumn('is_active', 'boolean', null, array(
              'type' => 'boolean',

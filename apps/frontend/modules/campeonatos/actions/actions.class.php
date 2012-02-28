@@ -208,12 +208,13 @@ class campeonatosActions extends sfActions
     set_time_limit(0);
 
     // they will check user_agent header...
-    ini_set('user_agent', 'My-Application/2.5');
+    ini_set('user_agent', 'My-Application/2.6');
     include_once(sfConfig::get('sf_lib_dir').'/vendor/simple-html-dom/simple_html_dom.php');
     
     $feeds = Doctrine_Query::create()
       ->select('f.*')
       ->from('Feed f')
+      ->where('is_active = ?', 1)
       ->orderBy('f.name')
       ->execute();
 
@@ -222,7 +223,7 @@ class campeonatosActions extends sfActions
       $now = strtotime(date("Y-m-d H:i:s"));
       if($last+2*60*60 < $now){
         
-        try{
+          echo $f->getUrl()."<br>";
           $xml = new SimpleXMLElement(file_get_contents($f->getUrl()));      
           foreach($xml->channel as $key => $value) {
             $f->setDateImport(date("Y-m-d H:i:s"));
@@ -233,58 +234,60 @@ class campeonatosActions extends sfActions
             foreach($value->item as $k => $v) {
               //var_dump($v);
     
-              $asset = Doctrine::getTable('Asset')->findOneByTitle($v->title);
+              if($v->title != ""){
+                
+                echo ">>> ".$v->title."<br><br>";
+                
+                $asset = Doctrine::getTable('Asset')->findOneByTitle($v->title);
+      
+                if(!$asset){
+                  $asset = new Asset();
     
-              if(!$asset){
-                $asset = new Asset();
+                  $asset->setAssetTypeId(1);
+                  $asset->setTitle($v->title);
+                  $asset->setDescription($v->description);
+                  $asset->getTournaments()->add($f->Tournaments[0]);
+                  $asset->setTeams($f->Teams);
+                  $asset->setGames($f->Games);
+                  $asset->setDateStart(date("Y-m-d H:i:s", strtotime($v->pubDate)));
+                  $asset->setUserId(1);
+                  $asset->setIsActive(true);
+                  $asset->save();
   
-                $asset->setAssetTypeId(1);
-                $asset->setTitle($v->title);
-                $asset->setDescription($v->description);
-                //$asset->setTournaments($f->Tournaments);
-                $asset->setTeams($f->Teams);
-                $asset->setGames($f->Games);
-                $asset->setDateStart(date("Y-m-d H:i:s", strtotime($v->pubDate)));
-                $asset->setUserId(1);
-                $asset->setIsActive(true);
-                $asset->save();
-
-                $at = new AssetTournament();
-                $at->setAssetId($asset->getId());
-                $at->setTournamentId($f->Tournaments[0]->getId());
-                $at->save();
-                
-                echo "<pre>";
-                var_dump($v);
-                echo "</pre>";
-                
-                // create HTML DOM
-                $html = file_get_html($v->link);
-                if($html){
-                  // get news block
-                  foreach($html->find('div#materia-letra') as $article) {
-                    // get title
-                    //$item['title'] = trim($article->find('h3', 0)->plaintext);
-                    // get details
-                    $item = trim($article);
-                    if(!$asset->AssetContent)
-                      $asset->AssetContent = new AssetContent();
-                    $asset->AssetContent->setContent($item);
-                    $asset->AssetContent->setSource($f->getSiteName());
-                    $asset->AssetContent->save();
+                  //echo $f->Tournaments[0]->getName();
+                  //echo $asset->Tournaments[0]->getName();
+                  //die();
+  
+                  echo "<pre>";
+                  var_dump($v);
+                  echo "</pre>";
+                  
+                  // create HTML DOM
+                  $html = file_get_html($v->link);
+                  if($html){
+                    // get news block
+                    foreach($html->find('div#materia-letra') as $article) {
+                      // get title
+                      //$item['title'] = trim($article->find('h3', 0)->plaintext);
+                      // get details
+                      $item = trim($article);
+                      if(!$asset->AssetContent)
+                        $asset->AssetContent = new AssetContent();
+                      $asset->AssetContent->setContent($item);
+                      $asset->AssetContent->setSource($f->getSiteName());
+                      $asset->AssetContent->save();
+                    }
+                    // clean up memory
+                    $html->clear();
+                    unset($html);
                   }
-                  // clean up memory
-                  $html->clear();
-                  unset($html);
                 }
+
               }
               echo "<hr />";
             }
           }
           die($f->getName());
-        }catch(exception $e){
-          echo "erro!";
-        }
       }
       //$contents = json_decode($c, true);
       echo $f->getUrl()."<br>";
