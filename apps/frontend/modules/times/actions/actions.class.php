@@ -28,4 +28,18 @@ class timesActions extends sfActions
       $this->time = $this->times[0];
   }
 
+  public function executeJSON(sfWebRequest $request)
+  {
+    $times = Doctrine_Query::create()
+      ->select('t.*')
+      ->from('Team t')
+      ->orderBy('t.name')
+      ->execute();
+    $this->times = NULL;
+    foreach($times as $t){
+      $this->times[] = array("initials"=>$t->getInitials(), "name"=>$t->getName(), "logo"=>$t->getLogo());
+    }
+    die(json_encode($this->times));
+  }
+
 }
