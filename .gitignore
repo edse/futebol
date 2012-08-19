@@ -1,0 +1,12 @@
+/cache
+/log
+/plugins/.channels
+/plugins/.registry
+/plugins/.depdb
+/plugins/.depdblock
+/plugins/.filemap
+/plugins/.lock
+/.settings
+.project
+/web/run.php
+/web/uploads
