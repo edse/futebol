@@ -36,8 +36,10 @@ class timesActions extends sfActions
       ->orderBy('t.name')
       ->execute();
     $this->times = NULL;
+    $i = 0;
     foreach($times as $t){
-      $this->times[] = array("initials"=>$t->getInitials(), "name"=>$t->getName(), "logo"=>$t->getLogo());
+      $this->times["k$i"] = array("initials"=>$t->getInitials(), "name"=>$t->getName(), "logo"=>"http://futebolclube.possum-cms.com/uploads/assets/teams/".$t->getLogo());
+      $i++;
     }
     die(json_encode($this->times));
   }
